@@ -1,0 +1,52 @@
+body {
+  background-color: #C3D0D3;
+  color: #fff; 
+}
+.game-container * {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+h1 {
+  color: #FA6D5B;
+  font-family: 'Chewy', san-serif;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  text-align: center; 
+}
+
+.outlined {
+  border: dotted 1px crimson; 
+}
+.game-container {
+  display:block;
+}
+.grid-row {
+  display: block;
+  width: 100%; 
+}
+
+.grid-square {
+  background-color: coral;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  box-sizing: border-box; 
+}
+
+.grid-square.selected {
+  background-color: green;
+}
+#userPointer {
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: yellow;
+  border-radius: 50%;
+}
+

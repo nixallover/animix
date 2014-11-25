@@ -1,0 +1,54 @@
+body{
+  background-color: #C3D0D3;
+  color: #fff;
+}
+h1 {
+	color: #FA6D5B;
+	font-family: 'Chewy', san-serif;
+	letter-spacing: .3em;
+	text-transform: uppercase;
+	text-align: center;
+}
+.outlined {
+	border: dotted 1px crimson;
+}
+#game-container {
+	display: table;
+	width: 100%;
+	padding: 20px;
+}
+#scoreboard,
+#debug-scoreboard {
+	background-color: #FA6D5B;
+	display: table;
+	padding: 5px;
+	width: 100%;
+    min-height:40px;
+}
+#grid-container {
+	display: table;
+	width: 100%;
+
+    .grid-row {
+        display: table;
+        width: 100%;
+    }
+}
+.grid-square {
+	display: inline-block;
+	width: 20%;
+	padding:4px;
+	box-sizing: border-box;
+
+    &.selected {
+
+        > img {
+            border-color: red;
+        }
+    }
+    > img {
+        border: solid 2px transparent;
+        max-width: 100%;
+        height: auto;
+    }
+}

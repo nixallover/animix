@@ -1,0 +1,17 @@
+extends layout
+
+block content
+	h1= title
+
+	#game-container.outlined
+		#scoreboard.outlined
+			#status.outlined
+			p Score: <span id="score"></span>
+			p Turns: <span id="turns"></span>
+		#grid-container.outlined
+			each rowIndex in [1,2,3,4,5]
+				.grid-row
+					each colIndex in [1,2,3,4,5]
+						.grid-square(data-row=rowIndex,data-column=colIndex)
+		#debug-scoreboard.outlined
+			#debug-status.outlined
