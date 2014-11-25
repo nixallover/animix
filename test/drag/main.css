@@ -2,7 +2,7 @@ body {
   background-color: #C3D0D3;
   color: #fff; 
 }
-.game-container * {
+body * {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;

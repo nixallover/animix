@@ -59,27 +59,34 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!--script src="draggabilly.pkgd.min.js"></script-->
     <script>
+    // BUG! if someone goes into white space, they can skip squares
+    
     $(function(){
         var $square = $(".grid-square");
         var activeTurn = false;
-        var currentMove = [];
+        var selectedDomNodes = [];
+
+        // makes sure 1st square gets selected
+        $square.on('mousedown', selectSquare );
 
         $(window).on('mousedown', function(){
             console.log("turn started!");
             activeTurn = true;
             turnManager();
+
         }).on('mouseup', function(){
             console.log("turn ended!");
             activeTurn = false;
             turnManager();
+
+            //reset everything
             resetSquaresHighlight();
-            console.log(currentMove);
-            currentMove = [];
+            console.log(selectedDomNodes);
+            selectedDomNodes = [];
         });
         function turnManager(){
             if (activeTurn == true){
                 console.log("active turn: highlighting");
-                $square.on('mousedown', selectSquare );
                 $square.on('mouseenter', selectSquare );
             } else {
                 console.log("turn not active");
@@ -93,24 +100,51 @@
             $square.off('mouseenter', function(){});
         }
         function selectSquare(){
+            var squareAlreadySelected = $(this).hasClass('selected');
+
+            function areSquaresMaxedOut(){
+                var maxSquaresSelected = function(){
+                    if (selectedDomNodes.length == 3){
+                        return true;
+                    } else {
+                        return false;
+                    }
+                };
+
+                if (maxSquaresSelected){
+
+                }
+
+            };
+
             //run checks, and if everything checks out
-            if ( $(this).hasClass('selected') ){
+            if ( squareAlreadySelected ){
                 //alert('passing through again!');
-                //remove from array
-                //remove entry before it from array
-                
-                //NEXT - if the array index isn't the greatest, pop 2, else
-                currentMove.pop();
-                $(this).removeClass('selected');
+                    selectedDomNodes.pop();
+                    selectedDomNodes.pop().removeClass('selected');
+
             } else {
-                $(this).addClass('selected');
-                $(this).data('arrayIndex', currentMove.length);
-                //$(this).text(currentMove.length);
-                currentMove.push('square');
+                if (selectedDomNodes.length < 3){
+                    checkSquaresAreAdjacent(this, selectedDomNodes);
+                    $(this).addClass('selected');
+                    $(this).data('arrayIndex', selectedDomNodes.length);
+                    //$(this).text(selectedDomNodes.length);
+                    selectedDomNodes.push( $(this) );
+                } else {
+                    console.log("max squares selected!");
+                };
             };
             
-            console.log(currentMove);
-            console.log(currentMove.length);
+            console.log(selectedDomNodes);
+            console.log(selectedDomNodes.length);
+        };
+
+        function checkSquaresAreAdjacent(square, selectedDomNodes){
+            //I DUNNO FIX THIS
+            //create copy of selected dom nodes
+            console.log('selectedDomNodes.clone().pop()');
+            //selected 
+            //$(square)
         }
 
         // $(".game-container").on('mousedown', function(){
