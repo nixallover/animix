@@ -67,70 +67,62 @@
         var selectedDomNodes = [];
 
         // makes sure 1st square gets selected
-        $square.on('mousedown', selectSquare );
+        $square.on('mousedown', squareSelector );
 
+        // start turn when user starts dragging
         $(window).on('mousedown', function(){
             console.log("turn started!");
             activeTurn = true;
             turnManager();
 
+        // end turn when user stops dragging
         }).on('mouseup', function(){
             console.log("turn ended!");
             activeTurn = false;
             turnManager();
 
             //reset everything
-            resetSquaresHighlight();
+            $square.removeClass('selected');
             console.log(selectedDomNodes);
             selectedDomNodes = [];
         });
+
         function turnManager(){
             if (activeTurn == true){
+                // add event handler to all squares
                 console.log("active turn: highlighting");
-                $square.on('mouseenter', selectSquare );
+                $square.on('mouseenter', squareSelector );
+
             } else {
+                // remove event handler to all squares
                 console.log("turn not active");
-                $square.off('mouseenter', selectSquare );
-            };
-        };
-        function resetSquaresHighlight(){
-            $square.removeClass('selected');
+                $square.off('mouseenter', squareSelector );
+
+            }
         }
-        function unbindSquaresEvent(){
-            $square.off('mouseenter', function(){});
-        }
-        function selectSquare(){
-            var squareAlreadySelected = $(this).hasClass('selected');
 
-            function areSquaresMaxedOut(){
-                var maxSquaresSelected = function(){
-                    if (selectedDomNodes.length == 3){
-                        return true;
-                    } else {
-                        return false;
-                    }
-                };
-
-                if (maxSquaresSelected){
-
-                }
-
-            };
+        function squareSelector(){
+            var $square = $(this),
+                squareAlreadySelected = $square.hasClass('selected');
 
             //run checks, and if everything checks out
             if ( squareAlreadySelected ){
-                //alert('passing through again!');
-                    selectedDomNodes.pop();
+                //pop the last one off the stack and un-select it
+                //if there's more than 1 thing in the stack
+                if ( selectedDomNodes.length > 1 ){
                     selectedDomNodes.pop().removeClass('selected');
+                } else {
+                    // don't remove anything
+                };
 
             } else {
                 if (selectedDomNodes.length < 3){
-                    checkSquaresAreAdjacent(this, selectedDomNodes);
-                    $(this).addClass('selected');
-                    $(this).data('arrayIndex', selectedDomNodes.length);
-                    //$(this).text(selectedDomNodes.length);
-                    selectedDomNodes.push( $(this) );
+                    //checkSquaresAreAdjacent(this, selectedDomNodes);
+                    $square.addClass('selected');
+                    $square.data('arrayIndex', selectedDomNodes.length);
+                    selectedDomNodes.push( $square );
                 } else {
+                    // max squares selected, don't select anymore
                     console.log("max squares selected!");
                 };
             };
@@ -142,7 +134,7 @@
         function checkSquaresAreAdjacent(square, selectedDomNodes){
             //I DUNNO FIX THIS
             //create copy of selected dom nodes
-            console.log('selectedDomNodes.clone().pop()');
+            //console.log('selectedDomNodes.clone().pop()');
             //selected 
             //$(square)
         }
