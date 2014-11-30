@@ -1,7 +1,17 @@
 body{
   background-color: #C3D0D3;
   color: #fff;
+
+  * {
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
 }
+
 h1 {
 	color: #FA6D5B;
 	font-family: 'Chewy', san-serif;
@@ -9,14 +19,17 @@ h1 {
 	text-transform: uppercase;
 	text-align: center;
 }
+
 .outlined {
 	border: dotted 1px crimson;
 }
+
 #game-container {
 	display: table;
 	width: 100%;
 	padding: 20px;
 }
+
 #scoreboard,
 #debug-scoreboard {
 	background-color: #FA6D5B;
@@ -25,6 +38,7 @@ h1 {
 	width: 100%;
     min-height:40px;
 }
+
 #grid-container {
 	display: table;
 	width: 100%;
@@ -34,10 +48,11 @@ h1 {
         width: 100%;
     }
 }
+
 .grid-square {
 	display: inline-block;
 	width: 20%;
-	padding:4px;
+	padding:6px;
 	box-sizing: border-box;
 
     &.selected {

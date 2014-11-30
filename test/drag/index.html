@@ -62,9 +62,9 @@
     // BUG! if someone goes into white space, they can skip squares
     
     $(function(){
-        var $square = $(".grid-square");
-        var activeTurn = false;
-        var selectedDomNodes = [];
+        var $square = $(".grid-square"),
+            activeTurn = false,
+            selectedDomNodes = [];
 
         // makes sure 1st square gets selected
         $square.on('mousedown', squareSelector );
@@ -88,14 +88,12 @@
         });
 
         function turnManager(){
-            if (activeTurn == true){
+            if (activeTurn){
                 // add event handler to all squares
-                ////console.log("active turn: highlighting");
                 $square.on('mouseenter', squareSelector );
 
             } else {
                 // remove event handler to all squares
-                ////console.log("turn not active");
                 $square.off('mouseenter', squareSelector );
 
             }
@@ -120,12 +118,11 @@
                     checkSquaresAreAdjacent($theSquare, selectedDomNodes);
                     
                 } else {
-                    // max squares selected, don't select anymore
-                    ////console.log("max squares selected!");
+                    // max squares selected, don't select any more
                 };
             };
             
-            console.log(selectedDomNodes);
+            //console.log(selectedDomNodes);
             //console.log(selectedDomNodes.length);
         };
 
@@ -133,87 +130,48 @@
 
             if ( selectedDomNodes.length < 1 ){
                 console.log('first square');
-
-                // go through with everything
-                $square.addClass('selected');
-                $square.data('arrayIndex', selectedDomNodes.length);
-                selectedDomNodes.push( $square );
+                squareAddSuccess($square, selectedDomNodes);
 
             } else if( isAdjacent($square, selectedDomNodes) ){
-                console.log('SAME ROW OR COLUMN!');
-                // BUG! this is not quite right, it has to be prev square +/- 1
-
-                // go through with everything
-                $square.addClass('selected');
-                $square.data('arrayIndex', selectedDomNodes.length);
-                selectedDomNodes.push( $square );
+                //console.log('Success: SAME ROW OR COLUMN!');
+                squareAddSuccess($square, selectedDomNodes);
                 
             } else {
-                console.log('ERROR! dif row and col');
+                console.log('Error: diff row and col');
             }
 
             function isAdjacent( $square, selectedDomNodes ){
-                var isItAdjacent = false;
-                // create copy of last dom node added (slice creates copy of an array)
-                var $prevSquare = $( selectedDomNodes.slice(0).pop() );
+                var isItAdjacent = false,
+                    // create copy of last dom node added to compare to (slice creates copy of an array)
+                    $prevSquare = $( selectedDomNodes.slice(0).pop() );
 
                 function checkDirectNeighbor(set){
                     if ( ($prevSquare.data(set) === ($square.data(set) +1)) || ($prevSquare.data(set) === ($square.data(set) -1)) ) {
-                        console.log(set);
-                        //console.log($prevSquare.data(set));
-                        //console.log($square.data(set)+1);
-                        console.log($prevSquare.data(set) === ($square.data(set) +1));
-                        console.log($prevSquare.data(set) === ($square.data(set) -1));
-                        //isItAdjacent = true;
                         return true;
                     } else {
                         return false;
-                        //do nothings
                     }
                 }
-                //checkDirectNeighbor('row');
+
                 if (checkDirectNeighbor('row') && !checkDirectNeighbor('column') || !checkDirectNeighbor('row') && checkDirectNeighbor('column')){
                     isItAdjacent = true;
                 } else {
+                    // if both column and rows are +1 or -1 (makes a diagonal), or it's more than +/-1
                     // leave it false
                 }
-                //checkDirectNeighbor('column');
-                //console.log('isItAdjacent');
-                //console.log(isItAdjacent);
                 return isItAdjacent;
-                //return $prevSquare.data('row') === $square.data('row') || $prevSquare.data('column') === $square.data('column');
             }
+
         }
 
-        // $(".game-container").on('mousedown', function(){
-        //     //console.log("turn started!");
-        //     activeTurn = true;
-        // }).on('mouseup', function(){
-        //     //console.log("turn ended!");
-        //     activeTurn = false;
-        // });
-        // function turnInit(){
-        //     if (activeTurn){
-        //         $square.on('mouseenter', function(){
-        //             $(this).addClass('selected');
-        //         });
-        //     } else {
+        // functions to run if adding as square is successful
+        function squareAddSuccess($square, selectedDomNodes){
+            $square.addClass('selected');
+            $square.data('arrayIndex', selectedDomNodes.length);
+            selectedDomNodes.push( $square );
+        }
 
-        //     };
-        // };
     });
-    // var elem = document.querySelector('#userPointer');
-    // var draggie = new Draggabilly(elem);
-    ////console.log(prevSquare);
-
-            // function squaresHaveSameRow(){
-            //     return $prevSquare.data('row') === $square.data('row');
-            // }
-            // function squaresHaveSameColumn(){
-            //     return $prevSquare.data('column') === $square.data('column');
-            // }
-            // squaresHaveSameRow();
-            // squaresHaveSameColumn();
 
     </script>
 

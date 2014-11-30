@@ -1,4 +1,6 @@
-function updateStats(round,move){
+var stats = {};
+
+stats.update = function(round,move){
 	var score = {
 		base: 1,
 		original: 3

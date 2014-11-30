@@ -1,10 +1,11 @@
 var numberOfAnimals = 4;
+var grid = {};
 
-function getRandomAnimal() {
+grid.getRandomAnimal = function() {
 	return (Math.floor(Math.random() * (numberOfAnimals)) + 1).toString();
 }; // getRandomAnimal()
 
-function getRandomPart() {
+grid.getRandomPart = function() {
 	var part = "",
 		bleh = Math.floor(Math.random() * (3)) + 1;
 
@@ -21,17 +22,17 @@ function getRandomPart() {
 		default:
 			alert("ERROR: can't get random part");
 	};
-	console.log("Part selected: " + part);
+	//console.log("Part selected: " + part);
 	return part;
 }; // getRandomPart()
 
-function generatePart(gridPos){
+grid.generatePart = function(gridPos){
 	var animal = "1",
 		part = "b";
 
-	animal = getRandomAnimal();
-	part = getRandomPart();
-	debugLog(animal);
+	animal = grid.getRandomAnimal();
+	part = grid.getRandomPart();
+	//debugLog(animal);
 
 	var imageName = animal + part;
 
