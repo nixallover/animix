@@ -29,27 +29,27 @@
                 </div>
             </div><!-- grid-row -->
             <div class="grid-row">
-                <div data-row="1" data-column="1" class="grid-square">
+                <div data-row="2" data-column="1" class="grid-square">
                 </div>
-                <div data-row="1" data-column="2" class="grid-square">
+                <div data-row="2" data-column="2" class="grid-square">
                 </div>
-                <div data-row="1" data-column="3" class="grid-square">
+                <div data-row="2" data-column="3" class="grid-square">
                 </div>
-                <div data-row="1" data-column="4" class="grid-square">
+                <div data-row="2" data-column="4" class="grid-square">
                 </div>
-                <div data-row="1" data-column="5" class="grid-square">
+                <div data-row="2" data-column="5" class="grid-square">
                 </div>
             </div><!-- grid-row -->
             <div class="grid-row">
-                <div data-row="1" data-column="1" class="grid-square">
+                <div data-row="3" data-column="1" class="grid-square">
                 </div>
-                <div data-row="1" data-column="2" class="grid-square">
+                <div data-row="3" data-column="2" class="grid-square">
                 </div>
-                <div data-row="1" data-column="3" class="grid-square">
+                <div data-row="3" data-column="3" class="grid-square">
                 </div>
-                <div data-row="1" data-column="4" class="grid-square">
+                <div data-row="3" data-column="4" class="grid-square">
                 </div>
-                <div data-row="1" data-column="5" class="grid-square">
+                <div data-row="3" data-column="5" class="grid-square">
                 </div>
             </div><!-- grid-row -->
             <!-- <div id="userPointer"></div> -->
@@ -71,39 +71,39 @@
 
         // start turn when user starts dragging
         $(window).on('mousedown', function(){
-            console.log("turn started!");
+            //console.log("turn started!");
             activeTurn = true;
             turnManager();
 
         // end turn when user stops dragging
         }).on('mouseup', function(){
-            console.log("turn ended!");
+            //console.log("turn ended!");
             activeTurn = false;
             turnManager();
 
             //reset everything
             $square.removeClass('selected');
-            console.log(selectedDomNodes);
+            //console.log(selectedDomNodes);
             selectedDomNodes = [];
         });
 
         function turnManager(){
             if (activeTurn == true){
                 // add event handler to all squares
-                console.log("active turn: highlighting");
+                ////console.log("active turn: highlighting");
                 $square.on('mouseenter', squareSelector );
 
             } else {
                 // remove event handler to all squares
-                console.log("turn not active");
+                ////console.log("turn not active");
                 $square.off('mouseenter', squareSelector );
 
             }
         }
 
         function squareSelector(){
-            var $square = $(this),
-                squareAlreadySelected = $square.hasClass('selected');
+            var $theSquare = $(this),
+                squareAlreadySelected = $theSquare.hasClass('selected');
 
             //run checks, and if everything checks out
             if ( squareAlreadySelected ){
@@ -117,33 +117,79 @@
 
             } else {
                 if (selectedDomNodes.length < 3){
-                    //checkSquaresAreAdjacent(this, selectedDomNodes);
-                    $square.addClass('selected');
-                    $square.data('arrayIndex', selectedDomNodes.length);
-                    selectedDomNodes.push( $square );
+                    checkSquaresAreAdjacent($theSquare, selectedDomNodes);
+                    
                 } else {
                     // max squares selected, don't select anymore
-                    console.log("max squares selected!");
+                    ////console.log("max squares selected!");
                 };
             };
             
             console.log(selectedDomNodes);
-            console.log(selectedDomNodes.length);
+            //console.log(selectedDomNodes.length);
         };
 
-        function checkSquaresAreAdjacent(square, selectedDomNodes){
-            //I DUNNO FIX THIS
-            //create copy of selected dom nodes
-            //console.log('selectedDomNodes.clone().pop()');
-            //selected 
-            //$(square)
+        function checkSquaresAreAdjacent($square, selectedDomNodes){
+
+            if ( selectedDomNodes.length < 1 ){
+                console.log('first square');
+
+                // go through with everything
+                $square.addClass('selected');
+                $square.data('arrayIndex', selectedDomNodes.length);
+                selectedDomNodes.push( $square );
+
+            } else if( isAdjacent($square, selectedDomNodes) ){
+                console.log('SAME ROW OR COLUMN!');
+                // BUG! this is not quite right, it has to be prev square +/- 1
+
+                // go through with everything
+                $square.addClass('selected');
+                $square.data('arrayIndex', selectedDomNodes.length);
+                selectedDomNodes.push( $square );
+                
+            } else {
+                console.log('ERROR! dif row and col');
+            }
+
+            function isAdjacent( $square, selectedDomNodes ){
+                var isItAdjacent = false;
+                // create copy of last dom node added (slice creates copy of an array)
+                var $prevSquare = $( selectedDomNodes.slice(0).pop() );
+
+                function checkDirectNeighbor(set){
+                    if ( ($prevSquare.data(set) === ($square.data(set) +1)) || ($prevSquare.data(set) === ($square.data(set) -1)) ) {
+                        console.log(set);
+                        //console.log($prevSquare.data(set));
+                        //console.log($square.data(set)+1);
+                        console.log($prevSquare.data(set) === ($square.data(set) +1));
+                        console.log($prevSquare.data(set) === ($square.data(set) -1));
+                        //isItAdjacent = true;
+                        return true;
+                    } else {
+                        return false;
+                        //do nothings
+                    }
+                }
+                //checkDirectNeighbor('row');
+                if (checkDirectNeighbor('row') && !checkDirectNeighbor('column') || !checkDirectNeighbor('row') && checkDirectNeighbor('column')){
+                    isItAdjacent = true;
+                } else {
+                    // leave it false
+                }
+                //checkDirectNeighbor('column');
+                //console.log('isItAdjacent');
+                //console.log(isItAdjacent);
+                return isItAdjacent;
+                //return $prevSquare.data('row') === $square.data('row') || $prevSquare.data('column') === $square.data('column');
+            }
         }
 
         // $(".game-container").on('mousedown', function(){
-        //     console.log("turn started!");
+        //     //console.log("turn started!");
         //     activeTurn = true;
         // }).on('mouseup', function(){
-        //     console.log("turn ended!");
+        //     //console.log("turn ended!");
         //     activeTurn = false;
         // });
         // function turnInit(){
@@ -158,6 +204,17 @@
     });
     // var elem = document.querySelector('#userPointer');
     // var draggie = new Draggabilly(elem);
+    ////console.log(prevSquare);
+
+            // function squaresHaveSameRow(){
+            //     return $prevSquare.data('row') === $square.data('row');
+            // }
+            // function squaresHaveSameColumn(){
+            //     return $prevSquare.data('column') === $square.data('column');
+            // }
+            // squaresHaveSameRow();
+            // squaresHaveSameColumn();
+
     </script>
 
   </body>
