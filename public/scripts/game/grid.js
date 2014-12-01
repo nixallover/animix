@@ -22,7 +22,7 @@ grid.getRandomPart = function() {
 		default:
 			alert("ERROR: can't get random part");
 	};
-	//console.log("Part selected: " + part);
+	//logger.debug("Part selected: " + part);
 	return part;
 }; // getRandomPart()
 
@@ -32,7 +32,7 @@ grid.generatePart = function(gridPos){
 
 	animal = grid.getRandomAnimal();
 	part = grid.getRandomPart();
-	//debugLog(animal);
+	//logger.debug(animal);
 
 	var imageName = animal + part;
 

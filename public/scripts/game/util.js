@@ -1,7 +1,15 @@
 // util: debug
-function debugLog(message){
+var logger = {};
+
+logger.debug = function(message){
 	console.log(message);
 };
-function debugAlert(message){
-	alert(message);
+logger.status = function(message){
+	console.log("STATUS: " + message);
+};
+logger.output = function(name, output){
+	console.log(name + ": " + JSON.stringify(output));
+};
+logger.alert = function(message){
+	alert("WARNING! " + message);
 };

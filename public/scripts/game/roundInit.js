@@ -14,7 +14,6 @@ function roundInit(){
 				};
 	var currMove = {
 					values: {},
-					//positions: {},
 					domNodes: []
 				};
 	var activeTurn = false;
@@ -37,20 +36,31 @@ function roundInit(){
 
 	// start turn when user starts dragging
 	$(window).on('mousedown', function(){
-	    console.log("turn started!");
+	    logger.status("turn started!");
 	    activeTurn = true;
 	    turnManager();
 
 	// end turn when user stops dragging
 	}).on('mouseup', function(){
-	    console.log("turn ended!");
+	    logger.status("turn ended!");
 	    activeTurn = false;
 	    turnManager();
 
+	    //if move is complete
+	    if ( currMove.domNodes.length === 3 ){
+	        stats.update(round, currMove);
+		    $ui.score.text(round.stats.score);
+			$ui.turns.text(round.stats.turns);
+		} else {
+			logger.status("Turn not recorded, not enough squares");
+		}
+
 	    //reset everything
 	    $ui.grid.square.removeClass('selected');
-	    //console.log(currMove.domNodes);
+	    //logger.debug(currMove.domNodes);
 	    currMove.domNodes = [];
+	    currMove.values = {};
+
 	});
 
 	function turnManager(){
@@ -72,9 +82,15 @@ function roundInit(){
 	    	- the squares are next to each other
 	    	- that type of part hasn't been selected yet
 	    */
-	    
-	    var $theSquare = $(this),
-	        squareAlreadySelected = $theSquare.hasClass('selected');
+
+	    var $theSquare 				= $(this),
+	        squareAlreadySelected 	= $theSquare.hasClass('selected'),
+	        $img 					= $theSquare.children("img"),
+	        valuesLength 			= Object.keys(currMove.values).length,
+			selected 				= {
+										animal : $img.attr("data-animal"),
+										part : $img.attr("data-part")
+									};
 
 	    if ( squareAlreadySelected ){
 	        //pop the last one off the stack and un-select it
@@ -87,29 +103,50 @@ function roundInit(){
 
 	    } else {
 	        if (currMove.domNodes.length < 3){
-	            checkSquaresAreAdjacent($theSquare, currMove.domNodes);
+				//check that part type hasn't been picked in this turn yet
+				if( !currMove.values[selected.part] ){
+					currMove.values[selected.part] = selected.animal;
+					checkSquaresAreAdjacent($theSquare, currMove.domNodes);
+
+				} else {
+					// part already selected, don't select another
+					logger.status("Not adding square.. this part was already selected for this move");
+				}
 	            
 	        } else {
 	            // max squares selected, don't select any more
-	        };
-	    };
+	        }
+	    }
 	    
-	    console.log(currMove.domNodes);
-	    //console.log(currMove.domNodes.length);
-	};
+	    logger.status(currMove.domNodes);
+	    //logger.status(currMove.domNodes.length);
+	}
+
+	// function checkPartIsAvailable(){
+	// 	//check that part type hasn't been picked in this turn yet
+	// 	if( !currMove.values[selected.part] ){
+	// 		currMove.values[selected.part] = selected.animal;
+
+	// 		};
+
+	// 	} else {
+	// 		logger.status("Not adding square.. this part was already selected for this move");
+	// 	};
+
+	// }
 
 	function checkSquaresAreAdjacent($theSquare, theDomNodes){
 
 	    if ( theDomNodes.length < 1 ){
-	        //console.log('first square');
+	        //logger.status('first square');
 	        squareAddSuccess($theSquare, theDomNodes);
 
 	    } else if( isAdjacent($theSquare, theDomNodes) ){
-	        //console.log('Success: SAME ROW OR COLUMN!');
+	        //logger.status('Success: SAME ROW OR COLUMN!');
 	        squareAddSuccess($theSquare, theDomNodes);
 	        
 	    } else {
-	        console.log('Error: diff row and col');
+	        logger.status('Error: diff row and col');
 	    }
 
 	    function isAdjacent( $theSquare, theDomNodes ){
@@ -138,50 +175,11 @@ function roundInit(){
 
 	// stuff to run if adding as square is successful
 	function squareAddSuccess($theSquare, theDomNodes){
+		logger.status("squareAddSuccess starting");
 	    $theSquare.addClass('selected');
 	    $theSquare.data('arrayIndex', theDomNodes.length);
 	    currMove.domNodes.push( $theSquare );
 	}
-
-
-	// $ui.grid.square.on("click", function(){
-	// 	var $img = $(this).children("img");
-	// 	var selected = {
-	// 		animal : $img.attr("data-animal"),
-	// 		part : $img.attr("data-part")
-	// 	},
-	// 	valuesLength = Object.keys(currMove.values).length;
-
-	// 	//check that part type hasn't been picked in this turn yet
-	// 	if( !currMove.values[selected.part] ){
-	// 		currMove.values[selected.part] = selected.animal;
-	// 		$(this).addClass("selected");
-
-	// 		//when currMove.values has 3 properties, its complete
-	// 		if( valuesLength == 2 ){
-	// 			debugLog("Move completed!");
-	// 			debugLog( currMove.values );
-
-	// 			//add to stats
-	// 			updateStats(round,move);
-
-	// 			//update ui
-	// 			//debugLog(round.animalsCreated);
-	// 			$ui.grid.square.removeClass("selected");
-	// 			$ui.score.text(round.stats.score);
-	// 			$ui.turns.text(round.stats.turns);
-
-	// 			//reset
-	// 			currMove.values = {};
-	// 		};
-
-	// 	} else {
-	// 		debugLog("Not adding square.. this part was already selected for this move");
-	// 	};
-
-		//console.log( currMove.values );
-
-
 
 
 };

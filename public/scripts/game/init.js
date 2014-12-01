@@ -1,7 +1,7 @@
 // game init
 
 $(function(){
-	debugLog("START GAME!");
+	logger.status("Booting up a game!");
 
 	$.each( $(".grid-square"), function(index, value){
 		grid.generatePart(value);

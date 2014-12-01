@@ -5,7 +5,7 @@ stats.update = function(round,move){
 		base: 1,
 		original: 3
 	};
-	console.log(round.animalsCreated);
+	logger.debug(round.animalsCreated);
 
 	// compare to previous stats - FIXME object value equality
 	function isDuplicate(newAnimal, animalsCreated){
@@ -24,8 +24,9 @@ stats.update = function(round,move){
 		return isDup;
 	};
 
-	debugLog("isDuplicate?");
-	debugLog(isDuplicate(move.values, round.animalsCreated));
+	//logger.output("isDuplicate", isDuplicate(move.values, round.animalsCreated));
+	logger.debug("isDuplicate?");
+	logger.debug(isDuplicate(move.values, round.animalsCreated));
 
 	if ( isDuplicate(move.values, round.animalsCreated) ){
 		round.stats.duplicates += 1;
@@ -45,5 +46,5 @@ stats.update = function(round,move){
 	round.stats.dumbScore += 1;
 	round.stats.turns += 1;
 	$("#debug-status").text(JSON.stringify(round))
-	debugLog("updateStats() completed!");
+	logger.status("updateStats() completed!");
 };
