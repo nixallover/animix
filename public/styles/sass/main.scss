@@ -50,10 +50,13 @@ h1 {
 }
 
 .grid-square {
+	border: dotted 1px green;
 	display: inline-block;
+	height: 20%;
 	width: 20%;
 	padding:6px;
 	box-sizing: border-box;
+	vertical-align: top;
 
     &.selected {
 

@@ -40,10 +40,12 @@ h1 {
     width: 100%; }
 
 .grid-square {
+  border: dotted 1px green;
   display: inline-block;
   width: 20%;
   padding: 6px;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  vertical-align: top; }
   .grid-square.selected > img {
     border-color: red; }
   .grid-square > img {

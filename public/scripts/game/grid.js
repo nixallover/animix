@@ -37,8 +37,49 @@ grid.generatePart = function(gridPos){
 	var imageName = animal + part;
 
 	$( gridPos ).html(
-		'<img src="img/' + imageName + 
+		'<img class="part" src="img/' + imageName + 
 		'.jpg" data-animal="'+ animal +
 		'" data-part="'+ part +
 		'" />');
 }; // generatePart
+
+grid.updateGrid = function(gridSquare){
+	$.each(gridSquare, function( key, value ){
+		//logger.output("gridSquare", value);
+
+		var square = {};
+        square.node = $(value);
+        square.rowNum = parseInt($(value).data("row"));
+        square.colNum = parseInt($(value).data("column"));
+    
+        //alert(JSON.stringify(squareObj));
+    
+        $(value).children(".part").remove();
+    
+        // if it's not the top square, drop the ones above it down 1
+        if ( square.rowNum > 1 ){
+            grid.dropPartsAbove(square);
+        }; // if
+        grid.dropNewPart(square);
+	}); // each part
+};
+
+grid.dropPartsAbove = function(squareObj){
+    var prevRows = squareObj.rowNum - 1;
+    for(var i=1; i<prevRows+1; i++){
+        var $fallingPart = $(".grid-square[data-row='" + i + "'][data-column='" + squareObj.colNum + "']")
+                            .children(".part:first-child")
+                            .detach(),
+            $targetSquare = $(".grid-square[data-row='" + (i + 1) + "'][data-column='" + squareObj.colNum + "']");
+        
+        //alert(".grid-square[data-row='" + (i + 1) + "'][data-column='" + $columnNum + "']");
+        $targetSquare.append($fallingPart);
+    } // for
+} // dropPartsAbove
+
+grid.dropNewPart = function(squareObj){
+    var $newSquare = $(".grid-square[data-row='1'][data-column='" + squareObj.colNum + "']");
+    grid.generatePart($newSquare);
+    //BUG: squareSelector not available here so event handler is not attached
+    //$newSquare.on('mouseenter', squareSelector );
+}

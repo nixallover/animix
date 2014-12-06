@@ -38,32 +38,35 @@ function roundInit(){
 	$(window).on('mousedown', function(){
 	    logger.status("turn started!");
 	    activeTurn = true;
-	    turnManager();
+	    round.turnManager();
 
 	// end turn when user stops dragging
 	}).on('mouseup', function(){
 	    logger.status("turn ended!");
 	    activeTurn = false;
-	    turnManager();
+	    round.turnManager();
 
 	    //if move is complete
 	    if ( currMove.domNodes.length === 3 ){
 	        stats.update(round, currMove);
 		    $ui.score.text(round.stats.score);
 			$ui.turns.text(round.stats.turns);
+
+			// WIP: remove squares in dom nodes, for each, run grid.whatever
+			grid.updateGrid(currMove.domNodes);
 		} else {
 			logger.status("Turn not recorded, not enough squares");
 		}
 
 	    //reset everything
 	    $ui.grid.square.removeClass('selected');
-	    //logger.debug(currMove.domNodes);
+	    logger.debug(currMove.domNodes);
 	    currMove.domNodes = [];
 	    currMove.values = {};
 
 	});
 
-	function turnManager(){
+	round.turnManager = function(){
 	    if (activeTurn){
 	        // add event handler to all squares
 	        $ui.grid.square.on('mouseenter', squareSelector );
@@ -72,8 +75,8 @@ function roundInit(){
 	        // remove event handler to all squares
 	        $ui.grid.square.off('mouseenter', squareSelector );
 
-	    }
-	}
+	    };
+	};
 
 	function squareSelector(){
 		/* before successfully selecting the square, check that:

@@ -3,7 +3,7 @@
 $(function(){
 	logger.status("Booting up a game!");
 
-	$.each( $(".grid-square"), function(index, value){
+	$.each( $(".grid-square"), function(key, value){
 		grid.generatePart(value);
 	});
 
