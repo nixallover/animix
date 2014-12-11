@@ -4,6 +4,19 @@
   "ignore": [
     "**/.*",
     "node_modules",
-    "components"
-  ]
+    "components",
+    "bower_components",
+    "public/components",
+    "test",
+    "tests"
+  ],
+  "homepage": "https://github.com/nixallover/animix",
+  "authors": [
+    "Nicole Oliver <nicole.oliver.42@gmail.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "~3.3.1",
+    "underscore": "~1.7.0"
+  }
 }

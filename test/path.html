@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  
+  <style type='text/css'>
+    .square {
+        background-color:#D94A38;
+        width:120px;
+        height:20px;
+        padding:40px;
+        font-size:24pt;
+    }
+    .onPath {
+        color: white;
+    }
+    .pathDiv {
+        background-color:#55DCCE;
+        width:80px;
+        height:20px;
+        padding:10px;
+        margin:5px;
+        float: left;
+    }
+  </style>
+
+
+<script type='text/javascript'>
+
+$(document).ready(function() {
+
+    // utility function to get unique id's for this page
+    var getNewId = function() {
+        var nextId = 0;
+        return function() {
+            nextId = nextId + 1;
+            return nextId;
+        };
+    }();
+
+    // utility to get id from event's target
+    var getIdFromEvent = function(event) {
+        return $(event.currentTarget).attr("id");
+    };
+
+
+    /*
+    * function to create Path objects.  Not a "constructor" since it
+    * doesn't want you to use "new" when calling it.
+    * the Path objects handle everything to do with the paths
+    * @param manager -- the path manager who manages this path (not used yet)
+    */
+    var createPath = function(manager) {
+        var self = {};
+        self.listingId = "";
+        self.manager = manager;
+        self.elements = [];
+
+        /*
+        * add a box to this path (if allowed)
+        * @param -- the id of the box's element
+        */
+        self.addBox = function(id) {
+            if ( self.containsBox(id) ) {
+                // if the user is backing up, handle things specially
+                console.log("backing up over " + id + " popping last box");
+                var lastElement = self.elements.pop();
+                $("#" +lastElement).removeClass("onPath");
+            } else {
+                console.log("adding onPath to " + id);
+                self.elements.push(id);
+                $("#" + id).addClass("onPath");
+            }
+        };
+
+        // unhighlight the boxes on this path
+        self.uhlight = function() {
+            for(var i=0; i<self.elements.length; i++) {
+                $("#" +self.elements[i]).removeClass("onPath");
+            }
+        };
+
+        // highlight the boxes on this path
+        self.hlight = function() {
+            for(var i=0; i<self.elements.length; i++) {
+                $("#" +self.elements[i]).addClass("onPath");
+            }
+        };
+
+        // return the array of elements (id's of the box elements) on this path
+        self.getElements = function() { 
+            return self.elements;
+        };
+
+        // add a control div to the UI for this path and assign hover handlers
+        // so the path highlights when the mouse hovers over the control div
+        self.addControl = function() {
+            var listingId = createPathDiv(self);
+            $("#"+listingId).hover(
+                function() { self.hlight(); },
+                function() { self.uhlight(); }
+            );
+        };
+
+        // indicate whether the box element with id specified is on this path
+        // @param id -- the id of the box element to check
+        self.containsBox = function(id) {
+            for(var i=0; i<self.elements.length; i++) {
+                if ( id === self.elements[i]) {
+                    return true;
+                }
+            }
+            return false;
+        };
+
+        // contruction done -- return newly create object to caller
+        return self;
+    };
+
+    /*
+    * create and append a div for the pathlisting control
+    * @param path -- the path this control is associated with
+    * NOTE: this wants to be a "private" method of the Path class/object
+    */
+    var createPathDiv = function(path) {
+        var id = getNewId();
+        $("#pathListings").append(
+            '<div class="pathDiv" id="' + id + '">' + 
+                path.getElements() + "</div>");
+        return id;
+    };
+
+    /*
+    * the pathmanager keeps track of the paths created and manages the
+    * state of the UI with regard to path creation -- primarily whether
+    * we are currently building a path.  It creates paths in response to
+    * mouse actions.
+    */
+    var pathManager = {
+        paths: [], // all the paths we have created so far
+        currentlyBuildingPath: false,
+        currentPath: null, // if we're blding a path now, this is it, else null
+
+        // add a box to the currently building path
+        addBoxToPath: function(event) {
+            var id = getIdFromEvent(event);;
+            console.log(event.currentTarget);
+            console.log("id is " + id);
+            this.currentPath.addBox(id);
+        },
+
+        // start a new path 
+        pathStart: function(event) {
+            console.log("starting path");
+            var p = createPath(pathManager);
+            this.currentPath = p;
+            console.log(event.type);
+            this.currentlyBuildingPath = true;
+            this.paths.push(p);
+            p.addBox(getIdFromEvent(event));
+       },
+
+       // end the construction of the currently building path
+        pathEnd: function(event) {
+            console.log("ending path");
+            console.log(event.type);
+            this.currentlyBuildingPath = false;
+            console.log("path just built: " + this.currentPath.getElements());
+            //createPathDiv(this.currentPath);
+            this.currentPath.addControl();
+            console.log(this.currentPath.getElements);
+            this.currentPath.uhlight();
+            this.currentPath = null;
+        }
+    };
+
+    /*
+    * a handler attached to all of the boxes.  If the mouse enters a box
+    * and the pathManager says we are currently building a path, it will
+    * ask the manager to pass the entered box to the in progress path.
+    */
+    var enterHandler = function(event) {
+        event.preventDefault();
+        console.log("over event on " + event.currentTarget);
+        if (pathManager.currentlyBuildingPath) {
+            pathManager.addBoxToPath(event);
+        } else {
+            //console.log("ignoring over -- not building path now");
+        }
+    };
+
+    /*
+    * a handler attached to all of the boxes.  When mouse down events occur
+    * it asks the pathManager to start a new path.  When mouse up events 
+    * occur it tells the pathManager to end the path being built.
+    */
+    var upDownHandler = function(event) {
+        event.preventDefault();
+        if ( event.type === "mousedown") {
+            pathManager.pathStart(event);
+        } else if (event.type === "mouseup") {
+            pathManager.pathEnd(event);
+        } else {
+            console.log("unexpected event.type in upDownHandler " + event.type);
+        }
+    };
+
+    // attach the handlers 
+    $(".square").mouseenter(enterHandler);
+    $(".square").on("mousedown", upDownHandler);
+    $(".square").on("mouseup", upDownHandler);
+
+});
+</script>
+</head>
+
+<body>
+  <table id="theTable">
+    <tr>
+        <td> <div id="s1" class="square"> A </div> </td>
+        <td> <div id="s2" class="square"> N</div></td>
+        <td> <div id="s3" class="square">D</div></td>
+        <td> <div id="s4" class="square">Y</div></td>
+    </tr>
+    <tr>
+        <td> <div id="s5" class="square">H</div> </td>
+        <td> <div id="s6" class="square">I</div></td>
+        <td> <div id="s7" class="square">N</div></td>
+        <td> <div id="s8" class="square">R</div></td>
+    </tr>
+    <tr>
+        <td> <div id="s9" class="square">O</div> </td>
+        <td> <div id="s10" class="square">T</div></td>
+        <td> <div id="s11" class="square">G</div></td>
+        <td> <div id="s12" class="square">K</div></td>
+    </tr>
+    <tr>
+        <td> <div id="s13" class="square">A</div> </td>
+        <td> <div id="s14" class="square">J</div></td>
+        <td> <div id="s15" class="square">P</div></td>
+        <td> <div id="s16" class="square">V</div></td>
+    </tr>
+</table>
+
+<div id="pathListings">
+</div>
+  
+</body>
+
+
+</html>
+
