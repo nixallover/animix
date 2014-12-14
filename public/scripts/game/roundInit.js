@@ -1,134 +1,62 @@
+//not being used anymore, refactored into a class
+
 function roundInit(){
 
-	var round 	= {
-					animalsCreated: [],
-					stats: {
-						dumbScore: 0,
-						score: 0,
-						turns:0,
-						duplicates: 0,
-						originals: 0,
-						combos: 0,
-						longestCombo: 0
-					}
-				};
-	var currMove = {
-					values: {},
-					domNodes: []
-				};
-	var activeTurn = false;
-	var $ui = {
-			grid: {
-				square: $(".grid-square")
-			},
-			status: $("#status"),
-			score: $("#score"),
-			turns: $("#turns")
-		};
+	// round.start - resetting the board state 
+	// turn object, can start and end turns
+	// initiate a new turn object
+	// turn is an event emmitter tells the round object when a turn has been successfully completed and returns stats
 
-	// makes sure 1st square gets selected
-	$ui.grid.square.on('mousedown', squareSelector );
 
-	// keep image from dragging
-	$('img').on('dragstart', function(e) {
-		e.preventDefault();
+	var round 		= new Round(),
+		activeTurn 	= false;
+
+	// generate initial grid
+	$.each( $ui.grid.square, function(key, value){
+		grid.generatePart(value);
 	});
 
-	// start turn when user starts dragging
-	$(window).on('mousedown', function(){
-	    logger.status("turn started!");
-	    activeTurn = true;
-	    round.turnManager();
+	// start round!
+	//console.log(round.animalsCreated);
+	round.init();
 
-	// end turn when user stops dragging
-	}).on('mouseup', function(){
-	    logger.status("turn ended!");
-	    activeTurn = false;
-	    round.turnManager();
+	// // makes sure 1st square gets selected
+	// $ui.grid.square.on('mousedown', function(){
+	// 	squares.selector(this,turn);
+	// });
 
-	    //if move is complete
-	    if ( currMove.domNodes.length === 3 ){
-	        stats.update(round, currMove);
-		    $ui.score.text(round.stats.score);
-			$ui.turns.text(round.stats.turns);
+	// // keep image from dragging
+	// $(".part").on('dragstart', function(e) {
+	// 	e.preventDefault();
+	// });
 
-			// WIP: remove squares in dom nodes, for each, run grid.whatever
-			grid.updateGrid(currMove.domNodes);
-		} else {
-			logger.status("Turn not recorded, not enough squares");
-		}
+	// // start turn when user starts dragging
+	// $(window).on('mousedown', function(){
+	// 	//turn = new Turn();
+	//     turn.started(round, turn);
 
-	    //reset everything
-	    $ui.grid.square.removeClass('selected');
-	    logger.debug(currMove.domNodes);
-	    currMove.domNodes = [];
-	    currMove.values = {};
+	// // end turn when user stops dragging
+	// }).on('mouseup', function(){
+	//     turn.ended(round, turn)
 
-	});
+	// });
 
-	round.turnManager = function(){
-	    if (activeTurn){
-	        // add event handler to all squares
-	        $ui.grid.square.on('mouseenter', squareSelector );
+	// round.turnManager = function(){
+	//     if (round.activeTurn){
+	//         // add event handler to all squares
+	//         $ui.grid.square.on('mouseenter', squareSelector );
 
-	    } else {
-	        // remove event handler to all squares
-	        $ui.grid.square.off('mouseenter', squareSelector );
+	//     } else {
+	//         // remove event handler to all squares
+	//         $ui.grid.square.off('mouseenter', squareSelector );
 
-	    };
-	};
-
-	function squareSelector(){
-		/* before successfully selecting the square, check that:
-	    	- it's not already selected (for backtracking)
-	    	- the selected parts isn't more than 3
-	    	- the squares are next to each other
-	    	- that type of part hasn't been selected yet
-	    */
-
-	    var $theSquare 				= $(this),
-	        squareAlreadySelected 	= $theSquare.hasClass('selected'),
-	        $img 					= $theSquare.children("img"),
-	        valuesLength 			= Object.keys(currMove.values).length,
-			selected 				= {
-										animal : $img.attr("data-animal"),
-										part : $img.attr("data-part")
-									};
-
-	    if ( squareAlreadySelected ){
-	        //pop the last one off the stack and un-select it
-	        //if there's more than 1 thing in the stack
-	        if ( currMove.domNodes.length > 1 ){
-	            currMove.domNodes.pop().removeClass('selected');
-	        } else {
-	            // don't remove anything
-	        };
-
-	    } else {
-	        if (currMove.domNodes.length < 3){
-				//check that part type hasn't been picked in this turn yet
-				if( !currMove.values[selected.part] ){
-					currMove.values[selected.part] = selected.animal;
-					checkSquaresAreAdjacent($theSquare, currMove.domNodes);
-
-				} else {
-					// part already selected, don't select another
-					logger.status("Not adding square.. this part was already selected for this move");
-				}
-	            
-	        } else {
-	            // max squares selected, don't select any more
-	        }
-	    }
-	    
-	    logger.status(currMove.domNodes);
-	    //logger.status(currMove.domNodes.length);
-	}
+	//     };
+	// };
 
 	// function checkPartIsAvailable(){
 	// 	//check that part type hasn't been picked in this turn yet
-	// 	if( !currMove.values[selected.part] ){
-	// 		currMove.values[selected.part] = selected.animal;
+	// 	if( !turn.values[selected.part] ){
+	// 		turn.values[selected.part] = selected.animal;
 
 	// 		};
 
@@ -137,52 +65,5 @@ function roundInit(){
 	// 	};
 
 	// }
-
-	function checkSquaresAreAdjacent($theSquare, theDomNodes){
-
-	    if ( theDomNodes.length < 1 ){
-	        //logger.status('first square');
-	        squareAddSuccess($theSquare, theDomNodes);
-
-	    } else if( isAdjacent($theSquare, theDomNodes) ){
-	        //logger.status('Success: SAME ROW OR COLUMN!');
-	        squareAddSuccess($theSquare, theDomNodes);
-	        
-	    } else {
-	        logger.status('Error: diff row and col');
-	    }
-
-	    function isAdjacent( $theSquare, theDomNodes ){
-	        var isItAdjacent = false,
-	            // create copy of last dom node added to compare to (slice creates copy of an array)
-	            $prevSquare = $( theDomNodes.slice(0).pop() );
-
-	        function checkDirectNeighbor(set){
-	            if ( ($prevSquare.data(set) === ($theSquare.data(set) +1)) || ($prevSquare.data(set) === ($theSquare.data(set) -1)) ) {
-	                return true;
-	            } else {
-	                return false;
-	            }
-	        }
-
-	        if (checkDirectNeighbor('row') && !checkDirectNeighbor('column') || !checkDirectNeighbor('row') && checkDirectNeighbor('column')){
-	            isItAdjacent = true;
-	        } else {
-	            // if both column and rows are +1 or -1 (makes a diagonal), or it's more than +/-1
-	            // leave it false
-	        }
-	        return isItAdjacent;
-	    }
-
-	}
-
-	// stuff to run if adding as square is successful
-	function squareAddSuccess($theSquare, theDomNodes){
-		logger.status("squareAddSuccess starting");
-	    $theSquare.addClass('selected');
-	    $theSquare.data('arrayIndex', theDomNodes.length);
-	    currMove.domNodes.push( $theSquare );
-	}
-
 
 };

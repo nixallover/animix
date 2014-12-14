@@ -1,15 +1,16 @@
 var numberOfAnimals = 4;
 var grid = {};
 
-grid.getRandomAnimal = function() {
+grid.getRandom = {};
+grid.getRandom.animal = function() {
 	return (Math.floor(Math.random() * (numberOfAnimals)) + 1).toString();
 }; // getRandomAnimal()
 
-grid.getRandomPart = function() {
+grid.getRandom.part = function() {
 	var part = "",
-		bleh = Math.floor(Math.random() * (3)) + 1;
+		possibleParts = Math.floor(Math.random() * (3)) + 1;
 
-	switch (bleh) {
+	switch (possibleParts) {
 		case 1:
 			part = "a";
 			break;
@@ -30,8 +31,8 @@ grid.generatePart = function(gridPos){
 	var animal = "1",
 		part = "b";
 
-	animal = grid.getRandomAnimal();
-	part = grid.getRandomPart();
+	animal = grid.getRandom.animal();
+	part = grid.getRandom.part();
 	//logger.debug(animal);
 
 	var imageName = animal + part;

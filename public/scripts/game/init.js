@@ -1,12 +1,8 @@
 // game init
 
 $(function(){
-	logger.status("Booting up a game!");
-
-	$.each( $(".grid-square"), function(key, value){
-		grid.generatePart(value);
-	});
-
+	//eventually this will deal with game states
+	logger.status("Starting game!");
 	roundInit();
 
 });

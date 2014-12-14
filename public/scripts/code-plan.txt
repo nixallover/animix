@@ -1,0 +1,62 @@
+CLASSES
+	//User
+		name, settings. stats
+
+	//Round
+		animalsCreated []
+		stats {}
+		activeTurn
+		init()
+			turn - create new on mousedown
+
+	//Turn
+		values {}
+			part: animal
+		domNodes []
+		started()
+		ended()
+OTHER
+	//Game state - NOT STARTED
+		start menu
+		round
+		pause
+		round summary and stats
+
+	//Grid
+		getRandom {}
+			animal()
+			part()
+		generatePart()
+		updateGrid()
+		dropPartsAbove()
+		dropNewPart()
+
+	//Init
+
+	//RoundInit
+		new round, turn
+
+		
+
+	//Squares
+		validate
+
+	//Stats
+		updateOnCompleteTurn()
+		check
+			isDuplicate
+
+	//$ui
+		grid
+			square
+			part
+		status
+		score
+		turns
+
+	//Util
+		logger {}
+			debug
+			status
+			output
+			alert
