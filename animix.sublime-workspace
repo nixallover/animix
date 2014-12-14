@@ -1,0 +1,656 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"direct",
+				"directNeighbor"
+			],
+			[
+				"Ad",
+				"isAdjacent"
+			],
+			[
+				"is",
+				"isAdjacent"
+			],
+			[
+				"a",
+				"activeTurn"
+			],
+			[
+				"dom",
+				"domNodes"
+			],
+			[
+				"sele",
+				"selectedDomNodes"
+			],
+			[
+				"check",
+				"checkDirectNeighbor"
+			],
+			[
+				"sq",
+				"squaresHaveSameRow"
+			],
+			[
+				"se",
+				"selectedDomNodes"
+			],
+			[
+				"ma",
+				"maxSquaresSelected"
+			],
+			[
+				"anima",
+				"animalsCreated"
+			],
+			[
+				"values",
+				"valuesLength"
+			],
+			[
+				"fon",
+				"font-style"
+			],
+			[
+				"back",
+				"background-repeat"
+			],
+			[
+				"background",
+				"background"
+			],
+			[
+				"font-",
+				"font-weight"
+			],
+			[
+				"border",
+				"border-radius"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "public/scripts/game/grid.js",
+			"settings":
+			{
+				"buffer_size": 2419,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Gruntfile.js",
+			"settings":
+			{
+				"buffer_size": 2014,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/styles/sass/main.scss",
+			"settings":
+			{
+				"buffer_size": 1526,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "/*square.validate\n\n\n	validate.activeTurn: if active turn\n\n	validate.backtracking: if backtracking (square selected)\n\n\n	validate.adjacency\n		var isAdjacent, lastActive, new\n\n		if new is same row as lastActive\n			if new == lastActive col +/-1\n				true\n\n		if new is same col as lastActive\n			if new == lastActive row +/-1\n				true\n\n	validate.success\n		update ui\n		add to array\n\n*/\n\nvar square = square || {};\nvar activeTurn = false,\n	selectedDomNodes = [];\n\n//FIX ME\nsquare.current = $(\".grid-square\");\nsquare.validate = {\n	activeTurn: function(){\n\n		// if active\n			// this.lessThanMax();\n		// else\n			// \n\n	},\n	lessThanMax: function(){\n		//logger.status(\"lessThanMax\");\n		if ( selectedDomNodes.length < 3 ){\n			this.backtracking();\n		} else {\n			// don't select any more\n		};\n		// if active nodes < 3\n			// this.backtracking();\n		// else\n			// don't select anymore\n\n	},\n	backtracking: function(){\n		//logger.status(\"backtracking\");\n		if ( $theSquare.hasClass('selected') ){\n			this.firstSquare();\n		} else {\n			this.adjacency();\n		};\n		// if square already selected\n			// this.firstSquare();\n		// else\n			// this.adjacency();\n\n	},\n	firstSquare: function(){\n		//logger.status(\"firstSquare\");\n		if ( selectedDomNodes.length > 1 ){\n			selectedDomNodes.pop().removeClass('selected');\n        } else {\n            // don't remove anything\n        };\n        \n	},\n	adjacency: function( candidate, selectedDomNodes ){\n		var isAdjacent,\n			lastActive = $( selectedDomNodes.slice(0).pop() ),\n			new;\n\n		function directNeighbor(side1, side2){\n			if ( lastActive.data(side1) == new.data(side1) ){\n				if ( lastActive.data(side2) == (new.data(side2) + 1) || lastActive.data(side2) == (new.data(side2) - 1)  )\n				isAdjacent = true;\n			} else {\n				// not directly adjacent\n			};\n			return isAdjacent;\n		}\n\n		if (directNeighbor(\"row\", \"column\") || directNeighbor(\"column\", \"row\")){\n			this.success();\n		};\n\n		// if new is same row as lastActive\n			// if new == lastActive col +/-1\n				// true\n\n\n		if (  ){\n\n		} else {\n\n		};\n		// if new is same col as lastActive\n			// if new == lastActive row +/-1\n				// true\n\n		// if isAdjacent\n			// this.success();\n	},\n	results: {\n		success: function(){\n			// update ui\n			// add to array\n		}\n	}\n};\n\nsquare.current.validate();",
+			"file": "public/scripts/refactored-drag.js",
+			"file_size": 2198,
+			"file_write_time": 130630435569399345,
+			"settings":
+			{
+				"buffer_size": 2249,
+				"line_ending": "Windows",
+				"name": "/*square.validate"
+			}
+		},
+		{
+			"file": "test/path.html",
+			"settings":
+			{
+				"buffer_size": 8054,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "if ( lastActive.data(side1) == new.data(side1) ){\n				if ( lastActive.data(side2) == (new.data(side2) + 1) || lastActive.data(side2) == (new.data(side2) - 1)  )\n				isAdjacent = true;\n			} else {\n				// not directly adjacent\n			};",
+			"settings":
+			{
+				"buffer_size": 230,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "$(function(){\n    var $square = $(\".grid-square\"),\n        activeTurn = false,\n        selectedDomNodes = [];\n    \n    // makes sure 1st square gets selected\n    $square.on('mousedown', squareSelector );\n    \n    // start turn when user starts dragging\n    $(window).on('mousedown', function(){\n        //console.log(\"turn started!\");\n        activeTurn = true;\n        turnManager();\n        \n        // end turn when user stops dragging\n    }).on('mouseup', function(){\n        //console.log(\"turn ended!\");\n        activeTurn = false;\n        turnManager();\n        \n        //reset everything\n        $square.removeClass('selected');\n        //console.log(selectedDomNodes);\n        selectedDomNodes = [];\n    });\n    \n    function turnManager(){\n        if (activeTurn){\n            // add event handler to all squares\n            $square.on('mouseenter', squareSelector );\n            \n        } else {\n            // remove event handler to all squares\n            $square.off('mouseenter', squareSelector );\n            \n        }\n    }\n    \n    function squareSelector(){\n        var $theSquare = $(this),\n            squareAlreadySelected = $theSquare.hasClass('selected');\n        \n        //run checks, and if everything checks out\n        if ( squareAlreadySelected ){\n            //pop the last one off the stack and un-select it\n            //if there's more than 1 thing in the stack\n            if ( selectedDomNodes.length > 1 ){\n                selectedDomNodes.pop().removeClass('selected');\n            } else {\n                // don't remove anything\n            };\n            \n        } else {\n            if (selectedDomNodes.length < 3){\n                checkSquaresAreAdjacent($theSquare, selectedDomNodes);\n                \n            } else {\n                // max squares selected, don't select any more\n            };\n        };\n        \n        //console.log(selectedDomNodes);\n        //console.log(selectedDomNodes.length);\n    };\n    \n    function checkSquaresAreAdjacent($square, selectedDomNodes){\n        \n        if ( selectedDomNodes.length < 1 ){\n            console.log('first square');\n            squareAddSuccess($square, selectedDomNodes);\n            \n        } else if( isAdjacent($square, selectedDomNodes) ){\n            //console.log('Success: SAME ROW OR COLUMN!');\n            squareAddSuccess($square, selectedDomNodes);\n            \n        } else {\n            console.log('Error: diff row and col');\n        }\n        \n        function isAdjacent( $square, selectedDomNodes ){\n            var isItAdjacent = false,\n                // create copy of last dom node added to compare to (slice creates copy of an array)\n                $prevSquare = $( selectedDomNodes.slice(0).pop() );\n            \n            function checkDirectNeighbor(set){\n                if ( ($prevSquare.data(set) === ($square.data(set) +1)) || ($prevSquare.data(set) === ($square.data(set) -1)) ) {\n                    return true;\n                } else {\n                    return false;\n                }\n            }\n            \n            if (checkDirectNeighbor('row') && !checkDirectNeighbor('column') || !checkDirectNeighbor('row') && checkDirectNeighbor('column')){\n                isItAdjacent = true;\n            } else {\n                // if both column and rows are +1 or -1 (makes a diagonal), or it's more than +/-1\n                // leave it false\n            }\n            return isItAdjacent;\n        }\n        \n    }\n    \n    // functions to run if adding as square is successful\n    function squareAddSuccess($square, selectedDomNodes){\n        $square.addClass('selected');\n        $square.data('arrayIndex', selectedDomNodes.length);\n        selectedDomNodes.push( $square );\n    }\n    \n});",
+			"settings":
+			{
+				"buffer_size": 3753,
+				"line_ending": "Windows",
+				"name": "$(function(){"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 80.0,
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Preferences: Browse Packages"
+			],
+			[
+				"snip",
+				"Snippet: starter-html"
+			],
+			[
+				"pac",
+				"Preferences: Browse Packages"
+			],
+			[
+				"",
+				"About"
+			]
+		],
+		"width": 432.0
+	},
+	"console":
+	{
+		"height": 160.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/dev/animix/public/styles/css/main.css",
+		"/E/game-projects/animix/animix.sublime-project",
+		"/C/dev/animix/bower.json",
+		"/F/game-projects/animix/app/public/scripts/game/util.js",
+		"/F/game-projects/animix/app/public/scripts/game/init.js",
+		"/F/game-projects/animix/app/public/scripts/game/classes/Turn.js",
+		"/F/game-projects/animix/app/public/scripts/game/classes/Round.js",
+		"/F/game-projects/animix/app/public/scripts/game/gameState.js",
+		"/F/game-projects/animix/app/public/scripts/game/stats.js",
+		"/F/game-projects/animix/app/public/scripts/game/classes/User.js",
+		"/F/game-projects/animix/app/test/sprites.html",
+		"/F/game-projects/animix/app/public/styles/sass/main.scss",
+		"/F/game-projects/animix/app/Gruntfile.js",
+		"/F/game-projects/animix/app/public/scripts/game/ui.js",
+		"/F/game-projects/animix/app/public/scripts/game/squares.js",
+		"/F/game-projects/animix/app/public/scripts/game/grid.js",
+		"/F/game-projects/animix/app/package.json",
+		"/F/game-projects/animix/app/views/layout.jade",
+		"/F/game-projects/animix/app/public/scripts/game/roundInit.js",
+		"/F/game-projects/animix/app/public/scripts/game/square.js",
+		"/F/game-projects/animix/app/public/scripts/game/round.js",
+		"/F/game-projects/animix/app/public/scripts/crap/dontknow.js",
+		"/F/game-projects/animix/app/views/index.jade",
+		"/F/game-projects/animix/app/routes/index.js",
+		"/F/game-projects/animix/app/test/drag/main.css",
+		"/F/game-projects/animix/app/test/drag/index.html",
+		"/F/game-projects/animix/app/public/scripts/updateStats.js",
+		"/F/game-projects/animix/app/public/scripts/crap/refactored-drag2.js",
+		"/F/game-projects/animix/app/public/scripts/crap/refactored-drag1.js",
+		"/F/game-projects/animix/app/public/scripts/game/drag.js",
+		"/F/game-projects/animix/app/public/scripts/init.js",
+		"/F/game-projects/animix/test/drag/main.css",
+		"/C/Users/Nicole/Documents/ssh/id_rsa.pub",
+		"/F/game-projects/animix/html/css",
+		"/F/game-projects/animix/app/public/scripts/createGrid.js",
+		"/F/game-projects/animix/html/index.html",
+		"/F/game-projects/animix/app/bower.json",
+		"/F/game-projects/animix/app/.bowerrc",
+		"/F/game-projects/animix/html/scripts/updateStats.js",
+		"/F/game-projects/animix/html/scripts/roundInit.js",
+		"/F/game-projects/animix/html/scripts/createGrid.js",
+		"/F/game-projects/animix/html/styles/sass/main.scss",
+		"/F/game-projects/animix/html/scripts/init.js",
+		"/F/game-projects/animix/psuedocode/round.js",
+		"/F/game-projects/animix/app/models/game.json",
+		"/F/game-projects/animix/app/views/error.jade",
+		"/E/game-projects/animix/html/scripts/calculateStats.js",
+		"/E/game-projects/animix/psuedocode/effects.js",
+		"/E/game-projects/animix/html/scripts/squareGenerator.js",
+		"/E/game-projects/animix/html/scripts/moveLogic.js",
+		"/E/game-projects/animix/html/scripts/createGrid.js",
+		"/E/game-projects/animix/html/animix.js",
+		"/E/game-projects/animix/html/util.js",
+		"/E/game-projects/animix/.gitignore",
+		"/E/game-projects/animix/.gitignore.txt",
+		"/F/web-projects/websites/nixallover/2014-03/index.html",
+		"/C/Users/Nicole/Dropbox/animix/psuedocode/animix.js",
+		"/C/Users/Nicole/Dropbox/animix/psuedocode/main-menu.js",
+		"/C/Users/Nicole/Dropbox/animix/psuedocode/hud.js",
+		"/C/Users/Nicole/Dropbox/animix/psuedocode/round.js",
+		"/C/Users/Nicole/Dropbox/Preferences.sublime-settings",
+		"/C/Users/Nicole/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Nicole/Documents/GitHub/staff/nicole/chat-server/index.js",
+		"/C/Users/Nicole/Documents/GitHub/tunnel-vision/index-new.htm",
+		"/C/Users/Nicole/Desktop/wordpress/wp-config.php",
+		"/C/Users/Nicole/Desktop/wp-config.php",
+		"/C/Users/Nicole/Desktop/shadowbox.css",
+		"/C/Users/Nicole/Desktop/Cards and Castles/splash/splash.htm",
+		"/F/blue/tools-web/tools.htm",
+		"/C/Users/Nicole/AppData/Roaming/Sublime Text 2/Packages/User/starter-html.sublime-snippet",
+		"/C/Users/Nicole/Desktop/Cards and Castles/splash.htm",
+		"/C/Users/Nicole/Desktop/antwarz.css",
+		"/C/Users/Nicole/Documents/GitHub/nodemain/nicole/catdog/build/catdog.min.js",
+		"/C/Users/Nicole/Documents/GitHub/nodemain/nicole/gep/GruntFile.js",
+		"/C/Users/Nicole/Documents/GitHub/nodemain/nicole/gep/package.json",
+		"/C/Users/Nicole/Desktop/ham-transworld/heidi.htm",
+		"/C/Users/Nicole/Desktop/ham-transworld/hauntholdings-htmlcode.txt",
+		"/C/Users/Nicole/Documents/GitHub/nodemain/nicole/chat/index.js",
+		"/C/Users/Nicole/Desktop/hauntholdings.txt",
+		"/F/projects/web/websites/03-09 nix/nix.css",
+		"/C/Users/Nicole/Desktop/public_html/environments.htm",
+		"/C/Users/Nicole/Desktop/public_html/characters.htm",
+		"/C/Users/Nicole/Desktop/public_html/props.htm",
+		"/C/Users/Nicole/Desktop/public_html/reel.htm",
+		"/C/Users/Nicole/Desktop/public_html/about.htm",
+		"/C/Users/Nicole/Desktop/public_html/2d.htm",
+		"/C/Users/Nicole/Desktop/public_html/index.htm",
+		"/F/projects/web/websites/03-09 nix/index.html",
+		"/F/projects/web/websites/tunnel-vision/characters.htm",
+		"/F/projects/web/websites/tunnel-vision/index.htm",
+		"/C/Users/Nicole/Desktop/tai-animate/tai.css",
+		"/C/Users/Nicole/Desktop/tai-animate/animate.css",
+		"/F/projects/web/websites/01-28 nix/index.html",
+		"/C/Users/Nicole/Downloads/animate.css",
+		"/C/Users/Nicole/Desktop/tai-animate/index.htm",
+		"/G/projects/web/websites/03-09 nix/nix.css",
+		"/G/projects/web/websites/03-09 nix/index.html",
+		"/C/dev/watermelon/package.json",
+		"/C/dev/watermelon/app.js",
+		"/C/dev/watermelon/views/index.jade",
+		"/C/dev/watermelon/routes/index.js",
+		"/C/Users/Nicole/AppData/Local/Temp/Temp1_Ex_Files_NodeJS_EssT.zip/Ex_Files_NodeJS_EssT/Exercise Files/chap05/02/final/flight/index.js",
+		"/C/dev/node/something.txt",
+		"/C/dev/node/package.json",
+		"/C/Users/Nicole/pumpkin/helloworld.js",
+		"/C/Users/Nicole/Dropbox/object-oriented-js.js",
+		"/C/dev/node/server.js",
+		"/C/Users/Nicole/Desktop/index.html",
+		"/C/Users/Nicole/Desktop/object-oriented-js.js",
+		"/F/websites_temp/tunnel-vision/environments.htm",
+		"/C/Users/Nicole/Desktop/req.css",
+		"/C/Users/Nicole/Desktop/ajax/script.js",
+		"/F/websites_temp/tunnel-vision/characters.htm",
+		"/F/websites_temp/tunnel-vision/about.htm",
+		"/C/Users/Nicole/Desktop/ajax/data.txt",
+		"/C/Users/Nicole/Desktop/ajax/index.htm",
+		"/C/Users/Nicole/Desktop/Ex_Files_JScript_AJAX/Exercise Files/01-03/finished/ajax/script.js",
+		"/F/websites_temp/tunnel-vision/index.htm",
+		"/F/websites_temp/tunnel-vision/css/req.css",
+		"/C/Users/Nicole/Desktop/nix.css"
+	],
+	"find":
+	{
+		"height": 36.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"F:\\game-projects\\animix\\app\\public\\scripts\\game",
+			"F:\\game-projects\\animix\\app"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"\"column\"",
+			"\"row\"",
+			"last",
+			"check",
+			"data-part",
+			"</div>",
+			"data-animal",
+			"src=",
+			"img",
+			"squares.add.success",
+			"squareCandidate",
+			"ui",
+			":",
+			"currMove",
+			"activeTurn",
+			"update",
+			"<img",
+			"<img ",
+			"<img(.*)>",
+			"statusLog",
+			"debugLog",
+			"console.log",
+			"selectedDomNodes",
+			"move.",
+			"selectedDomNodes",
+			"move.positions",
+			"positions",
+			"$square",
+			"$ui",
+			"generatePart",
+			"numberOfAnimals",
+			"console",
+			"$square",
+			"selectSquare",
+			"currentMove",
+			"/scripts/",
+			"')'",
+			"'scrip",
+			"\"></script>",
+			"<script src=\"",
+			"round.currentMove",
+			"currentMove",
+			"round.round.",
+			"currentMove",
+			"currentMoveValues",
+			";",
+			"css/",
+			"us",
+			"we",
+			";\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 4,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "public/scripts/game/grid.js",
+					"settings":
+					{
+						"buffer_size": 2419,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								601,
+								601
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Gruntfile.js",
+					"settings":
+					{
+						"buffer_size": 2014,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								526,
+								526
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 171.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "public/styles/sass/main.scss",
+					"settings":
+					{
+						"buffer_size": 1526,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1254,
+								1254
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 873.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "public/scripts/refactored-drag.js",
+					"settings":
+					{
+						"buffer_size": 2249,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1489,
+								1489
+							]
+						],
+						"settings":
+						{
+							"auto_name": "/*square.validate",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 321.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "test/path.html",
+					"settings":
+					{
+						"buffer_size": 8054,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								102,
+								64
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"settings":
+					{
+						"buffer_size": 230,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								230,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 6,
+					"settings":
+					{
+						"buffer_size": 3753,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2459,
+								2459
+							]
+						],
+						"settings":
+						{
+							"auto_name": "$(function(){",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1032.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 40.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.483800771628,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 159.0,
+	"status_bar_visible": true
+}

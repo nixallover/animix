@@ -38,7 +38,7 @@ grid.generatePart = function(gridPos){
 
 	$( gridPos ).html(
 		'<img class="part" src="img/' + imageName + 
-		'.jpg" data-animal="'+ animal +
+		'.png" data-animal="'+ animal +
 		'" data-part="'+ part +
 		'" />');
 }; // generatePart
