@@ -80,8 +80,8 @@ h1 {
     	padding:0;
 
         > .part {
-        	opacity: 0.7;
-            border-color: $highlight;
+        	opacity: 1;
+            //border-color: $highlight;
         }
     }
     > .part {
@@ -89,5 +89,6 @@ h1 {
         border: solid 2px transparent;
         height: auto;
         max-width: 100%;
+        opacity: 0.8;
     }
 }
