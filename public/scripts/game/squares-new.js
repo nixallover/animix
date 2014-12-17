@@ -1,27 +1,32 @@
 var square = {};
     //activeTurn = activeTurn || true;
 
-square.validate = function(){
-    var self = {},
-        activeTurn = event.data.activeTurn || false;
+square.validate = function(event){
+    var self = {};
+        //activeTurn = false;
         //candidate = $(this);
+    round = event.data.round;
+    turn = event.data.turn;
+    theDomNodes = turn.domNodes || [];
     console.log("validate starting");
-    console.log(activeTurn);
+    console.log(theDomNodes);
+    //console.log(event.data.round.activeTurn);
 
     self.isActiveTurn = function( candidate ){
-        console.log("isActiveTurn");
+        //console.log("isActiveTurn");
         //console.log(candidate);
-        if( activeTurn ){
+        if( round.activeTurn ){
             self.backtracking( candidate );
         } else {
+            console.log("not activeTurn");
             //don't select anything, not dragging
         };
     };
 
     self.backtracking = function( candidate ){
-        console.log("backtracking");
-        console.log(candidate);
+        //console.log(candidate);
         if ( candidate.hasClass('selected') ){
+            console.log("backtracking!");
             self.firstSquare();
         } else {
             self.lessThanMax( candidate );
@@ -34,8 +39,8 @@ square.validate = function(){
 
     self.firstSquare = function(){
         console.log("firstSquare");
-        if ( turn.domNodes.length > 1 ){
-            turn.domNodes.pop().removeClass('selected');
+        if ( theDomNodes.length > 1 ){
+            theDomNodes.pop().removeClass('selected');
         } else {
             // don't remove the first square
         };
@@ -43,7 +48,7 @@ square.validate = function(){
 
     self.lessThanMax = function( candidate ){
         console.log("lessThanMax");
-        if ( turn.domNodes.length < 3 ){
+        if ( theDomNodes.length < 3 ){
             self.adjacency( candidate );
         } else {
             // don't select any more
@@ -56,9 +61,9 @@ square.validate = function(){
 
     self.adjacency = function( candidate ){
         console.log("adjacency");
-        console.log(turn.domNodes.length < 1);
+        console.log(theDomNodes.length < 1);
         var isAdjacent,
-            lastActive = $( turn.domNodes.slice(0).pop() );
+            lastActive = $( theDomNodes.slice(0).pop() );
 
         function directNeighbor(side1, side2){
             if ( lastActive.data(side1) == candidate.data(side1) ){
@@ -71,7 +76,7 @@ square.validate = function(){
         }
 
         // if this is the first square
-        if ( turn.domNodes.length < 1 ){
+        if ( theDomNodes.length < 1 ){
             self.done.success( candidate );
             
         // if square is directly adjacent in either direction
@@ -98,8 +103,8 @@ square.validate = function(){
         success: function( candidate ){
             console.log("done.success!!!");
             candidate.addClass('selected');
-            //candidate.data('arrayIndex', turn.domNodes.length);
-            turn.domNodes.push( candidate );
+            //candidate.data('arrayIndex', theDomNodes.length);
+            round.domNodes.push( candidate );
 
             // update ui
             // add to array
@@ -113,5 +118,5 @@ square.validate = function(){
 square.reset = function(){
     console.log("done.reset");
     $ui.grid.square.removeClass('selected');
-    turn.domNodes = [];
+    //theDomNodes = [];
 };

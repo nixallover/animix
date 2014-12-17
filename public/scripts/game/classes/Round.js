@@ -17,9 +17,34 @@ function Round(){
 
 	self.init = function(){
 		var turn;
+		logger.status("round.init!");
 		//console.log("self.activeTurn");
-		console.log(self.activeTurn);
+		//console.log(self.activeTurn);
 
+		$ui.grid.square.on( "mouseenter", { round: self, turn: {} }, square.validate);
+
+		// start turn when user clicks any square
+		$ui.grid.square.on('mousedown', function(){
+			turn = new Turn(self);
+		    turn.started();
+		});
+
+		// keep images from dragging
+		$ui.grid.part.on('dragstart', function(e) {
+			e.preventDefault();
+			console.log("dragging");
+		});
+
+
+		// end turn when player stops dragging anywhere on screen
+		$(window).on('mouseup', function(){
+		    turn.ended();
+		});
+
+	}; // end init
+}; // end round
+
+//crap
 		// // makes sure 1st square gets selected
 		// $ui.grid.square.on('mousedown', function(){
 		// 	squares.selector(this,turn);
@@ -42,26 +67,3 @@ function Round(){
 		//     square.reset();
 		    
 		// });
-
-		// keep images from dragging
-		$ui.grid.part.on('dragstart', function(e) {
-			e.preventDefault();
-		});
-
-		$ui.grid.square.bind( "mouseenter", square.validate);
-
-		// start turn when user clicks any square
-		$ui.grid.square.bind('mousedown', function(){
-			turn = new Turn();
-		    turn.started();
-
-		// end turn when user stops dragging
-		});
-
-		// end turn when player stops dragging anywhere on screen
-		$(window).on('mouseup', function(){
-		    turn.ended();
-		});
-
-	}; // end init
-}; // end round

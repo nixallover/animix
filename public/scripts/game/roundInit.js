@@ -8,8 +8,8 @@ function roundInit(){
 	// turn is an event emmitter tells the round object when a turn has been successfully completed and returns stats
 
 
-	var round 		= new Round(),
-		activeTurn 	= false;
+	var round 		= new Round();
+		//activeTurn 	= false;
 
 	// generate initial grid
 	$.each( $ui.grid.square, function(key, value){
