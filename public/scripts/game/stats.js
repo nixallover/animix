@@ -1,3 +1,5 @@
+// separate into new constructor
+
 var stats = {};
 stats.check = {};
 

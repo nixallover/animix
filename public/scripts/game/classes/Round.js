@@ -1,8 +1,13 @@
 // round class
 
+// SUGGESTION FROM JUDE: separate out all the vars that I need to exchange between round and turn etc, and put them in a globally accessible game var
+
 function Round(){
 	var self = this;
 	self.animalsCreated = [];
+
+	// separate into new constructor
+	//self.stats = new Stats();
 	self.stats = {
 		dumbScore: 0,
 		score: 0,
@@ -21,6 +26,7 @@ function Round(){
 		//console.log("self.activeTurn");
 		//console.log(self.activeTurn);
 
+		// have to reset handler over and over to get not-static round object
 		$ui.grid.square.on( "mouseenter", { round: self, turn: {} }, square.validate);
 
 		// start turn when user clicks any square
@@ -40,7 +46,7 @@ function Round(){
 		$(window).on('mouseup', function(){
 		    turn.ended();
 		});
-
+		round = self;
 	}; // end init
 }; // end round
 

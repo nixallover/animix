@@ -1,12 +1,14 @@
 // game init
 
+var round;
 $(function(){
 	//eventually this will deal with game states
 	logger.status("Starting game!");
 	//roundInit();
 
+	//ameName = "animix";
 //temporarily moving round init here
-	var round = new Round();
+	round = new Round();
 	//activeTurn 	= false;
 
 	// generate initial grid

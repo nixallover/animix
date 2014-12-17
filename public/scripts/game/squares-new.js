@@ -2,10 +2,11 @@ var square = {};
     //activeTurn = activeTurn || true;
 
 square.validate = function(event){
+    //console.log(gameName);
     var self = {};
         //activeTurn = false;
         //candidate = $(this);
-    round = event.data.round;
+    //round = event.data.round;
     turn = event.data.turn;
     theDomNodes = turn.domNodes || [];
     console.log("validate starting");
@@ -104,7 +105,8 @@ square.validate = function(event){
             console.log("done.success!!!");
             candidate.addClass('selected');
             //candidate.data('arrayIndex', theDomNodes.length);
-            round.domNodes.push( candidate );
+            console.log("round is" + round)
+            turn.domNodes.push( candidate );
 
             // update ui
             // add to array
