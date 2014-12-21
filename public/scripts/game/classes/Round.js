@@ -23,30 +23,28 @@ function Round(){
 	self.init = function(){
 		var turn;
 		logger.status("round.init!");
-		//console.log("self.activeTurn");
-		//console.log(self.activeTurn);
-
-		// have to reset handler over and over to get not-static round object
-		$ui.grid.square.on( "mouseenter", { round: self, turn: {} }, square.validate);
-
-		// start turn when user clicks any square
-		$ui.grid.square.on('mousedown', function(){
-			turn = new Turn(self);
-		    turn.started();
-		});
 
 		// keep images from dragging
-		$ui.grid.part.on('dragstart', function(e) {
+		// FIXME doesn't work to reference $ui.grid.part, not sure why
+		$(".part").on("dragstart", function(e) {
 			e.preventDefault();
 			console.log("dragging");
 		});
 
+		// have to reset handler over and over to get not-static round object
+		$ui.grid.square.on( "mouseenter", { round: self }, square.validate);
+
+		// start turn when user clicks any square
+		$ui.grid.square.on("mousedown", function(){
+			turn = new Turn(self);
+		    turn.started();
+		});
 
 		// end turn when player stops dragging anywhere on screen
-		$(window).on('mouseup', function(){
+		$(window).on("mouseup", function(){
 		    turn.ended();
 		});
-		round = self;
+		//round = self;
 	}; // end init
 }; // end round
 

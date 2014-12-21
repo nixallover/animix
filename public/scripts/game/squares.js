@@ -1,107 +1,143 @@
-var squares = {};
-	squares.check = {};
-	squares.add = {};
+var square = {};
+    //activeTurn = activeTurn || true;
 
-squares.selector = function(square,turn){
-	/* before successfully selecting the square, check that:
-    	- it's not already selected (for backtracking)
-    	- the selected parts isn't more than 3
-    	- the squares are next to each other
-    	- that type of part hasn't been selected yet
-    */
+    //FIXME change squares to tiles
 
-    var valuesLength = Object.keys(turn.values).length;
-	var candidate = {};
+square.validate = function(event){
+    //console.log(gameName);
+    var self = {};
+        //activeTurn = false;
+        //candidate = $(this);
+    //round = event.data.round;
+    //console.log("validate starting");
+    //console.log(ANIMIX.currDomNodes);
+    //console.log(event.data.round.activeTurn);
 
-	candidate.square 			= $(square);
-	candidate.isAlreadySelected = $(square).hasClass('selected');
-	candidate.selected 			= {
-									animal 	: $(square).children("img").attr("data-animal"),
-									part 	: $(square).children("img").attr("data-part")
-								};
-
-    //logger.debug(candidate.square);
-
-
-	//to go into alreadySelected
-    if ( candidate.isAlreadySelected ){
-        //pop the last one off the stack and un-select it
-        //if there's more than 1 thing in the stack
-        if ( turn.domNodes.length > 1 ){
-            turn.domNodes.pop().removeClass('selected');
+    self.isActiveTurn = function( candidate ){
+        //console.log("isActiveTurn");
+        //console.log(candidate);
+        if( ANIMIX.activeTurn ){
+            self.backtracking( candidate );
         } else {
-            // don't remove anything
+            //console.log("not activeTurn");
+            //don't select anything, not dragging
         };
+    };
 
-    } else {
-        if (turn.domNodes.length < 3){
-			//check that part type hasn't been picked in this turn yet
-			if( !turn.values[candidate.selected.part] ){
-				//assign part
-				turn.values[candidate.selected.part] = candidate.selected.animal;
-				this.check.areAdjacent(candidate, turn);
+    self.backtracking = function( candidate ){
+        //console.log(candidate);
+        if ( candidate.hasClass('selected') ){
+            //console.log("backtracking!");
+            self.firstSquare();
+        } else {
+            self.lessThanMax( candidate );
+        };
+        // if square already selected
+            // this.firstSquare();
+        // else
+            // this.adjacency();
+    };
 
-			} else {
-				// part already selected, don't select another
-				logger.status("Not adding square.. this part was already selected for this move");
-			}
+    self.firstSquare = function(){
+        //console.log("firstSquare");
+        if ( ANIMIX.currDomNodes.length > 1 ){
+            ANIMIX.currDomNodes.pop().removeClass('selected');
+        } else {
+            // don't remove the first square
+        };
+    };
+
+    self.lessThanMax = function( candidate ){
+        //console.log("lessThanMax");
+        if ( ANIMIX.currDomNodes.length < 3 ){
+            self.partNotYetSelected( candidate );
+        } else {
+            // don't select any more
+        };
+        // if active nodes < 3
+            // this.backtracking();
+        // else
+            // don't select anymore
+    };
+
+    self.partNotYetSelected = function( candidate ){
+        if( !ANIMIX.currParts[candidate.children("img").attr("data-part")] ){
+            self.adjacency( candidate );
+
+        } else {
+            // part already selected, don't select another
+            logger.status("Not adding square.. this part was already selected for this move");
+        }
+    }
+
+    self.adjacency = function( candidate ){
+        //console.log("adjacency");
+        //console.log(ANIMIX.currDomNodes.length < 1);
+        var isAdjacent,
+            lastActive = $( ANIMIX.currDomNodes.slice(0).pop() );
+
+        function directNeighbor(side1, side2){
+            if ( lastActive.data(side1) == candidate.data(side1) ){
+                if ( lastActive.data(side2) == (candidate.data(side2) + 1) || lastActive.data(side2) == (candidate.data(side2) - 1)  )
+                isAdjacent = true;
+            } else {
+                // not directly adjacent
+            };
+            return isAdjacent;
+        }
+
+        // if this is the first square
+        if ( ANIMIX.currDomNodes.length < 1 ){
+            self.done.success( candidate );
+            
+        // if square is directly adjacent in either direction
+        } else if (directNeighbor("row", "column") || directNeighbor("column", "row")){
+            self.done.success( candidate );
             
         } else {
-            // max squares selected, don't select any more
+            //don't add!
+        };
+
+        // if new is same row as lastActive
+            // if new == lastActive col +/-1
+                // true
+
+        // if new is same col as lastActive
+            // if new == lastActive row +/-1
+                // true
+
+        // if isAdjacent
+            // this.success();
+    };
+
+    self.done = {
+        success: function( candidate ){
+            //console.log("done.success!!!");
+            candidate.addClass('selected');
+            //candidate.data('arrayIndex', ANIMIX.currDomNodes.length);
+            //console.log("round is");
+            //console.log("round")
+
+            candidate.addClass('selected');
+
+            //assign animal to parts object
+            ANIMIX.currParts[candidate.children("img").attr("data-part")] = candidate.children("img").attr("data-animal");
+
+            //add to DOM stack
+            ANIMIX.currDomNodes.push( candidate );
+            console.log(ANIMIX.currDomNodes);
+            // update ui
+            // add to array
         }
-    }
-    
-    logger.debug(turn.domNodes);
-    //logger.status(turn.domNodes.length);
+    };
+
+    // init
+    self.isActiveTurn( $(this) );
 };
 
-squares.check.alreadySelected = function(){};
-
-
-squares.check.areAdjacent = function(candidate, turn){
-
-    // if this is the first square or it's adjacent from the last one
-    if ( turn.domNodes.length < 1 || isAdjacent(candidate, turn.domNodes)){
-        squares.add.success(candidate, turn);
-        
-    } else {
-        logger.status('Error: diff row and col');
-    }
-
-    function isAdjacent( candidate, theDomNodes ){
-        var isItAdjacent = false,
-            // create copy of last dom node added to compare to (slice creates copy of an array)
-            $prevSquare = $( theDomNodes.slice(0).pop() );
-
-        function checkDirectNeighbor(set){
-            if ( (candidate.square.data(set) === (candidate.square.data(set) +1)) || (candidate.square.data(set) === (candidate.square.data(set) -1)) ) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-        if (checkDirectNeighbor('row') && !checkDirectNeighbor('column') || !checkDirectNeighbor('row') && checkDirectNeighbor('column')){
-            isItAdjacent = true;
-        } else {
-            // if both column and rows are +1 or -1 (makes a diagonal), or it's more than +/-1
-            // leave it false
-        }
-        return isItAdjacent;
-    }
-
+square.reset = function(){
+    console.log("done.reset");
+    $ui.grid.square.removeClass('selected');
+    ANIMIX.currDomNodes = [];
+    ANIMIX.currParts = {};
 };
-
-squares.check.isAdjacent = function( $theSquare, theDomNodes, callback ){
-
-}
-
-
-// stuff to run if adding as square is successful
-squares.add.success = function( candidate, turn ){
-	logger.status("squareAddSuccess starting");
-    logger.debug(candidate);
-    candidate.square.addClass('selected');
-    candidate.square.data('arrayIndex', turn.domNodes.length);
-    turn.domNodes.push( candidate.square );
-}

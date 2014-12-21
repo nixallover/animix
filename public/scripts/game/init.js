@@ -1,6 +1,11 @@
 // game init
 
-var round;
+var ANIMIX = {
+	activeTurn: false,
+	currDomNodes: [],
+	currParts: {}
+};
+
 $(function(){
 	//eventually this will deal with game states
 	logger.status("Starting game!");
