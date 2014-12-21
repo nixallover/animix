@@ -26,16 +26,17 @@ function Round(){
 
 		// keep images from dragging
 		// FIXME doesn't work to reference $ui.grid.part, not sure why
-		$(".part").on("dragstart", function(e) {
+		$ui.grid.container.on("dragstart", ".part", function(e) {
 			e.preventDefault();
 			console.log("dragging");
 		});
 
 		// have to reset handler over and over to get not-static round object
-		$ui.grid.square.on( "mouseenter", { round: self }, square.validate);
+		//$ui.grid.square.on( "mouseenter", { round: self }, square.validate);
+		$ui.grid.container.on( "mouseenter", ".grid-square", { round: self }, square.validate);
 
 		// start turn when user clicks any square
-		$ui.grid.square.on("mousedown", function(){
+		$ui.grid.container.on("mousedown", ".grid-square", function(){
 			turn = new Turn(self);
 		    turn.started();
 		});

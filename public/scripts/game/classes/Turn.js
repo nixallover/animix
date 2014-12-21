@@ -2,20 +2,18 @@
 
 function Turn(round){
 	var self = this;
-	//self.values = {};
-	//self.domNodes = [];
 
 	// methods
 	self.started = function(){
-		//console.log("turn start");
-		//console.log(round);
-	    ANIMIX.activeTurn= true;
-	    $ui.grid.square.on( "mousedown", { round: round }, square.validate);  
+		console.log("turn start");
+		//console.log(self);
+	    ANIMIX.activeTurn = true;
+	    $ui.grid.container.on( "mousedown", ".grid-square", { round: round }, square.validate);  
 
 	}; //end started
 
 	self.ended = function(){
-		ANIMIX.activeTurn= false;
+		ANIMIX.activeTurn = false;
 		//logger.status("turn ended!");
 
 	    //if move is complete

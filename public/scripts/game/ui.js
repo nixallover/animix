@@ -1,9 +1,10 @@
 var $ui = {
-			grid: {
-				square: $(".grid-square"),
-				part: $(".part")
-			},
-			status: $("#status"),
-			score: $("#score"),
-			turns: $("#turns")
-		};
+		grid: {
+			container	: $("#grid-container"),
+			square 		: $(".grid-square"),
+			part		: $(".part")
+		},
+		status	: $("#status"),
+		score	: $("#score"),
+		turns	: $("#turns")
+	};
