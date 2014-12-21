@@ -42,6 +42,7 @@ square.validate = function(event){
         //console.log("firstSquare");
         if ( ANIMIX.currDomNodes.length > 1 ){
             ANIMIX.currDomNodes.pop().removeClass('selected');
+            ANIMIX.currParts.pop();
         } else {
             // don't remove the first square
         };
@@ -110,13 +111,12 @@ square.validate = function(event){
             // this.success();
     };
 
+    // successfully add square
     self.done = {
         success: function( candidate ){
             //console.log("done.success!!!");
             candidate.addClass('selected');
             //candidate.data('arrayIndex', ANIMIX.currDomNodes.length);
-            //console.log("round is");
-            //console.log("round")
 
             candidate.addClass('selected');
 

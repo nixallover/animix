@@ -21,7 +21,7 @@ function Round(){
 
 
 	self.init = function(){
-		var turn;
+		var turn = {};
 		logger.status("round.init!");
 
 		// keep images from dragging
@@ -42,7 +42,11 @@ function Round(){
 
 		// end turn when player stops dragging anywhere on screen
 		$(window).on("mouseup", function(){
-		    turn.ended();
+			if( ANIMIX.activeTurn === true ){
+				turn.ended();
+			} else {
+				logger.status("no turn currently active");
+			}
 		});
 		//round = self;
 	}; // end init

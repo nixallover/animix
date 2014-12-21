@@ -58,6 +58,7 @@ stats.updateOnCompleteTurn = function(round,move){
 	logger.status("updateStats() completed!");
 };
 
+// not working right now because it doesn't have proper object comparison
 stats.check.isDuplicate = function(newAnimal, animalsCreated){
 	var isDup = false;
 	for (i = 0; i < animalsCreated.length; i++){

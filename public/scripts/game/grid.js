@@ -73,6 +73,8 @@ grid.dropPartsAbove = function(squareObj){
                             .detach(),
             $targetSquare = $(".grid-square[data-row='" + (i + 1) + "'][data-column='" + squareObj.colNum + "']");
         
+        // not working but needs to attach
+        //$targetSquare.on( "mousedown mouseenter", { round: round }, square.validate); 
         //alert(".grid-square[data-row='" + (i + 1) + "'][data-column='" + $columnNum + "']");
         $targetSquare.append($fallingPart);
     } // for

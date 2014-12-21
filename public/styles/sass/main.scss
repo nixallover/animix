@@ -49,6 +49,10 @@ h1 {
     min-height:40px;
     margin: 5px;
 }
+#debug-status {
+	max-width: 400px;
+	overflow: hidden;
+}
 
 #grid-container {
 	display: table;

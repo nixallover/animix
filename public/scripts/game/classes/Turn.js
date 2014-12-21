@@ -7,7 +7,7 @@ function Turn(round){
 
 	// methods
 	self.started = function(){
-		console.log("turn start");
+		//console.log("turn start");
 		//console.log(round);
 	    ANIMIX.activeTurn= true;
 	    $ui.grid.square.on( "mousedown", { round: round }, square.validate);  
@@ -16,7 +16,7 @@ function Turn(round){
 
 	self.ended = function(){
 		ANIMIX.activeTurn= false;
-		logger.status("turn ended!");
+		//logger.status("turn ended!");
 
 	    //if move is complete
 	    if ( ANIMIX.currDomNodes.length === 3 ){
@@ -27,7 +27,7 @@ function Turn(round){
 			// WIP: remove squares in dom nodes, for each, run grid.whatever
 			grid.updateGrid(ANIMIX.currDomNodes);
 		} else {
-			logger.status("Turn not recorded, not enough squares");
+			logger.status("Turn not completed, not enough squares");
 		}
 
 	    square.reset();
