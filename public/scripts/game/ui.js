@@ -19,6 +19,6 @@ var ui = {
 		tile 	: ".tile",
 		part	: ".part",
 		status	: "#status",
-		score	: "#score",
-		moves	: "#moves"
+		score	: "#score-log",
+		moves	: "#moves-log"
 	}; // ui

@@ -25,9 +25,15 @@ tileMgr.validate = function(event){
 
     self.firstTile = function(){
         //console.log("firstTile");
+
+        // if more than 1 tiles selected
         if ( ANIMIX.currDomNodes.length > 1 ){
+            // get the part name of the last selected node
+            var partToRemove = ANIMIX.currDomNodes.slice().pop().children(".part").attr("data-part");
+
+            // remove last dom node and remove active classes
             ANIMIX.currDomNodes.pop().removeClass('selected');
-            ANIMIX.currParts.pop();
+            ANIMIX.currParts[ partToRemove ] = "";
         } else {
             // don't remove the first tile
         }

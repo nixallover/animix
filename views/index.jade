@@ -6,8 +6,19 @@ block content
 	#game-container.outlined
 		#scoreboard.outlined
 			#status.outlined
-			p Score: <span id="score"></span>
-			p Turns: <span id="turns"></span>
+				.row
+					.col-xs-6
+						p 
+							strong Score: 
+							span#score-log
+						p 
+							strong Moves: 
+							span#moves-log
+
+					.col-xs-6
+						p 
+							strong Player: 
+							span#player-name
 		#grid.outlined
 			each rowIndex in [1,2,3,4,5]
 				.grid-row
