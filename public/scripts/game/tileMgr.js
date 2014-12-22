@@ -3,13 +3,12 @@ var tileMgr = {};
 tileMgr.validate = function(event){
     var self = {};
 
-    self.isActiveTurn = function( candidate ){
-        //console.log("isActiveTurn");
+    self.isActiveMove = function( candidate ){
+        //console.log("isActiveMove");
         //console.log(candidate);
-        if( ANIMIX.activeTurn ){
+        if( ANIMIX.activeMove ){
             self.backtracking( candidate );
         } else {
-            //console.log("not activeTurn");
             //don't select anything, not dragging
         };
     };
@@ -100,7 +99,7 @@ tileMgr.validate = function(event){
     };
 
     // init
-    self.isActiveTurn( $(this) );
+    self.isActiveMove( $(this) );
 };
 
 // tileMgr.reset = function(){

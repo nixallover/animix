@@ -84,7 +84,7 @@ gridMgr.dropNewTile = function( tileObj ){
     //$newTile.on('mouseenter', tileSelector );
 };
 
-gridMgr.resetAfterTurn = function(){
+gridMgr.resetAfterMove = function(){
     //console.log("tileMgr.reset");
     $( ui.tile ).removeClass('selected');
     ANIMIX.currDomNodes = [];

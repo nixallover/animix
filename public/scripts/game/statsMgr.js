@@ -3,7 +3,7 @@
 var statsMgr = {};
 	statsMgr.check = {};
 
-statsMgr.updateOnCompleteTurn = function( round, move ){
+statsMgr.updateOnCompleteMove = function( round, move ){
 	var score = {
 		base: 1,
 		original: 3
