@@ -63,9 +63,11 @@ tileMgr.validate = function(event){
             if ( lastActive.data(side1) == candidate.data(side1) ){
                 if ( lastActive.data(side2) == (candidate.data(side2) + 1) || lastActive.data(side2) == (candidate.data(side2) - 1)  )
                 isAdjacent = true;
+
             } else {
                 // not directly adjacent
-            };
+            }
+
             return isAdjacent;
         }
 
@@ -79,16 +81,12 @@ tileMgr.validate = function(event){
             
         } else {
             //don't add!
-        };
+        }
     };
 
     // successfully add tile
     self.done = {
         success: function( candidate ){
-            //console.log("done.success!!!");
-            candidate.addClass('selected');
-            //candidate.data('arrayIndex', ANIMIX.currDomNodes.length);
-
             candidate.addClass('selected');
 
             //assign animal to parts object
@@ -96,9 +94,8 @@ tileMgr.validate = function(event){
 
             //add to DOM stack
             ANIMIX.currDomNodes.push( candidate );
-            console.log(ANIMIX.currDomNodes);
-            // update ui
-            // add to array
+            //console.log(ANIMIX.currDomNodes);
+
         }
     };
 
@@ -106,9 +103,9 @@ tileMgr.validate = function(event){
     self.isActiveTurn( $(this) );
 };
 
-tileMgr.reset = function(){
-    console.log("done.reset");
-    $( ui.grid.tile ).removeClass('selected');
-    ANIMIX.currDomNodes = [];
-    ANIMIX.currParts = {};
-};
+// tileMgr.reset = function(){
+//     //console.log("tileMgr.reset");
+//     $( ui.tile ).removeClass('selected');
+//     ANIMIX.currDomNodes = [];
+//     ANIMIX.currParts = {};
+// };

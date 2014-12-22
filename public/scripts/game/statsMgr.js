@@ -1,31 +1,14 @@
 // separate into new constructor
 
 var statsMgr = {};
-statsMgr.check = {};
+	statsMgr.check = {};
 
-statsMgr.updateOnCompleteTurn = function(round,move){
+statsMgr.updateOnCompleteTurn = function( round, move ){
 	var score = {
 		base: 1,
 		original: 3
 	};
-	logger.debug(round.animalsCreated);
-
-	// compare to previous stats - FIXME object value equality
-	// function isDuplicate(newAnimal, animalsCreated){
-	// 	//console.log(round.animalsCreated);m
-	// 	//console.log(move.values);
-	// 	// console.log(round.animalsCreated.indexOf(move.values));
-	// 	var isDup = false;
-	// 	for (i = 0; i < animalsCreated.length; i++){
-	// 		console.log("checking");
-	// 		console.log(animalsCreated[i]);
-	// 		if (animalsCreated[i] == newAnimal){
-	// 			isDup = true;
-	// 		};
-	// 	};
-	// 	// TEMP
-	// 	return isDup;
-	// };
+	//logger.debug(round.animalsCreated);
 
 	//logger.output("isDuplicate", isDuplicate(move.values, round.animalsCreated));
 	//logger.debug("isDuplicate?");
@@ -49,17 +32,17 @@ statsMgr.updateOnCompleteTurn = function(round,move){
 	//combo multipliers
 
 	// add new stat
-	round.animalsCreated.push(move.values);
+	round.animalsCreated.push( move.values );
 
 	//temp stats for debugging
 	round.stats.dumbScore += 1;
-	round.stats.turns += 1;
+	round.stats.moves += 1;
 	$("#debug-status").text(JSON.stringify(round))
 	logger.status("updateStats() completed!");
 };
 
 // not working right now because it doesn't have proper object comparison
-statsMgr.check.isDuplicate = function(newAnimal, animalsCreated){
+statsMgr.check.isDuplicate = function( newAnimal, animalsCreated ){
 	var isDup = false;
 	for (i = 0; i < animalsCreated.length; i++){
 		console.log("checking");

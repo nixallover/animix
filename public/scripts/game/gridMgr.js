@@ -50,8 +50,8 @@ gridMgr.updateGrid = function( gridTile ){
 
 		var tile = {};
         tile.node = $(value);
-        tile.rowNum = parseInt($(value).data("row"));
-        tile.colNum = parseInt($(value).data("column"));
+        tile.rowNum = parseInt( $(value).data("row") );
+        tile.colNum = parseInt( $(value).data("column") );
     
         //alert(JSON.stringify(tileObj));
     
@@ -59,13 +59,13 @@ gridMgr.updateGrid = function( gridTile ){
     
         // if it's not the top tile, drop the ones above it down 1
         if ( tile.rowNum > 1 ){
-            gridMgr.dropPartsAbove(tile);
+            gridMgr.dropTilesAbove( tile );
         }; // if
-        gridMgr.dropNewPart(tile);
+        gridMgr.dropNewTile( tile );
 	}); // each part
 };
 
-gridMgr.dropPartsAbove = function( tileObj ){
+gridMgr.dropTilesAbove = function( tileObj ){
     var prevRows = tileObj.rowNum - 1;
     for(var i=1; i<prevRows+1; i++){
         var fallingPart = $(".tile[data-row='" + i + "'][data-column='" + tileObj.colNum + "']")
@@ -75,11 +75,18 @@ gridMgr.dropPartsAbove = function( tileObj ){
 
         $( targetTile ).append( fallingPart );
     } // for
-} // dropPartsAbove
+}; // dropTilesAbove
 
-gridMgr.dropNewPart = function( tileObj ){
-    var $newTile = $(".tile[data-row='1'][data-column='" + tileObj.colNum + "']");
-    gridMgr.generatePart($newTile);
+gridMgr.dropNewTile = function( tileObj ){
+    var $newTile = $( ".tile[data-row='1'][data-column='" + tileObj.colNum + "']" );
+    gridMgr.generatePart( $newTile );
     //BUG: tileSelector not available here so event handler is not attached
     //$newTile.on('mouseenter', tileSelector );
-}
+};
+
+gridMgr.resetAfterTurn = function(){
+    //console.log("tileMgr.reset");
+    $( ui.tile ).removeClass('selected');
+    ANIMIX.currDomNodes = [];
+    ANIMIX.currParts = {};
+};

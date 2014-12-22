@@ -1,6 +1,6 @@
 // round class
 
-// SUGGESTION FROM JUDE: separate out all the vars that I need to exchange between round and turn etc, and put them in a globally accessible game var
+// SUGGESTION FROM JUDE: separate out all the vars that I need to exchange between round and move etc, and put them in a globally accessible game var
 
 function Round(){
 	var self = this;
@@ -11,43 +11,43 @@ function Round(){
 	self.stats = {
 		dumbScore: 0,
 		score: 0,
-		turns:0,
+		moves:0,
 		duplicates: 0,
 		originals: 0,
 		combos: 0,
 		longestCombo: 0
 	};
-	self.activeTurn = false;
+	self.activeMove = false;
 
 
 	self.init = function(){
-		var turn = {};
+		var move = {};
 		//logger.status("round.init!");
 
 		// keep images from dragging
-		// FIXME doesn't work to reference $ui.grid.part, not sure why
-		$( ui.grid.container ).on("dragstart", ".part", function(e) {
+		// FIXME doesn't work to reference $ui.part, not sure why
+		$( ui.grid ).on("dragstart", ".part", function(e) {
 			e.preventDefault();
 			// console.log("dragging");
 		});
 
 		// have to reset handler over and over to get not-static round object
 		// FIXME not picking up first mousedown .. this doesn't work
-		// $( ui.grid.container ).on( "mousedown", ".tile", { round: self }, tileMgr.validate);
-		$( ui.grid.container ).on( "mouseenter", ".tile", { round: self }, tileMgr.validate);
+		// $( ui.grid ).on( "mousedown", ".tile", { round: self }, tileMgr.validate);
+		$( ui.grid ).on( "mouseenter", ".tile", { round: self }, tileMgr.validate);
 
-		// start turn when user clicks any tile
-		$( ui.grid.container ).on("mousedown", ".tile", function(){
-			turn = new Turn(self);
-		    turn.started();
+		// start move when user clicks any tile
+		$( ui.grid ).on("mousedown", ".tile", function(){
+			move = new Move(self);
+		    move.started();
 		});
 
-		// end turn when player stops dragging anywhere on screen
+		// end move when player stops dragging anywhere on screen
 		$( window ).on("mouseup", function(){
-			if( ANIMIX.activeTurn === true ){
-				turn.ended();
+			if( ANIMIX.activeMove === true ){
+				move.ended();
 			} else {
-				logger.status("no turn currently active");
+				logger.status("no move currently active");
 			}
 		});
 	}; // end init

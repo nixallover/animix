@@ -1,39 +1,39 @@
 // round class
 
-function Turn(round){
+function Move(round){
 	var self = this;
 
 	// methods
 	self.started = function(){
-		//console.log("turn start");
+		//console.log("move start");
 		//console.log(self);
-	    ANIMIX.activeTurn = true;
-	    $( ui.grid.container ).on( "mousedown", ".tile", { round: round }, tileMgr.validate );  
+	    ANIMIX.activeMove = true;
+	    $( ui.grid ).on( "mousedown", ".tile", { round: round }, tileMgr.validate );  
 
 	}; //end started
 
 	self.ended = function(){
-		ANIMIX.activeTurn = false;
-		//logger.status("turn ended!");
+		ANIMIX.activeMove = false;
+		//logger.status("move ended!");
 
 	    //if move is complete
 	    if ( ANIMIX.currDomNodes.length === 3 ){
 
 	    	// update stats
-	        statsMgr.updateOnCompleteTurn( round, self );
+	        statsMgr.updateOnCompleteMove( round, self );
 		    
 		    // drop new tiles from the top
 			gridMgr.updateGrid( ANIMIX.currDomNodes );
 
 			// TEMP add to dom for debug
 			$( ui.score ).text( round.stats.score );
-			$( ui.turns ).text( round.stats.turns );
+			$( ui.moves ).text( round.stats.moves );
 
 		} else {
-			logger.status("Turn not completed, not enough tiles");
+			logger.status("Move not completed, not enough tiles");
 		}
 
-	    tileMgr.reset();
+	    gridMgr.resetAfterMove();
 
 	}; // end ended
-}; // end turn
+}; // end move
