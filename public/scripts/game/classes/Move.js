@@ -8,7 +8,7 @@ function Move(round){
 		//console.log("move start");
 		//console.log(self);
 	    ANIMIX.activeMove = true;
-	    $( ui.grid ).on( "mousedown", ".tile", { round: round }, tileMgr.validate );  
+	    $( ui.grid ).on( "mousedown", ui.tile, { round: round }, tileMgr.validate );  
 
 	}; // Move.started()
 

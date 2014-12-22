@@ -22,18 +22,15 @@ function Round(){
 
 		// keep images from dragging
 		// FIXME doesn't work to reference $ui.part, not sure why
-		$( ui.grid ).on("dragstart", ".part", function(e) {
+		$( ui.grid ).on("dragstart", ui.part, function(e) {
 			e.preventDefault();
-			// console.log("dragging");
 		});
 
-		// have to reset handler over and over to get not-static round object
 		// FIXME not picking up first mousedown .. this doesn't work
-		// $( ui.grid ).on( "mousedown", ".tile", { round: self }, tileMgr.validate);
-		$( ui.grid ).on( "mouseenter", ".tile", { round: self }, tileMgr.validate);
+		$( ui.grid ).on( "mouseenter", ui.tile, { round: self }, tileMgr.validate);
 
 		// start move when user clicks any tile
-		$( ui.grid ).on("mousedown", ".tile", function(){
+		$( ui.grid ).on("mousedown", ui.tile, function(){
 			move = new Move(self);
 		    move.started();
 		});
