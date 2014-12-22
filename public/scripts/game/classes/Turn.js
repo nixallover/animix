@@ -18,7 +18,7 @@ function Turn(round){
 
 	    //if move is complete
 	    if ( ANIMIX.currDomNodes.length === 3 ){
-	        stats.updateOnCompleteTurn(round, self);
+	        statsMgr.updateOnCompleteTurn(round, self);
 		    $ui.score.text(round.stats.score);
 			$ui.turns.text(round.stats.turns);
 

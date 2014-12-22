@@ -1,9 +1,9 @@
 // separate into new constructor
 
-var stats = {};
-stats.check = {};
+var statsMgr = {};
+statsMgr.check = {};
 
-stats.updateOnCompleteTurn = function(round,move){
+statsMgr.updateOnCompleteTurn = function(round,move){
 	var score = {
 		base: 1,
 		original: 3
@@ -32,7 +32,7 @@ stats.updateOnCompleteTurn = function(round,move){
 	//logger.debug(isDuplicate(move.values, round.animalsCreated));
 
 	// if the combo has already been made this round
-	if ( stats.check.isDuplicate(move.values, round.animalsCreated) ){
+	if ( statsMgr.check.isDuplicate(move.values, round.animalsCreated) ){
 		logger.status("this combo is a duplicate");
 		round.stats.duplicates += 1;
 		round.stats.score += score.base;
@@ -59,7 +59,7 @@ stats.updateOnCompleteTurn = function(round,move){
 };
 
 // not working right now because it doesn't have proper object comparison
-stats.check.isDuplicate = function(newAnimal, animalsCreated){
+statsMgr.check.isDuplicate = function(newAnimal, animalsCreated){
 	var isDup = false;
 	for (i = 0; i < animalsCreated.length; i++){
 		console.log("checking");

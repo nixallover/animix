@@ -32,7 +32,8 @@ function Round(){
 		});
 
 		// have to reset handler over and over to get not-static round object
-		//$ui.grid.square.on( "mouseenter", { round: self }, square.validate);
+		// FIXME not picking up first mousedown .. this doesn't work
+		// $ui.grid.container.on( "mousedown", ".grid-square", { round: self }, square.validate);
 		$ui.grid.container.on( "mouseenter", ".grid-square", { round: self }, square.validate);
 
 		// start turn when user clicks any square
@@ -49,30 +50,5 @@ function Round(){
 				logger.status("no turn currently active");
 			}
 		});
-		//round = self;
 	}; // end init
 }; // end round
-
-//crap
-		// // makes sure 1st square gets selected
-		// $ui.grid.square.on('mousedown', function(){
-		// 	squares.selector(this,turn);
-		// }); // end mousedown
-
-		// ATTACH HANDLERS
-
-		// start turn when user clicks any square
-		// $ui.grid.square.on('mousedown', function(){
-		//     console.log("turn start");
-		//     activeTurn = true;
-		//     $ui.grid.square.on( "mousedown", square.validate);  
-		// });
-
-		// end turn when player stops dragging anywhere on screen
-		// $(window).on('mouseup', function(){
-		//     console.log("turn end");
-		//     activeTurn = false;
-		//     //allSquares.off( "mouseenter", square.validate);
-		//     square.reset();
-		    
-		// });
