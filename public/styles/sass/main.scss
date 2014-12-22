@@ -54,7 +54,7 @@ h1 {
 	overflow: hidden;
 }
 
-#grid-container {
+#grid {
 	display: table;
 	width: 100%;
 
@@ -64,7 +64,7 @@ h1 {
     }
 }
 
-.grid-square {
+.tile {
 	//background-color: red;
 	border: dotted 1px $base3;
 	box-sizing: border-box;

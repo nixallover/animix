@@ -17,8 +17,8 @@ $(function(){
 	//activeTurn 	= false;
 
 	// generate initial grid
-	$.each( $ui.grid.square, function(key, value){
-		grid.generatePart(value);
+	$.each( $( ui.grid.tile ), function(key, value){
+		gridMgr.generatePart(value);
 	});
 
 	// start round!

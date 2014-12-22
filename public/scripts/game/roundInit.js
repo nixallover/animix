@@ -12,7 +12,7 @@ function roundInit(){
 		//activeTurn 	= false;
 
 	// generate initial grid
-	$.each( $ui.grid.square, function(key, value){
+	$.each( $ui.grid.tile, function(key, value){
 		grid.generatePart(value);
 	});
 
@@ -20,9 +20,9 @@ function roundInit(){
 	//console.log(round.animalsCreated);
 	round.init();
 
-	// // makes sure 1st square gets selected
-	// $ui.grid.square.on('mousedown', function(){
-	// 	squares.selector(this,turn);
+	// // makes sure 1st tile gets selected
+	// $ui.grid.tile.on('mousedown', function(){
+	// 	tiles.selector(this,turn);
 	// });
 
 	// // keep image from dragging
@@ -43,12 +43,12 @@ function roundInit(){
 
 	// round.turnManager = function(){
 	//     if (round.activeTurn){
-	//         // add event handler to all squares
-	//         $ui.grid.square.on('mouseenter', squareSelector );
+	//         // add event handler to all tiles
+	//         $ui.grid.tile.on('mouseenter', tileSelector );
 
 	//     } else {
-	//         // remove event handler to all squares
-	//         $ui.grid.square.off('mouseenter', squareSelector );
+	//         // remove event handler to all tiles
+	//         $ui.grid.tile.off('mouseenter', tileSelector );
 
 	//     };
 	// };
@@ -61,7 +61,7 @@ function roundInit(){
 	// 		};
 
 	// 	} else {
-	// 		logger.status("Not adding square.. this part was already selected for this move");
+	// 		logger.status("Not adding tile.. this part was already selected for this move");
 	// 	};
 
 	// }

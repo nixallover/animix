@@ -1,17 +1,7 @@
-var square = {};
-    //activeTurn = activeTurn || true;
+var tileMgr = {};
 
-    //FIXME change squares to tiles
-
-square.validate = function(event){
-    //console.log(gameName);
+tileMgr.validate = function(event){
     var self = {};
-        //activeTurn = false;
-        //candidate = $(this);
-    //round = event.data.round;
-    //console.log("validate starting");
-    //console.log(ANIMIX.currDomNodes);
-    //console.log(event.data.round.activeTurn);
 
     self.isActiveTurn = function( candidate ){
         //console.log("isActiveTurn");
@@ -28,23 +18,19 @@ square.validate = function(event){
         //console.log(candidate);
         if ( candidate.hasClass('selected') ){
             //console.log("backtracking!");
-            self.firstSquare();
+            self.firstTile();
         } else {
             self.lessThanMax( candidate );
         };
-        // if square already selected
-            // this.firstSquare();
-        // else
-            // this.adjacency();
     };
 
-    self.firstSquare = function(){
-        //console.log("firstSquare");
+    self.firstTile = function(){
+        //console.log("firstTile");
         if ( ANIMIX.currDomNodes.length > 1 ){
             ANIMIX.currDomNodes.pop().removeClass('selected');
             ANIMIX.currParts.pop();
         } else {
-            // don't remove the first square
+            // don't remove the first tile
         };
     };
 
@@ -55,10 +41,6 @@ square.validate = function(event){
         } else {
             // don't select any more
         };
-        // if active nodes < 3
-            // this.backtracking();
-        // else
-            // don't select anymore
     };
 
     self.partNotYetSelected = function( candidate ){
@@ -67,7 +49,7 @@ square.validate = function(event){
 
         } else {
             // part already selected, don't select another
-            logger.status("Not adding square.. this part was already selected for this move");
+            logger.status("Not adding tile.. this part was already selected for this move");
         }
     }
 
@@ -87,31 +69,20 @@ square.validate = function(event){
             return isAdjacent;
         }
 
-        // if this is the first square
+        // if this is the first tile
         if ( ANIMIX.currDomNodes.length < 1 ){
             self.done.success( candidate );
             
-        // if square is directly adjacent in either direction
+        // if tile is directly adjacent in either direction
         } else if (directNeighbor("row", "column") || directNeighbor("column", "row")){
             self.done.success( candidate );
             
         } else {
             //don't add!
         };
-
-        // if new is same row as lastActive
-            // if new == lastActive col +/-1
-                // true
-
-        // if new is same col as lastActive
-            // if new == lastActive row +/-1
-                // true
-
-        // if isAdjacent
-            // this.success();
     };
 
-    // successfully add square
+    // successfully add tile
     self.done = {
         success: function( candidate ){
             //console.log("done.success!!!");
@@ -135,9 +106,9 @@ square.validate = function(event){
     self.isActiveTurn( $(this) );
 };
 
-square.reset = function(){
+tileMgr.reset = function(){
     console.log("done.reset");
-    $ui.grid.square.removeClass('selected');
+    $( ui.grid.tile ).removeClass('selected');
     ANIMIX.currDomNodes = [];
     ANIMIX.currParts = {};
 };

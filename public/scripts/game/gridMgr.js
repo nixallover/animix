@@ -1,12 +1,12 @@
 var numberOfAnimals = 4;
-var grid = {};
+var gridMgr = {};
 
-grid.getRandom = {};
-grid.getRandom.animal = function() {
+gridMgr.getRandom = {};
+gridMgr.getRandom.animal = function() {
 	return (Math.floor(Math.random() * (numberOfAnimals)) + 1).toString();
 }; // getRandomAnimal()
 
-grid.getRandom.part = function() {
+gridMgr.getRandom.part = function() {
 	var part = "",
 		possibleParts = Math.floor(Math.random() * (3)) + 1;
 
@@ -27,12 +27,12 @@ grid.getRandom.part = function() {
 	return part;
 }; // getRandomPart()
 
-grid.generatePart = function(gridPos){
+gridMgr.generatePart = function( gridPos ){
 	var animal = "1",
 		part = "b";
 
-	animal = grid.getRandom.animal();
-	part = grid.getRandom.part();
+	animal = gridMgr.getRandom.animal();
+	part = gridMgr.getRandom.part();
 	//logger.debug(animal);
 
 	var imageName = animal + part;
@@ -44,43 +44,42 @@ grid.generatePart = function(gridPos){
 		'" />');
 }; // generatePart
 
-grid.updateGrid = function(gridSquare){
-	$.each(gridSquare, function( key, value ){
-		//logger.output("gridSquare", value);
+gridMgr.updateGrid = function( gridTile ){
+	$.each( gridTile, function( key, value ){
+		//logger.output("gridTile", value);
 
-		var square = {};
-        square.node = $(value);
-        square.rowNum = parseInt($(value).data("row"));
-        square.colNum = parseInt($(value).data("column"));
+		var tile = {};
+        tile.node = $(value);
+        tile.rowNum = parseInt($(value).data("row"));
+        tile.colNum = parseInt($(value).data("column"));
     
-        //alert(JSON.stringify(squareObj));
+        //alert(JSON.stringify(tileObj));
     
         $(value).children(".part").remove();
     
-        // if it's not the top square, drop the ones above it down 1
-        if ( square.rowNum > 1 ){
-            grid.dropPartsAbove(square);
+        // if it's not the top tile, drop the ones above it down 1
+        if ( tile.rowNum > 1 ){
+            gridMgr.dropPartsAbove(tile);
         }; // if
-        grid.dropNewPart(square);
+        gridMgr.dropNewPart(tile);
 	}); // each part
 };
 
-grid.dropPartsAbove = function(squareObj){
-    var prevRows = squareObj.rowNum - 1;
+gridMgr.dropPartsAbove = function( tileObj ){
+    var prevRows = tileObj.rowNum - 1;
     for(var i=1; i<prevRows+1; i++){
-        var $fallingPart = $(".grid-square[data-row='" + i + "'][data-column='" + squareObj.colNum + "']")
+        var fallingPart = $(".tile[data-row='" + i + "'][data-column='" + tileObj.colNum + "']")
                             .children(".part:first-child")
                             .detach(),
-            $targetSquare = $(".grid-square[data-row='" + (i + 1) + "'][data-column='" + squareObj.colNum + "']");
-        
-        //alert(".grid-square[data-row='" + (i + 1) + "'][data-column='" + $columnNum + "']");
-        $targetSquare.append($fallingPart);
+            targetTile = ".tile[data-row='" + (i + 1) + "'][data-column='" + tileObj.colNum + "']";
+
+        $( targetTile ).append( fallingPart );
     } // for
 } // dropPartsAbove
 
-grid.dropNewPart = function(squareObj){
-    var $newSquare = $(".grid-square[data-row='1'][data-column='" + squareObj.colNum + "']");
-    grid.generatePart($newSquare);
-    //BUG: squareSelector not available here so event handler is not attached
-    //$newSquare.on('mouseenter', squareSelector );
+gridMgr.dropNewPart = function( tileObj ){
+    var $newTile = $(".tile[data-row='1'][data-column='" + tileObj.colNum + "']");
+    gridMgr.generatePart($newTile);
+    //BUG: tileSelector not available here so event handler is not attached
+    //$newTile.on('mouseenter', tileSelector );
 }

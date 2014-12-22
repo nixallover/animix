@@ -22,28 +22,28 @@ function Round(){
 
 	self.init = function(){
 		var turn = {};
-		logger.status("round.init!");
+		//logger.status("round.init!");
 
 		// keep images from dragging
 		// FIXME doesn't work to reference $ui.grid.part, not sure why
-		$ui.grid.container.on("dragstart", ".part", function(e) {
+		$( ui.grid.container ).on("dragstart", ".part", function(e) {
 			e.preventDefault();
-			console.log("dragging");
+			// console.log("dragging");
 		});
 
 		// have to reset handler over and over to get not-static round object
 		// FIXME not picking up first mousedown .. this doesn't work
-		// $ui.grid.container.on( "mousedown", ".grid-square", { round: self }, square.validate);
-		$ui.grid.container.on( "mouseenter", ".grid-square", { round: self }, square.validate);
+		// $( ui.grid.container ).on( "mousedown", ".tile", { round: self }, tileMgr.validate);
+		$( ui.grid.container ).on( "mouseenter", ".tile", { round: self }, tileMgr.validate);
 
-		// start turn when user clicks any square
-		$ui.grid.container.on("mousedown", ".grid-square", function(){
+		// start turn when user clicks any tile
+		$( ui.grid.container ).on("mousedown", ".tile", function(){
 			turn = new Turn(self);
 		    turn.started();
 		});
 
 		// end turn when player stops dragging anywhere on screen
-		$(window).on("mouseup", function(){
+		$( window ).on("mouseup", function(){
 			if( ANIMIX.activeTurn === true ){
 				turn.ended();
 			} else {

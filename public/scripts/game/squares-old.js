@@ -1,26 +1,26 @@
-var squares = {};
-	squares.check = {};
-	squares.add = {};
+var tiles = {};
+	tiles.check = {};
+	tiles.add = {};
 
-squares.selector = function(square,turn){
-	/* before successfully selecting the square, check that:
+tiles.selector = function(tile,turn){
+	/* before successfully selecting the tile, check that:
     	- it's not already selected (for backtracking)
     	- the selected parts isn't more than 3
-    	- the squares are next to each other
+    	- the tiles are next to each other
     	- that type of part hasn't been selected yet
     */
 
     var valuesLength = Object.keys(turn.values).length;
 	var candidate = {};
 
-	candidate.square 			= $(square);
-	candidate.isAlreadySelected = $(square).hasClass('selected');
+	candidate.tile 			= $(tile);
+	candidate.isAlreadySelected = $(tile).hasClass('selected');
 	candidate.selected 			= {
-									animal 	: $(square).children("img").attr("data-animal"),
-									part 	: $(square).children("img").attr("data-part")
+									animal 	: $(tile).children("img").attr("data-animal"),
+									part 	: $(tile).children("img").attr("data-part")
 								};
 
-    //logger.debug(candidate.square);
+    //logger.debug(candidate.tile);
 
 
 	//to go into alreadySelected
@@ -43,11 +43,11 @@ squares.selector = function(square,turn){
 
 			} else {
 				// part already selected, don't select another
-				logger.status("Not adding square.. this part was already selected for this move");
+				logger.status("Not adding tile.. this part was already selected for this move");
 			}
             
         } else {
-            // max squares selected, don't select any more
+            // max tiles selected, don't select any more
         }
     }
     
@@ -55,14 +55,14 @@ squares.selector = function(square,turn){
     //logger.status(turn.domNodes.length);
 };
 
-squares.check.alreadySelected = function(){};
+tiles.check.alreadySelected = function(){};
 
 
-squares.check.areAdjacent = function(candidate, turn){
+tiles.check.areAdjacent = function(candidate, turn){
 
-    // if this is the first square or it's adjacent from the last one
+    // if this is the first tile or it's adjacent from the last one
     if ( turn.domNodes.length < 1 || isAdjacent(candidate, turn.domNodes)){
-        squares.add.success(candidate, turn);
+        tiles.add.success(candidate, turn);
         
     } else {
         logger.status('Error: diff row and col');
@@ -71,10 +71,10 @@ squares.check.areAdjacent = function(candidate, turn){
     function isAdjacent( candidate, theDomNodes ){
         var isItAdjacent = false,
             // create copy of last dom node added to compare to (slice creates copy of an array)
-            $prevSquare = $( theDomNodes.slice(0).pop() );
+            $prevTile = $( theDomNodes.slice(0).pop() );
 
         function checkDirectNeighbor(set){
-            if ( (candidate.square.data(set) === (candidate.square.data(set) +1)) || (candidate.square.data(set) === (candidate.square.data(set) -1)) ) {
+            if ( (candidate.tile.data(set) === (candidate.tile.data(set) +1)) || (candidate.tile.data(set) === (candidate.tile.data(set) -1)) ) {
                 return true;
             } else {
                 return false;
@@ -92,16 +92,16 @@ squares.check.areAdjacent = function(candidate, turn){
 
 };
 
-squares.check.isAdjacent = function( $theSquare, theDomNodes, callback ){
+tiles.check.isAdjacent = function( $theTile, theDomNodes, callback ){
 
 }
 
 
-// stuff to run if adding as square is successful
-squares.add.success = function( candidate, turn ){
-	logger.status("squareAddSuccess starting");
+// stuff to run if adding as tile is successful
+tiles.add.success = function( candidate, turn ){
+	logger.status("tileAddSuccess starting");
     logger.debug(candidate);
-    candidate.square.addClass('selected');
-    candidate.square.data('arrayIndex', turn.domNodes.length);
-    turn.domNodes.push( candidate.square );
+    candidate.tile.addClass('selected');
+    candidate.tile.data('arrayIndex', turn.domNodes.length);
+    turn.domNodes.push( candidate.tile );
 }
