@@ -8,6 +8,7 @@ var ui = {
 			moves		: "#log-moves",
 			originals	: "#log-originals",
 			duplicates	: "#log-duplicates",
-			combos		: "#log-combos"
+			combos		: "#log-combos",
+			solids		: "#log-solids"
 		}
 	}; // ui

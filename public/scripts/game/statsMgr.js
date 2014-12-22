@@ -14,6 +14,7 @@ statsMgr.updateOnCompleteMove = function( round ){
 		"originals",
 		"duplicates",
 		"combos",
+		"solids"
 	];
 
 	// if the combo has already been made this round
@@ -32,6 +33,7 @@ statsMgr.updateOnCompleteMove = function( round ){
 		round.stats.score += score.original;
 	}; // updateOnCompleteMove()
 
+	statsMgr.check.isSolid( ANIMIX.currParts );
 
 	// combo multipliers
 
@@ -55,7 +57,6 @@ statsMgr.updateOnCompleteMove = function( round ){
 
 statsMgr.check.isDuplicate = function( newAnimal, animalsCreated ){
 	var isDup = false;
-
 	// FIXME underscore
 	for (i = 0; i < animalsCreated.length; i++){
 		// if animal objs are the same -- hacky way to compare objects, might need to fix?
@@ -72,6 +73,10 @@ statsMgr.check.longestCombo = function(){
 }; // statsMgr.check.longestCombo()
 
 // WIP
-statsMgr.check.isSolid = function(){
-
+statsMgr.check.isSolid = function( newAnimal ){
+	if( newAnimal.a == newAnimal.b && newAnimal.b == newAnimal.c ){
+		round.stats.solids += 1;
+	} else {
+		// not solid
+	}
 }; // statsMgr.check.isSolid()
