@@ -7,13 +7,13 @@ function Round(){
 	// FIXME separate into new constructor
 	//self.stats = new Stats();
 	self.stats = {
-		dumbScore: 0,
-		score: 0,
-		moves:0,
-		duplicates: 0,
-		originals: 0,
-		combos: 0,
-		longestCombo: 0
+		score			: 0,
+		moves			: 0,
+		duplicates		: 0,
+		originals		: 0,
+		combos			: 0,
+		longestCombo	: 0,
+		solids			: 0
 	}; // Round.stats
 
 	self.init = function(){
@@ -43,7 +43,7 @@ function Round(){
 			if( ANIMIX.activeMove === true ){
 				move.ended();
 			} else {
-				logger.status("no move currently active");
+				//logger.status("no move currently active");
 			}
 		});
 	}; // Round.init();

@@ -7,22 +7,36 @@ block content
 		#scoreboard.outlined
 			#status.outlined
 				.row
-					.col-xs-6
+					.col-xs-4
 						p 
 							strong Score: 
-							span#score-log
+							span#log-score
 						p 
 							strong Moves: 
-							span#moves-log
+							span#log-moves
 
-					.col-xs-6
+					.col-xs-4
+						p 
+							strong Originals: 
+							span#log-originals
+						p 
+							strong Duplicates: 
+							span#log-duplicates
+						p 
+							strong Combos: 
+							span#log-combos
+
+					.col-xs-4
 						p 
 							strong Player: 
 							span#player-name
+
 		#grid.outlined
 			each rowIndex in [1,2,3,4,5]
 				.grid-row
 					each colIndex in [1,2,3,4,5]
 						.tile(data-row=rowIndex,data-column=colIndex)
+
 		#debug-scoreboard.outlined
-			#debug-status.outlined
+			strong Animals created: 
+			span#debug-status.outlined

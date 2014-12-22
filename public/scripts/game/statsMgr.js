@@ -7,17 +7,20 @@ statsMgr.updateOnCompleteMove = function( round ){
 	var score = {
 		base: 1,
 		original: 3
-	};
-	//logger.debug(round.animalsCreated);
-
-	//logger.output("isDuplicate", isDuplicate(ANIMIX.currParts, round.animalsCreated));
-	//logger.debug("isDuplicate?");
-	//logger.debug(isDuplicate(ANIMIX.currParts, round.animalsCreated));
+	},
+	statsToInsert = [
+		"score",
+		"moves",
+		"originals",
+		"duplicates",
+		"combos",
+	];
 
 	// if the combo has already been made this round
 	if ( statsMgr.check.isDuplicate( ANIMIX.currParts, round.animalsCreated ) ){
 		//logger.status("this combo is a duplicate");
 		round.stats.duplicates += 1;
+		round.stats.combos = 0;
 		round.stats.score += score.base;
 		// add: reset combo counter
 
@@ -25,34 +28,50 @@ statsMgr.updateOnCompleteMove = function( round ){
 	} else {
 		//logger.status("this combo is original");
 		round.stats.originals += 1;
+		round.stats.combos += 1;
 		round.stats.score += score.original;
-		// add: add to combo counter
 	}; // updateOnCompleteMove()
 
-	//combo multipliers
 
-	// add new stat
+	// combo multipliers
+
+	// add new animal to party
 	round.animalsCreated.push( ANIMIX.currParts );
 
-	//temp stats for debugging
-	round.stats.dumbScore += 1;
 	round.stats.moves += 1;
-	$("#debug-status").text(JSON.stringify(round))
-	logger.status("updateStats() completed!");
-};
 
-// not working right now because it doesn't have proper object comparison
+	// update stats on scoreboard
+	function addToDom(stat){
+		$( ui.log[stat] ).text( round.stats[stat] );
+	};
+	_.each( statsToInsert, addToDom);
+
+	// TEMP
+	$("#debug-status").text( JSON.stringify(round.animalsCreated) );
+	//logger.status("updateStats() completed!");
+
+}; // statsMgr.updateOnCompleteMove()
+
+
 statsMgr.check.isDuplicate = function( newAnimal, animalsCreated ){
 	var isDup = false;
-	for (i = 0; i < animalsCreated.length; i++){
-		//console.log("checking");
-		//console.log(animalsCreated[i]);
 
+	// FIXME underscore
+	for (i = 0; i < animalsCreated.length; i++){
 		// if animal objs are the same -- hacky way to compare objects, might need to fix?
 		if ( JSON.stringify(animalsCreated[i]) == JSON.stringify(newAnimal) ){
 			isDup = true;
 		};
 	};
-	// TEMP
 	return isDup;
 }; // check.isDuplicate()
+
+// WIP
+statsMgr.check.longestCombo = function(){
+
+}; // statsMgr.check.longestCombo()
+
+// WIP
+statsMgr.check.isSolid = function(){
+
+}; // statsMgr.check.isSolid()

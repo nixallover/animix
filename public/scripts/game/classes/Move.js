@@ -22,12 +22,8 @@ function Move(round){
 	    	// update stats
 	        statsMgr.updateOnCompleteMove( round, self );
 		    
-		    // drop new tiles from the top
+		    // drop tiles above. drop new tiles from the top
 			gridMgr.updateGrid( ANIMIX.currDomNodes );
-
-			// TEMP add to dom for debug
-			$( ui.score ).text( round.stats.score );
-			$( ui.moves ).text( round.stats.moves );
 
 		} else {
 			logger.status("Move not completed, not enough tiles");
