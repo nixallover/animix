@@ -4,7 +4,7 @@ var ANIMIX = {
 	activeMove: false,
 	currDomNodes: [],
 	currParts: {}
-};
+}; // ANIMIX
 
 $(function(){
 	//eventually this will deal with game states

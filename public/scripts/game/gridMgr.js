@@ -1,10 +1,10 @@
 var numberOfAnimals = 4;
 var gridMgr = {};
+	gridMgr.getRandom = {};
 
-gridMgr.getRandom = {};
 gridMgr.getRandom.animal = function() {
 	return (Math.floor(Math.random() * (numberOfAnimals)) + 1).toString();
-}; // getRandomAnimal()
+}; // gridMgr.getRandom.animal()
 
 gridMgr.getRandom.part = function() {
 	var part = "",
@@ -25,7 +25,7 @@ gridMgr.getRandom.part = function() {
 	};
 	//logger.debug("Part selected: " + part);
 	return part;
-}; // getRandomPart()
+}; // gridMgr.getRandom.part()
 
 gridMgr.generatePart = function( gridPos ){
 	var animal = "1",
@@ -42,7 +42,7 @@ gridMgr.generatePart = function( gridPos ){
 		'.png" data-animal="'+ animal +
 		'" data-part="'+ part +
 		'" />');
-}; // generatePart
+}; // gridMgr.generatePart()
 
 gridMgr.updateGrid = function( gridTile ){
 	$.each( gridTile, function( key, value ){
@@ -63,7 +63,8 @@ gridMgr.updateGrid = function( gridTile ){
         }; // if
         gridMgr.dropNewTile( tile );
 	}); // each part
-};
+}; // gridMgr.updateGrid()
+
 
 gridMgr.dropTilesAbove = function( tileObj ){
     var prevRows = tileObj.rowNum - 1;
@@ -75,18 +76,17 @@ gridMgr.dropTilesAbove = function( tileObj ){
 
         $( targetTile ).append( fallingPart );
     } // for
-}; // dropTilesAbove
+}; // gridMgr.dropTilesAbove()
 
 gridMgr.dropNewTile = function( tileObj ){
-    var $newTile = $( ".tile[data-row='1'][data-column='" + tileObj.colNum + "']" );
-    gridMgr.generatePart( $newTile );
-    //BUG: tileSelector not available here so event handler is not attached
-    //$newTile.on('mouseenter', tileSelector );
-};
+    var newTile = ".tile[data-row='1'][data-column='" + tileObj.colNum + "']";
+    gridMgr.generatePart( newTile );
+}; // gridMgr.dropNewTile()
+
 
 gridMgr.resetAfterMove = function(){
     //console.log("tileMgr.reset");
     $( ui.tile ).removeClass('selected');
     ANIMIX.currDomNodes = [];
     ANIMIX.currParts = {};
-};
+}; // gridMgr.resetAfterMove()

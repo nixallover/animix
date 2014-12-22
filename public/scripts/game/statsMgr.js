@@ -27,7 +27,7 @@ statsMgr.updateOnCompleteMove = function( round, move ){
 		round.stats.originals += 1;
 		round.stats.score += score.original;
 		// add: add to combo counter
-	};
+	}; // updateOnCompleteMove()
 
 	//combo multipliers
 
@@ -53,4 +53,4 @@ statsMgr.check.isDuplicate = function( newAnimal, animalsCreated ){
 	};
 	// TEMP
 	return isDup;
-};
+}; // check.isDuplicate()

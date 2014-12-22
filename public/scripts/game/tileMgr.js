@@ -10,8 +10,8 @@ tileMgr.validate = function(event){
             self.backtracking( candidate );
         } else {
             //don't select anything, not dragging
-        };
-    };
+        }
+    }; // tileMgr.validate
 
     self.backtracking = function( candidate ){
         //console.log(candidate);
@@ -20,8 +20,8 @@ tileMgr.validate = function(event){
             self.firstTile();
         } else {
             self.lessThanMax( candidate );
-        };
-    };
+        }
+    }; // tileMgr.validate
 
     self.firstTile = function(){
         //console.log("firstTile");
@@ -30,8 +30,8 @@ tileMgr.validate = function(event){
             ANIMIX.currParts.pop();
         } else {
             // don't remove the first tile
-        };
-    };
+        }
+    }; // tileMgr.validate
 
     self.lessThanMax = function( candidate ){
         //console.log("lessThanMax");
@@ -39,8 +39,8 @@ tileMgr.validate = function(event){
             self.partNotYetSelected( candidate );
         } else {
             // don't select any more
-        };
-    };
+        }
+    }; // tileMgr.validate
 
     self.partNotYetSelected = function( candidate ){
         if( !ANIMIX.currParts[candidate.children("img").attr("data-part")] ){
@@ -50,7 +50,7 @@ tileMgr.validate = function(event){
             // part already selected, don't select another
             logger.status("Not adding tile.. this part was already selected for this move");
         }
-    }
+    }; // tileMgr.validate.partNotYetSelected()
 
     self.adjacency = function( candidate ){
         //console.log("adjacency");
@@ -81,7 +81,7 @@ tileMgr.validate = function(event){
         } else {
             //don't add!
         }
-    };
+    }; // tileMgr.validate.adjacency()
 
     // successfully add tile
     self.done = {
@@ -93,18 +93,10 @@ tileMgr.validate = function(event){
 
             //add to DOM stack
             ANIMIX.currDomNodes.push( candidate );
-            //console.log(ANIMIX.currDomNodes);
 
-        }
-    };
+        } // tileMgr.validate.done.success()
+    }; // tileMgr.validate.done
 
     // init
     self.isActiveMove( $(this) );
-};
-
-// tileMgr.reset = function(){
-//     //console.log("tileMgr.reset");
-//     $( ui.tile ).removeClass('selected');
-//     ANIMIX.currDomNodes = [];
-//     ANIMIX.currParts = {};
-// };
+}; // tileMgr.validate()

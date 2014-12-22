@@ -21,4 +21,4 @@ var ui = {
 		status	: "#status",
 		score	: "#score",
 		moves	: "#moves"
-	};
+	}; // ui

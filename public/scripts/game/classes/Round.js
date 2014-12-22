@@ -1,12 +1,10 @@
-// round class
-
-// SUGGESTION FROM JUDE: separate out all the vars that I need to exchange between round and move etc, and put them in a globally accessible game var
+// Round class
 
 function Round(){
 	var self = this;
 	self.animalsCreated = [];
 
-	// separate into new constructor
+	// FIXME separate into new constructor
 	//self.stats = new Stats();
 	self.stats = {
 		dumbScore: 0,
@@ -16,9 +14,7 @@ function Round(){
 		originals: 0,
 		combos: 0,
 		longestCombo: 0
-	};
-	self.activeMove = false;
-
+	}; // Round.stats
 
 	self.init = function(){
 		var move = {};
@@ -50,5 +46,5 @@ function Round(){
 				logger.status("no move currently active");
 			}
 		});
-	}; // end init
-}; // end round
+	}; // Round.init();
+}; // Round()

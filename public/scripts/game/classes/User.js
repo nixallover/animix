@@ -1,13 +1,13 @@
 function User(){
 
-	this.name	= "Smarty Pants";
+	this.name = "Smarty Pants";
 
 	this.settings = {
 		
-	}; // end user settings
+	}; // User.settings
 
 	this.stats 	= {
 		longestCombo: 0
-	}; //end user stats
+	}; // User.stats()
 
-}; //end user
+}; // User()

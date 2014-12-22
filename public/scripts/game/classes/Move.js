@@ -1,4 +1,4 @@
-// round class
+// Move class
 
 function Move(round){
 	var self = this;
@@ -10,7 +10,7 @@ function Move(round){
 	    ANIMIX.activeMove = true;
 	    $( ui.grid ).on( "mousedown", ".tile", { round: round }, tileMgr.validate );  
 
-	}; //end started
+	}; // Move.started()
 
 	self.ended = function(){
 		ANIMIX.activeMove = false;
@@ -35,5 +35,5 @@ function Move(round){
 
 	    gridMgr.resetAfterMove();
 
-	}; // end ended
-}; // end move
+	}; // Move.ended()
+}; // Move()
