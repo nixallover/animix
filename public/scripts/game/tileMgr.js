@@ -7,8 +7,10 @@ tileMgr.validate = function(event){
         //console.log("isActiveMove");
         //console.log(candidate);
         if( ANIMIX.activeMove ){
+            console.log("isActiveMove");
             self.backtracking( candidate );
         } else {
+            console.log("not active move");
             //don't select anything, not dragging
         }
     }; // tileMgr.validate

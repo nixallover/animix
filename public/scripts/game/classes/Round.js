@@ -27,7 +27,10 @@ function Round(){
 		});
 
 		// FIXME not picking up first mousedown .. this doesn't work
+		//$( ui.grid ).on( "mousedown", ui.tile, { round: self }, tileMgr.validate.done.success);
 		$( ui.grid ).on( "mouseenter", ui.tile, { round: self }, tileMgr.validate);
+
+		//console.log(tileMgr.validate.done);
 
 		// start move when user clicks any tile
 		$( ui.grid ).on("mousedown", ui.tile, function(){
