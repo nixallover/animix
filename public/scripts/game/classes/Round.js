@@ -35,6 +35,9 @@ function Round(){
 		    move.started();
 		});
 
+		// attach pause button handler
+		menuMgr.pauseGame();
+
 		// end move when player stops dragging anywhere on screen
 		$( window ).on("mouseup", function(){
 			if( ANIMIX.activeMove === true ){

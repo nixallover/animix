@@ -21,6 +21,8 @@ function Move(round){
 
 	    	// update stats
 	        statsMgr.updateOnCompleteMove( round, self );
+
+	        floorMgr.addPartyAnimal( round );
 		    
 		    // drop tiles above. drop new tiles from the top
 			gridMgr.updateGrid( ANIMIX.currDomNodes );

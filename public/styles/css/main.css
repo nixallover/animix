@@ -1,5 +1,5 @@
 body {
-  background-color: #4BA658;
+  background-color: #328c5d;
   color: #fff; }
   body * {
     -webkit-touch-callout: none;
@@ -16,29 +16,63 @@ h1 {
   text-transform: uppercase;
   text-align: center; }
 
+#round-pause {
+  position: absolute;
+  right: 10px;
+  top: 10px; }
+
 #game-container {
   background-color: #328c5d;
   display: table;
-  margin: 10px auto;
+  margin: 0px auto;
   max-width: 700px;
-  padding: 10px;
   position: relative;
   width: 100%; }
 
-#scoreboard,
-#debug-scoreboard {
-  background-color: #1d6e5e;
+#floor {
+  background-color: #4BA658;
   box-sizing: border-box;
   display: block;
   padding: 15px;
-  min-height: 40px;
-  margin: 5px; }
+  height: 200px;
+  overflow: hidden; }
+  #floor .partier {
+    background-color: #5ec66d;
+    border: dotted 1px #1d6e5e;
+    display: inline-block;
+    height: 150px;
+    margin-top: 30px;
+    margin-right: 3px;
+    padding-top: 25px;
+    width: 70px;
+    vertical-align: bottom; }
+    #floor .partier .partier-head,
+    #floor .partier .partier-torso,
+    #floor .partier .partier-butt {
+      max-width: 100%;
+      margin-top: -23px;
+      position: relative; }
+    #floor .partier .partier-head {
+      z-index: 5; }
+    #floor .partier .partier-torso {
+      z-index: 4; }
+    #floor .partier .partier-butt {
+      z-index: 3; }
+
+#scoreboard {
+  background-color: #1d6e5e;
+  border-top: solid 4px #5ec66d;
+  box-sizing: border-box;
+  display: block;
+  padding: 15px;
+  min-height: 40px; }
 
 #debug-status {
   max-width: 600px;
   overflow: hidden; }
 
 #grid {
+  padding: 10px;
   display: table;
   width: 100%; }
   #grid .grid-row {
@@ -46,7 +80,6 @@ h1 {
     width: 100%; }
 
 .tile {
-  border: dotted 1px #1d6e5e;
   box-sizing: border-box;
   display: inline-block;
   height: 20%;

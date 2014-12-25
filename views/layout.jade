@@ -9,8 +9,8 @@ html(lang='en')
       link(rel='stylesheet', href='/styles/css/main.css')
       link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Chewy')
   body
-    .container
-      block content
+    //- .container
+    block content
 
     block js
       //- libs
@@ -29,7 +29,10 @@ html(lang='en')
 
       //- other
       script(src='/scripts/game/ui.js')
+      script(src='/scripts/game/variables.js')
       script(src='/scripts/game/statsMgr.js')
+      script(src='/scripts/game/menuMgr.js')
+      script(src='/scripts/game/floorMgr.js')
       script(src='/scripts/game/gridMgr.js')
       script(src='/scripts/game/tileMgr.js')
 

@@ -5,8 +5,8 @@ var statsMgr = {};
 
 statsMgr.updateOnCompleteMove = function( round ){
 	var score = {
-		base: 1,
-		original: 3
+		base		: 1,
+		original 	: 3
 	},
 	statsToInsert = [
 		"score",
@@ -48,8 +48,6 @@ statsMgr.updateOnCompleteMove = function( round ){
 	};
 	_.each( statsToInsert, addToDom);
 
-	// TEMP
-	$("#debug-status").text( JSON.stringify(round.animalsCreated) );
 	//logger.status("updateStats() completed!");
 
 }; // statsMgr.updateOnCompleteMove()

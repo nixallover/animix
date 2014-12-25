@@ -1,9 +1,14 @@
 extends layout
 
 block content
-	h1= title
+	//- h1= title
 
 	#game-container.outlined
+		button#round-pause.btn.btn-info(type='button') Pause
+		#floor
+			#clone-source.partier.hide
+
+
 		#scoreboard.outlined
 			#status.outlined
 				.row
@@ -37,7 +42,3 @@ block content
 				.grid-row
 					each colIndex in [1,2,3,4,5]
 						.tile(data-row=rowIndex,data-column=colIndex)
-
-		#debug-scoreboard.outlined
-			strong Animals created: 
-			span#debug-status.outlined

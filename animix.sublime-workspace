@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"mouse",
+				"mouseenter"
+			],
+			[
+				"active",
+				"activeTurn"
+			],
+			[
+				"ac",
+				"activeTurn"
+			],
+			[
+				"va",
+				"validate"
+			],
+			[
 				"direct",
 				"directNeighbor"
 			],
@@ -76,18 +92,66 @@
 	"buffers":
 	[
 		{
-			"file": "public/scripts/game/grid.js",
+			"file": "public/scripts/game/classes/Round.js",
 			"settings":
 			{
-				"buffer_size": 2419,
+				"buffer_size": 1107,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "Gruntfile.js",
+			"file": "public/scripts/game/statsMgr.js",
 			"settings":
 			{
-				"buffer_size": 2014,
+				"buffer_size": 1926,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/scripts/game/ui.js",
+			"settings":
+			{
+				"buffer_size": 286,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/scripts/game/gridMgr.js",
+			"settings":
+			{
+				"buffer_size": 2513,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/scripts/game/classes/Move.js",
+			"settings":
+			{
+				"buffer_size": 777,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/scripts/game/init.js",
+			"settings":
+			{
+				"buffer_size": 209,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/scripts/game/roundInit.js",
+			"settings":
+			{
+				"buffer_size": 265,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "views/index.jade",
+			"settings":
+			{
+				"buffer_size": 745,
 				"line_ending": "Windows"
 			}
 		},
@@ -95,45 +159,8 @@
 			"file": "public/styles/sass/main.scss",
 			"settings":
 			{
-				"buffer_size": 1526,
+				"buffer_size": 1565,
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "/*square.validate\n\n\n	validate.activeTurn: if active turn\n\n	validate.backtracking: if backtracking (square selected)\n\n\n	validate.adjacency\n		var isAdjacent, lastActive, new\n\n		if new is same row as lastActive\n			if new == lastActive col +/-1\n				true\n\n		if new is same col as lastActive\n			if new == lastActive row +/-1\n				true\n\n	validate.success\n		update ui\n		add to array\n\n*/\n\nvar square = square || {};\nvar activeTurn = false,\n	selectedDomNodes = [];\n\n//FIX ME\nsquare.current = $(\".grid-square\");\nsquare.validate = {\n	activeTurn: function(){\n\n		// if active\n			// this.lessThanMax();\n		// else\n			// \n\n	},\n	lessThanMax: function(){\n		//logger.status(\"lessThanMax\");\n		if ( selectedDomNodes.length < 3 ){\n			this.backtracking();\n		} else {\n			// don't select any more\n		};\n		// if active nodes < 3\n			// this.backtracking();\n		// else\n			// don't select anymore\n\n	},\n	backtracking: function(){\n		//logger.status(\"backtracking\");\n		if ( $theSquare.hasClass('selected') ){\n			this.firstSquare();\n		} else {\n			this.adjacency();\n		};\n		// if square already selected\n			// this.firstSquare();\n		// else\n			// this.adjacency();\n\n	},\n	firstSquare: function(){\n		//logger.status(\"firstSquare\");\n		if ( selectedDomNodes.length > 1 ){\n			selectedDomNodes.pop().removeClass('selected');\n        } else {\n            // don't remove anything\n        };\n        \n	},\n	adjacency: function( candidate, selectedDomNodes ){\n		var isAdjacent,\n			lastActive = $( selectedDomNodes.slice(0).pop() ),\n			new;\n\n		function directNeighbor(side1, side2){\n			if ( lastActive.data(side1) == new.data(side1) ){\n				if ( lastActive.data(side2) == (new.data(side2) + 1) || lastActive.data(side2) == (new.data(side2) - 1)  )\n				isAdjacent = true;\n			} else {\n				// not directly adjacent\n			};\n			return isAdjacent;\n		}\n\n		if (directNeighbor(\"row\", \"column\") || directNeighbor(\"column\", \"row\")){\n			this.success();\n		};\n\n		// if new is same row as lastActive\n			// if new == lastActive col +/-1\n				// true\n\n\n		if (  ){\n\n		} else {\n\n		};\n		// if new is same col as lastActive\n			// if new == lastActive row +/-1\n				// true\n\n		// if isAdjacent\n			// this.success();\n	},\n	results: {\n		success: function(){\n			// update ui\n			// add to array\n		}\n	}\n};\n\nsquare.current.validate();",
-			"file": "public/scripts/refactored-drag.js",
-			"file_size": 2198,
-			"file_write_time": 130630435569399345,
-			"settings":
-			{
-				"buffer_size": 2249,
-				"line_ending": "Windows",
-				"name": "/*square.validate"
-			}
-		},
-		{
-			"file": "test/path.html",
-			"settings":
-			{
-				"buffer_size": 8054,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "if ( lastActive.data(side1) == new.data(side1) ){\n				if ( lastActive.data(side2) == (new.data(side2) + 1) || lastActive.data(side2) == (new.data(side2) - 1)  )\n				isAdjacent = true;\n			} else {\n				// not directly adjacent\n			};",
-			"settings":
-			{
-				"buffer_size": 230,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "$(function(){\n    var $square = $(\".grid-square\"),\n        activeTurn = false,\n        selectedDomNodes = [];\n    \n    // makes sure 1st square gets selected\n    $square.on('mousedown', squareSelector );\n    \n    // start turn when user starts dragging\n    $(window).on('mousedown', function(){\n        //console.log(\"turn started!\");\n        activeTurn = true;\n        turnManager();\n        \n        // end turn when user stops dragging\n    }).on('mouseup', function(){\n        //console.log(\"turn ended!\");\n        activeTurn = false;\n        turnManager();\n        \n        //reset everything\n        $square.removeClass('selected');\n        //console.log(selectedDomNodes);\n        selectedDomNodes = [];\n    });\n    \n    function turnManager(){\n        if (activeTurn){\n            // add event handler to all squares\n            $square.on('mouseenter', squareSelector );\n            \n        } else {\n            // remove event handler to all squares\n            $square.off('mouseenter', squareSelector );\n            \n        }\n    }\n    \n    function squareSelector(){\n        var $theSquare = $(this),\n            squareAlreadySelected = $theSquare.hasClass('selected');\n        \n        //run checks, and if everything checks out\n        if ( squareAlreadySelected ){\n            //pop the last one off the stack and un-select it\n            //if there's more than 1 thing in the stack\n            if ( selectedDomNodes.length > 1 ){\n                selectedDomNodes.pop().removeClass('selected');\n            } else {\n                // don't remove anything\n            };\n            \n        } else {\n            if (selectedDomNodes.length < 3){\n                checkSquaresAreAdjacent($theSquare, selectedDomNodes);\n                \n            } else {\n                // max squares selected, don't select any more\n            };\n        };\n        \n        //console.log(selectedDomNodes);\n        //console.log(selectedDomNodes.length);\n    };\n    \n    function checkSquaresAreAdjacent($square, selectedDomNodes){\n        \n        if ( selectedDomNodes.length < 1 ){\n            console.log('first square');\n            squareAddSuccess($square, selectedDomNodes);\n            \n        } else if( isAdjacent($square, selectedDomNodes) ){\n            //console.log('Success: SAME ROW OR COLUMN!');\n            squareAddSuccess($square, selectedDomNodes);\n            \n        } else {\n            console.log('Error: diff row and col');\n        }\n        \n        function isAdjacent( $square, selectedDomNodes ){\n            var isItAdjacent = false,\n                // create copy of last dom node added to compare to (slice creates copy of an array)\n                $prevSquare = $( selectedDomNodes.slice(0).pop() );\n            \n            function checkDirectNeighbor(set){\n                if ( ($prevSquare.data(set) === ($square.data(set) +1)) || ($prevSquare.data(set) === ($square.data(set) -1)) ) {\n                    return true;\n                } else {\n                    return false;\n                }\n            }\n            \n            if (checkDirectNeighbor('row') && !checkDirectNeighbor('column') || !checkDirectNeighbor('row') && checkDirectNeighbor('column')){\n                isItAdjacent = true;\n            } else {\n                // if both column and rows are +1 or -1 (makes a diagonal), or it's more than +/-1\n                // leave it false\n            }\n            return isItAdjacent;\n        }\n        \n    }\n    \n    // functions to run if adding as square is successful\n    function squareAddSuccess($square, selectedDomNodes){\n        $square.addClass('selected');\n        $square.data('arrayIndex', selectedDomNodes.length);\n        selectedDomNodes.push( $square );\n    }\n    \n});",
-			"settings":
-			{
-				"buffer_size": 3753,
-				"line_ending": "Windows",
-				"name": "$(function(){"
 			}
 		}
 	],
@@ -181,7 +208,27 @@
 	},
 	"file_history":
 	[
+		"/C/dev/animix/public/scripts/game/tileMgr.js",
+		"/C/dev/animix/public/scripts/game/classes/User.js",
+		"/C/dev/animix/views/layout.jade",
+		"/C/dev/animix/public/scripts/game/classes/Move.js",
+		"/C/dev/animix/public/styles/sass/main.scss",
+		"/C/dev/animix/public/scripts/game/gridMgr.js",
+		"/C/dev/animix/public/scripts/game/classes/Turn.js",
+		"/C/dev/animix/public/scripts/game/squares-old.js",
+		"/C/dev/animix/public/scripts/game/roundInit.js",
+		"/C/dev/animix/views/index.jade",
+		"/C/dev/animix/public/scripts/game/stats.js",
+		"/C/dev/animix/public/scripts/gamMgr.js",
+		"/C/dev/animix/public/scripts/game/grid.js",
+		"/C/dev/animix/public/scripts/game/squares.js",
+		"/C/dev/animix/Gruntfile.js",
+		"/C/dev/animix/public/scripts/refactored-drag.js",
 		"/C/dev/animix/public/styles/css/main.css",
+		"/C/dev/animix/test/path.html",
+		"/C/dev/animix/public/scripts/game/squares-new.js",
+		"/C/dev/animix/public/scripts/refactored-drag3.js",
+		"/E/game-projects/animix/app/views/layout.jade",
 		"/E/game-projects/animix/animix.sublime-project",
 		"/C/dev/animix/bower.json",
 		"/F/game-projects/animix/app/public/scripts/game/util.js",
@@ -288,19 +335,7 @@
 		"/C/Users/Nicole/pumpkin/helloworld.js",
 		"/C/Users/Nicole/Dropbox/object-oriented-js.js",
 		"/C/dev/node/server.js",
-		"/C/Users/Nicole/Desktop/index.html",
-		"/C/Users/Nicole/Desktop/object-oriented-js.js",
-		"/F/websites_temp/tunnel-vision/environments.htm",
-		"/C/Users/Nicole/Desktop/req.css",
-		"/C/Users/Nicole/Desktop/ajax/script.js",
-		"/F/websites_temp/tunnel-vision/characters.htm",
-		"/F/websites_temp/tunnel-vision/about.htm",
-		"/C/Users/Nicole/Desktop/ajax/data.txt",
-		"/C/Users/Nicole/Desktop/ajax/index.htm",
-		"/C/Users/Nicole/Desktop/Ex_Files_JScript_AJAX/Exercise Files/01-03/finished/ajax/script.js",
-		"/F/websites_temp/tunnel-vision/index.htm",
-		"/F/websites_temp/tunnel-vision/css/req.css",
-		"/C/Users/Nicole/Desktop/nix.css"
+		"/C/Users/Nicole/Desktop/index.html"
 	],
 	"find":
 	{
@@ -308,18 +343,64 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 104.0,
 		"where_history":
 		[
+			"C:\\dev\\animix\\public\\scripts\\game",
 			"F:\\game-projects\\animix\\app\\public\\scripts\\game",
 			"F:\\game-projects\\animix\\app"
 		]
 	},
 	"find_state":
 	{
-		"case_sensitive": false,
+		"case_sensitive": true,
 		"find_history":
 		[
+			"dumb",
+			"move",
+			"move.values",
+			"User",
+			"Turn",
+			"turn",
+			"Turn",
+			"turn",
+			"updateOnCompleteTurn",
+			"reset",
+			"turnMgr.reset",
+			"dropNewPart",
+			"dropPartsAbove",
+			"ui.grid.part",
+			"ui.grid.container",
+			"ui.grid.tile",
+			"grid.",
+			"checking",
+			"$ui",
+			"tile",
+			"grid.container",
+			"$ui.grid.container",
+			"$ui.turns",
+			"Square",
+			"square",
+			"$ui.score",
+			".grid-square",
+			"square",
+			"stats",
+			"square",
+			"stats.",
+			"ANIMIX.values",
+			"values",
+			"theDomNodes",
+			"round.activeTurn ",
+			"event.data.",
+			"domNodes",
+			"turn.domNodes",
+			"currTurn",
+			"actives",
+			"results",
+			"candidate, actives",
+			"new",
+			"selectedDomNodes",
+			"logger.status",
 			"\"column\"",
 			"\"row\"",
 			"last",
@@ -374,9 +455,20 @@
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": true,
+		"regex": false,
 		"replace_history":
 		[
+			"ui.part",
+			"ui.grid",
+			"ui.tile",
+			"$( ui.grid.container )",
+			"$( ui.turns )",
+			"Tile",
+			"tile",
+			"$(ui.score)",
+			".tile",
+			"ANIMIX.currParts",
+			"ANIMIX.activeTurn"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -387,28 +479,29 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "public/scripts/game/grid.js",
+					"file": "public/scripts/game/classes/Round.js",
 					"settings":
 					{
-						"buffer_size": 2419,
+						"buffer_size": 1107,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								601,
-								601
+								247,
+								247
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -418,127 +511,45 @@
 				},
 				{
 					"buffer": 1,
-					"file": "Gruntfile.js",
+					"file": "public/scripts/game/statsMgr.js",
 					"settings":
 					{
-						"buffer_size": 2014,
+						"buffer_size": 1926,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								526,
-								526
+								1158,
+								1158
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 171.0,
+						"translation.y": 152.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "public/styles/sass/main.scss",
+					"file": "public/scripts/game/ui.js",
 					"settings":
 					{
-						"buffer_size": 1526,
+						"buffer_size": 286,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1254,
-								1254
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 873.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "public/scripts/refactored-drag.js",
-					"settings":
-					{
-						"buffer_size": 2249,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1489,
-								1489
-							]
-						],
-						"settings":
-						{
-							"auto_name": "/*square.validate",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 321.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "test/path.html",
-					"settings":
-					{
-						"buffer_size": 8054,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								102,
-								64
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"settings":
-					{
-						"buffer_size": 230,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								230,
-								0
+								286,
+								286
 							]
 						],
 						"settings":
@@ -550,37 +561,163 @@
 						"zoom_level": 1.0
 					},
 					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
+				},
 				{
-					"buffer": 6,
+					"buffer": 3,
+					"file": "public/scripts/game/gridMgr.js",
 					"settings":
 					{
-						"buffer_size": 3753,
+						"buffer_size": 2513,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2459,
-								2459
+								2482,
+								2482
 							]
 						],
 						"settings":
 						{
-							"auto_name": "$(function(){",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1032.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "public/scripts/game/classes/Move.js",
+					"settings":
+					{
+						"buffer_size": 777,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								474,
+								474
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "public/scripts/game/init.js",
+					"settings":
+					{
+						"buffer_size": 209,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								110,
+								110
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "public/scripts/game/roundInit.js",
+					"settings":
+					{
+						"buffer_size": 265,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								265,
+								265
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "views/index.jade",
+					"settings":
+					{
+						"buffer_size": 745,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								311,
+								311
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "public/styles/sass/main.scss",
+					"settings":
+					{
+						"buffer_size": 1565,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								781,
+								781
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 253.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -605,18 +742,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.483800771628,
 			1.0
 		],
 		"rows":
