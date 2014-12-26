@@ -2,15 +2,14 @@ var tileMgr = {};
 
 tileMgr.validate = function(event){
     var self = {};
+    var candidate = $(this);
 
     self.isActiveMove = function( candidate ){
         //console.log("isActiveMove");
-        //console.log(candidate);
         if( ANIMIX.activeMove ){
-            console.log("isActiveMove");
             self.backtracking( candidate );
         } else {
-            console.log("not active move");
+            //console.log("not active move");
             //don't select anything, not dragging
         }
     }; // tileMgr.validate
@@ -106,5 +105,19 @@ tileMgr.validate = function(event){
     }; // tileMgr.validate.done
 
     // init
-    self.isActiveMove( $(this) );
+    self.isActiveMove( candidate );
 }; // tileMgr.validate()
+
+//same as above only not private
+tileMgr.success = function( event ){
+    var candidate = $(this);
+    
+    candidate.addClass('selected');
+
+    //assign animal to parts object
+    ANIMIX.currParts[candidate.children("img").attr("data-part")] = candidate.children("img").attr("data-animal");
+
+    //add to DOM stack
+    ANIMIX.currDomNodes.push( candidate );
+
+}; // tileMgr.validate.done
