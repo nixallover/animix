@@ -55,13 +55,14 @@ statsMgr.updateOnCompleteMove = function( round ){
 
 statsMgr.check.isDuplicate = function( newAnimal, animalsCreated ){
 	var isDup = false;
-	// FIXME underscore
-	for (i = 0; i < animalsCreated.length; i++){
-		// if animal objs are the same -- hacky way to compare objects, might need to fix?
-		if ( JSON.stringify(animalsCreated[i]) == JSON.stringify(newAnimal) ){
+
+	_.each(animalsCreated, function(prevAnimal){
+		if( _.isEqual(prevAnimal, newAnimal) ){
 			isDup = true;
+		} else {
+			// not a duplicate
 		};
-	};
+	});
 	return isDup;
 }; // check.isDuplicate()
 

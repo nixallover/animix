@@ -1,10 +1,13 @@
 var ui = {
+		containers 	: {
+			game	: "#game-container",
+			animal 	: "#clone-source",
+		},
 		grid		: "#grid",
 		tile 		: ".tile",
 		part		: ".part",
 		status		: "#status",
 		floor 		: "#floor",
-		animalContainer: "#clone-source",
 		log	: {
 			score		: "#log-score",
 			moves		: "#log-moves",

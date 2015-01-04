@@ -55,7 +55,7 @@ tileMgr.validate = function(event){
 
         } else {
             // part already selected, don't select another
-            logger.status("Not adding tile.. this part was already selected for this move");
+            //logger.status("Not adding tile.. this part was already selected for this move");
         }
     }; // tileMgr.validate.partNotYetSelected()
 

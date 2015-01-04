@@ -1,0 +1,42 @@
+extends layout
+
+block content
+    #game-container.outlined
+        button#round-pause.btn.btn-info(type='button') Pause
+        #floor
+            #clone-source.partier.hide
+
+
+        #scoreboard.outlined
+            #status.outlined
+                .row
+                    .col-xs-4
+                        p 
+                            strong Score: 
+                            span#log-score
+                        p 
+                            strong Moves: 
+                            span#log-moves
+
+                    .col-xs-4
+                        p 
+                            strong Combos: 
+                            span#log-combos
+                        p 
+                            strong Solids: 
+                            span#log-solids
+
+                    .col-xs-4
+                        p 
+                            strong Originals: 
+                            span#log-originals
+                        p 
+                            strong Duplicates: 
+                            span#log-duplicates
+
+
+        #grid.outlined
+            each rowIndex in [1,2,3,4,5]
+                .grid-row
+                    each colIndex in [1,2,3,4,5]
+                        .tile(data-row=rowIndex,data-column=colIndex)

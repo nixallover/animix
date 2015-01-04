@@ -26,7 +26,6 @@ function Round(){
 			e.preventDefault();
 		});
 
-		// FIXME not picking up first mousedown .. this doesn't work
 		$( ui.grid ).on( "mousedown", ui.tile, { round: self }, tileMgr.success);
 		$( ui.grid ).on( "mouseenter", ui.tile, { round: self }, tileMgr.validate);
 
@@ -49,5 +48,7 @@ function Round(){
 				//logger.status("no move currently active");
 			}
 		});
+
+		window.setTimeout();
 	}; // Round.init();
 }; // Round()

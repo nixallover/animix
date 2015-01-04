@@ -1,0 +1,28 @@
+{
+	"pageTitle"    : "About",
+	"description"  : "Who made this game, anyway?",
+    "blurg"  : "AHHHH",
+    "resources"    : [
+        {
+            "name"          : "Node.js",
+            "url"           : "http://nodejs.org/",
+            "description"   : "A platform built on Chrome's JavaScript runtime"
+        },
+        {
+            "name"          : "Express",
+            "url"           : "http://expressjs.com/",
+            "description"   : "Fast, unopinionated, minimalist web framework"
+        },
+        {
+            "name"          : "Bootstrap",
+            "url"           : "http://getbootstrap.com/",
+            "description"   : "The most popular front-end framework"
+        }
+    ],
+    "shoutouts"    : [
+        {
+            "name"  : "Alex Ferbrache",
+            "url"   : ""
+        }
+    ]
+}

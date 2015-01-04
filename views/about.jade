@@ -1,0 +1,19 @@
+extends layout
+
+block content
+    h2 Resources
+    p This game could not have been developed without these awesome libs.
+
+    each resource in resources
+        p
+            strong
+                a(href=resource.url)= resource.name  
+            span  - #{resource.description}
+
+
+    h2 Developers
+    p Stuff about the developers
+
+
+    h2 Press Kit
+    p Download the press kit

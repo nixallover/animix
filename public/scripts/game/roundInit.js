@@ -2,10 +2,11 @@ function roundInit(){
 	round = new Round();
 
 	// generate initial grid
-	$.each( $( ui.tile ), function( key, value ){
-		gridMgr.generatePart( value );
-	});
-	// _.each( $( ui.tile ), gridMgr.generatePart( value ));
+	_.each( $( ui.tile ), gridMgr.generatePart);
+
+
+    //animation
+    $( ui.containers.game ).addClass( 'animated bounceInDown' );
 
 	// start round!
 	round.init();

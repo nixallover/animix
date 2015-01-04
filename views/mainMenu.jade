@@ -1,0 +1,8 @@
+extends layout
+
+block content
+    ul#main-menu
+        each item in menu
+            li
+                a(href=item.url,title=item.description)
+                    img(src=item.imageUrl)

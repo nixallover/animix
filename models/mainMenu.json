@@ -1,0 +1,29 @@
+{
+	"pageTitle"    : "Animix",
+    "menu"         : [
+        {
+            "title"         : "Play",
+            "description"   : "Play a round",
+            "url"           : "/play",
+            "imageUrl"      : "/img/main-menu-play.png"
+        },
+        {
+            "title"         : "Options",
+            "description"   : "Change your user settings",
+            "url"           : "/options",
+            "imageUrl"      : "/img/main-menu-options.png"
+        },
+        {
+            "title"         : "Collections",
+            "description"   : "View your collections",
+            "url"           : "/collections",
+            "imageUrl"      : "/img/main-menu-collections.png"
+        },
+        {
+            "title"         : "About",
+            "description"   : "About this game",
+            "url"           : "/about",
+            "imageUrl"      : "/img/main-menu-about.png"
+        }
+    ]
+}
