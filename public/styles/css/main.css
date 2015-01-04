@@ -1,5 +1,5 @@
 body {
-  background-color: #1c2b2f;
+  background-color: #1C2B2F;
   color: #fff; }
   body * {
     -webkit-touch-callout: none;
@@ -48,7 +48,7 @@ h1 {
   border-radius: 6px; }
 
 #floor {
-  background-color: #4ba658;
+  background-color: #4BA658;
   box-sizing: border-box;
   display: block;
   padding: 15px;
@@ -118,3 +118,5 @@ h1 {
     height: auto;
     max-width: 100%;
     opacity: 0.8; }
+
+/*# sourceMappingURL=main.css.map */

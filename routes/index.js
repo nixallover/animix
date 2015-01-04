@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mainMenu = require('../models/mainMenu');
+var play = require('../models/play');
 var collections = require('../models/collections');
 var options = require('../models/options');
 var about = require('../models/about');

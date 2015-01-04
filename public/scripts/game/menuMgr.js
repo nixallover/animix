@@ -5,10 +5,11 @@
 
 var menuMgr = {};
 
-menuMgr.pauseGame = function(){
+menuMgr.pauseGame = function( timer ){
 	//console.log("pausing!");
 	$( ui.buttons.roundPause ).on("click", function(){
-		console.log("pausing!");
+		//console.log("pausing!");
+		timer.pause();
 	});
 };
 

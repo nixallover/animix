@@ -17,8 +17,12 @@ function Round(){
 	}; // Round.stats
 
 	self.init = function(){
-		var move = {};
+		var move = {},
+			timer = {};
 		//logger.status("round.init!");
+
+		//animation
+    	$( ui.containers.game ).addClass( 'animated bounceInDown' );
 
 		// keep images from dragging
 		// FIXME doesn't work to reference $ui.part, not sure why
@@ -31,6 +35,10 @@ function Round(){
 
 		//console.log(tileMgr.validate.done);
 
+		// start timer
+		timer = new Timer( variables.roundTime );
+		timer.start();
+
 		// start move when user clicks any tile
 		$( ui.grid ).on("mousedown", ui.tile, function(){
 			move = new Move(self);
@@ -38,7 +46,7 @@ function Round(){
 		});
 
 		// attach pause button handler
-		menuMgr.pauseGame();
+		menuMgr.pauseGame( timer );
 
 		// end move when player stops dragging anywhere on screen
 		$( window ).on("mouseup", function(){

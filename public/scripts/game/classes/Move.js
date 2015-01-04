@@ -20,7 +20,7 @@ function Move(round){
 	    if ( ANIMIX.currDomNodes.length === 3 ){
 
 	    	// update stats
-	        statsMgr.updateOnCompleteMove( round, self );
+	        statsMgr.updateOnCompleteMove( round );
 
 	        floorMgr.addPartyAnimal( round );
 		    

@@ -74,7 +74,7 @@ statsMgr.check.longestCombo = function(){
 // WIP
 statsMgr.check.isSolid = function( newAnimal ){
 	if( newAnimal.a == newAnimal.b && newAnimal.b == newAnimal.c ){
-		round.stats.solids += 1;
+		//round.stats.solids += 1;
 	} else {
 		// not solid
 	}

@@ -7,8 +7,14 @@ var ANIMIX = {
 }; // ANIMIX
 
 $(function(){
-	//eventually this will deal with game states
+	var round = new Round();
+
 	logger.status("Starting game!");
-	roundInit();
+
+	// generate initial grid
+	_.each( $( ui.tile ), gridMgr.generatePart);
+
+	// start round!
+	round.init();
 
 });
