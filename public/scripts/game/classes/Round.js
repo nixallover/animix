@@ -16,10 +16,9 @@ function Round(){
 		solids			: 0
 	}; // Round.stats
 
-	self.init = function(){
-		var move = {},
-			timer = {};
-		//logger.status("round.init!");
+	self.start = function(){
+		var move 	= {},
+			timer 	= {};
 
 		//animation
     	$( ui.containers.game ).addClass( 'animated bounceInDown' );
@@ -37,7 +36,7 @@ function Round(){
 
 		// start timer
 		timer = new Timer( variables.roundTime );
-		timer.start();
+		timer.start( self );
 
 		// start move when user clicks any tile
 		$( ui.grid ).on("mousedown", ui.tile, function(){
@@ -57,6 +56,9 @@ function Round(){
 			}
 		});
 
-		window.setTimeout();
-	}; // Round.init();
+	}; // Round.start();
+
+	self.end = function(){
+		alert( "Round over bitches!!" );
+	}; // Round.end();
 }; // Round()

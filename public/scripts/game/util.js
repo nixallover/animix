@@ -14,3 +14,7 @@ logger.output = function(name, output){
 logger.alert = function(message){
 	alert("WARNING! " + message);
 };
+
+function seconds(num){
+	return num * 1000;
+};

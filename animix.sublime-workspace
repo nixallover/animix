@@ -100,74 +100,10 @@
 	"buffers":
 	[
 		{
-			"file": "public/scripts/game/classes/Round.js",
-			"settings":
-			{
-				"buffer_size": 1281,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "public/scripts/game/classes/Move.js",
-			"settings":
-			{
-				"buffer_size": 821,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "public/scripts/game/statsMgr.js",
-			"settings":
-			{
-				"buffer_size": 1855,
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "public/scripts/game/ui.js",
 			"settings":
 			{
-				"buffer_size": 398,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "public/scripts/game/tileMgr.js",
-			"settings":
-			{
-				"buffer_size": 3977,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "public/scripts/game/floorMgr.js",
-			"settings":
-			{
-				"buffer_size": 861,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "public/scripts/game/init.js",
-			"settings":
-			{
-				"buffer_size": 209,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "public/scripts/game/roundInit.js",
-			"settings":
-			{
-				"buffer_size": 265,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "views/index.jade",
-			"settings":
-			{
-				"buffer_size": 757,
+				"buffer_size": 444,
 				"line_ending": "Windows"
 			}
 		},
@@ -175,7 +111,31 @@
 			"file": "public/styles/sass/main.scss",
 			"settings":
 			{
-				"buffer_size": 2428,
+				"buffer_size": 3135,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/scripts/game/init.js",
+			"settings":
+			{
+				"buffer_size": 299,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/scripts/game/variables.js",
+			"settings":
+			{
+				"buffer_size": 215,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/scripts/game/classes/Round.js",
+			"settings":
+			{
+				"buffer_size": 1457,
 				"line_ending": "Windows"
 			}
 		},
@@ -183,7 +143,39 @@
 			"file": "views/layout.jade",
 			"settings":
 			{
-				"buffer_size": 1403,
+				"buffer_size": 1920,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/scripts/game/statsMgr.js",
+			"settings":
+			{
+				"buffer_size": 1755,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/scripts/game/menuMgr.js",
+			"settings":
+			{
+				"buffer_size": 341,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/scripts/game/classes/Timer.js",
+			"settings":
+			{
+				"buffer_size": 2463,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/scripts/game/util.js",
+			"settings":
+			{
+				"buffer_size": 386,
 				"line_ending": "Windows"
 			}
 		}
@@ -232,18 +224,24 @@
 	},
 	"file_history":
 	[
-		"/C/dev/animix/public/scripts/game/gridMgr.js",
 		"/C/dev/animix/public/scripts/game/variables.js",
-		"/C/dev/animix/public/scripts/game/danceMgr.js",
-		"/C/dev/animix/public/scripts/game/tileMgr.js",
-		"/C/dev/animix/public/scripts/game/classes/User.js",
-		"/C/dev/animix/views/layout.jade",
+		"/C/dev/animix/views/play.jade",
 		"/C/dev/animix/public/scripts/game/classes/Move.js",
+		"/C/dev/animix/public/scripts/game/roundInit.js",
+		"/C/dev/animix/public/scripts/game/classes/Round.js",
+		"/C/dev/animix/public/scripts/game/init.js",
+		"/C/dev/animix/views/layout.jade",
+		"/C/dev/animix/routes/index.js",
+		"/C/dev/animix/views/index.jade",
+		"/C/dev/animix/public/scripts/game/floorMgr.js",
+		"/C/dev/animix/public/scripts/game/tileMgr.js",
+		"/C/dev/animix/models/play.json",
+		"/C/dev/animix/public/scripts/game/gridMgr.js",
+		"/C/dev/animix/public/scripts/game/danceMgr.js",
+		"/C/dev/animix/public/scripts/game/classes/User.js",
 		"/C/dev/animix/public/styles/sass/main.scss",
 		"/C/dev/animix/public/scripts/game/classes/Turn.js",
 		"/C/dev/animix/public/scripts/game/squares-old.js",
-		"/C/dev/animix/public/scripts/game/roundInit.js",
-		"/C/dev/animix/views/index.jade",
 		"/C/dev/animix/public/scripts/game/stats.js",
 		"/C/dev/animix/public/scripts/gamMgr.js",
 		"/C/dev/animix/public/scripts/game/grid.js",
@@ -353,13 +351,7 @@
 		"/G/projects/web/websites/03-09 nix/index.html",
 		"/C/dev/watermelon/package.json",
 		"/C/dev/watermelon/app.js",
-		"/C/dev/watermelon/views/index.jade",
-		"/C/dev/watermelon/routes/index.js",
-		"/C/Users/Nicole/AppData/Local/Temp/Temp1_Ex_Files_NodeJS_EssT.zip/Ex_Files_NodeJS_EssT/Exercise Files/chap05/02/final/flight/index.js",
-		"/C/dev/node/something.txt",
-		"/C/dev/node/package.json",
-		"/C/Users/Nicole/pumpkin/helloworld.js",
-		"/C/Users/Nicole/Dropbox/object-oriented-js.js"
+		"/C/dev/watermelon/views/index.jade"
 	],
 	"find":
 	{
@@ -380,6 +372,14 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"move",
+			"\"#status\"",
+			"timer",
+			"time.",
+			"timerActivity",
+			"timerTotal",
+			"timerActivity",
+			"tickEvery",
 			"dumb",
 			"move",
 			"move.values",
@@ -503,23 +503,23 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "public/scripts/game/classes/Round.js",
+					"file": "public/scripts/game/ui.js",
 					"settings":
 					{
-						"buffer_size": 1281,
+						"buffer_size": 444,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								771,
-								771
+								413,
+								403
 							]
 						],
 						"settings":
@@ -535,24 +535,51 @@
 				},
 				{
 					"buffer": 1,
-					"file": "public/scripts/game/classes/Move.js",
+					"file": "public/styles/sass/main.scss",
 					"settings":
 					{
-						"buffer_size": 821,
+						"buffer_size": 3135,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								180,
-								155
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 306.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "public/scripts/game/init.js",
+					"settings":
+					{
+						"buffer_size": 299,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								146,
+								146
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -561,52 +588,24 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "public/scripts/game/statsMgr.js",
-					"settings":
-					{
-						"buffer_size": 1855,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								167,
-								167
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 7.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
 					"buffer": 3,
-					"file": "public/scripts/game/ui.js",
+					"file": "public/scripts/game/variables.js",
 					"settings":
 					{
-						"buffer_size": 398,
+						"buffer_size": 215,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								113,
-								113
+								215,
+								215
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -616,79 +615,52 @@
 				},
 				{
 					"buffer": 4,
-					"file": "public/scripts/game/tileMgr.js",
+					"file": "public/scripts/game/classes/Round.js",
 					"settings":
 					{
-						"buffer_size": 3977,
+						"buffer_size": 1457,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3693,
-								3693
+								832,
+								832
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1070.0,
+						"translation.y": 84.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 5,
-					"file": "public/scripts/game/floorMgr.js",
+					"file": "views/layout.jade",
 					"settings":
 					{
-						"buffer_size": 861,
+						"buffer_size": 1920,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								814,
-								814
+								1809,
+								1809
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 45.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "public/scripts/game/init.js",
-					"settings":
-					{
-						"buffer_size": 209,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								110,
-								110
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -697,25 +669,57 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "public/scripts/game/roundInit.js",
+					"buffer": 6,
+					"file": "public/scripts/game/statsMgr.js",
 					"settings":
 					{
-						"buffer_size": 265,
+						"buffer_size": 1755,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								246,
-								246
+								1413,
+								1413
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 99.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 7,
+					"file": "public/scripts/game/menuMgr.js",
+					"settings":
+					{
+						"buffer_size": 341,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								313,
+								313
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -725,78 +729,50 @@
 				},
 				{
 					"buffer": 8,
-					"file": "views/index.jade",
+					"file": "public/scripts/game/classes/Timer.js",
 					"settings":
 					{
-						"buffer_size": 757,
+						"buffer_size": 2463,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								166,
-								166
+								1116,
+								1116
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 274.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 9,
-					"file": "public/styles/sass/main.scss",
+					"file": "public/scripts/game/util.js",
 					"settings":
 					{
-						"buffer_size": 2428,
+						"buffer_size": 386,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								877,
-								877
+								386,
+								386
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 516.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "views/layout.jade",
-					"settings":
-					{
-						"buffer_size": 1403,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1207,
-								1207
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -824,11 +800,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":

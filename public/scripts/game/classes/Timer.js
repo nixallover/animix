@@ -1,6 +1,6 @@
 // Timer class
 
-function Timer(roundTime){
+function Timer( roundTime ){
     var self = this,
         counter  = {
             total     : 0,
@@ -9,7 +9,7 @@ function Timer(roundTime){
         };
 
     // properties
-    self.endTime = roundTime * 1000;
+    self.endTime = seconds( roundTime );
         
     // state
     self.isStarted = false;
@@ -22,40 +22,41 @@ function Timer(roundTime){
 
 
     // methods
-    self.start = function(){
+    self.start = function( round ){
         self.isStarted = true;
         console.log("round timer started");
-        self.ticking = window.setInterval( self.update, 1000 );
+        console.log(round);
+        self.ticking = window.setInterval( self.update, seconds(1) );
         self.setEndTime = window.setTimeout( self.end, self.endTime );
     }; // Timer.start()
 
     self.update = function(){
-        counter.total += 1;
-        counter.seconds = counter.total % 60;
-        counter.minutes = Math.floor(counter.total / 60);    
-        self.endTime = self.endTime - 1000;
+        counter.total      += 1;
+        counter.seconds     = counter.total % 60;
+        counter.minutes     = Math.floor(counter.total / 60);    
+        self.endTime        = self.endTime - seconds(1);
         
         //$( "#endTime" ).text( self.endTime );
         $( ".seconds" ).text( counter.seconds );
         $( ".minutes" ).text( counter.minutes );
     }; // Timer.update()
 
-    self.pause = function(){
+    self.pause = function( round ){
         if ( self.isStarted ){
             // pause
             if ( !self.isPaused ){
                 console.log("round timer paused");
                 
                 window.clearInterval( self.ticking );
-                window.clearTimeout(self.setEndTime);
+                window.clearTimeout( self.setEndTime );
                 
-                $( ui.buttons.roundPause ).text( "unpause" );
+                $( ui.buttons.roundPause ).text( "Unpause" );
                 self.isPaused = true;
                 
             // unpause
             } else {
                 console.log("round timer unpaused");
-                self.ticking = window.setInterval(self.update, 1000);
+                self.ticking = window.setInterval(self.update, seconds(1));
                 self.setEndTime = window.setTimeout( self.end, self.endTime );
                 $( ui.buttons.roundPause ).text( "pause" );
                 self.isPaused = false;
@@ -71,8 +72,9 @@ function Timer(roundTime){
         if ( self.isStarted ){
             console.log("round timer ended");
             self.isStarted = false;
-            window.clearInterval(self.ticking);
-            window.clearTimeout(self.setEndTime);
+            window.clearInterval( self.ticking );
+            window.clearTimeout( self.setEndTime );
+            round.end();
             
         } else {
             // there's nothing to end
