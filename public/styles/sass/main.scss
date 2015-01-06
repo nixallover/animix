@@ -178,3 +178,30 @@ h1 {
 		//margin: 0 auto;
 	}
 }
+
+#modal {
+    //background-color: $highlight;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    display: none;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+
+    #modal-background {
+        background-color: $highlight;
+        display: block;
+        font: 50px $font-header;
+        min-height: 130px;
+        line-height: 50px;
+        margin: 30px auto;
+        padding: 40px 30px;
+        text-align: center;
+        vertical-align: text-center;
+        width: 300px;
+    }
+}

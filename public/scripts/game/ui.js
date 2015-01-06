@@ -3,6 +3,10 @@ var ui = {
 			game	: "#game-container",
 			animal 	: "#clone-source",
 		},
+		modals		: {
+			container 	: "#modal",
+			roundStart	: "#modal-background"
+		},
 		grid		: "#grid",
 		tile 		: ".tile",
 		part		: ".part",

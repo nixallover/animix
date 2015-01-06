@@ -23,6 +23,20 @@ function Round(){
 		//animation
     	$( ui.containers.game ).addClass( 'animated bounceInDown' );
 
+    	// WIP
+    	//modal animation (temp placement)
+    	$( ui.modals.container ).show();
+    	$( ui.modals.roundStart ).addClass( 'animated zoomInUp' );
+    	//$( ui.modals.roundStart ).addClass( 'zoomOut' );
+    	//$( ui.modals.container ).hide();
+    	window.setTimeout( closeModal, seconds(2) )
+
+    	function closeModal(){
+
+    		//$( ui.modals.roundStart ).addClass( 'zoomOutDown' );
+    		$( ui.modals.container ).hide();
+    	};
+
 		// keep images from dragging
 		// FIXME doesn't work to reference $ui.part, not sure why
 		$( ui.grid ).on("dragstart", ui.part, function(e) {
