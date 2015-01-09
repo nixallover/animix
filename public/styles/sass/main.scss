@@ -179,7 +179,7 @@ h1 {
 	}
 }
 
-#modal {
+#popup {
     //background-color: $highlight;
     position: fixed;
     top: 0;
@@ -192,7 +192,12 @@ h1 {
     -webkit-overflow-scrolling: touch;
     outline: 0;
 
-    #modal-background {
+    -moz-user-select: none; 
+    -khtml-user-select: none; 
+    -webkit-user-select: none; 
+    -o-user-select: none; 
+
+    #popup-bg {
         background-color: $highlight;
         display: block;
         font: 50px $font-header;
@@ -203,5 +208,9 @@ h1 {
         text-align: center;
         vertical-align: text-center;
         width: 300px;
+
+        p {
+            display: none;
+        }
     }
 }

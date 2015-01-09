@@ -1,14 +1,14 @@
 extends layout
 
 block content
-    #game-container.outlined
+    #game-container
         button#round-pause.btn.btn-info(type='button') Pause
         #floor
             #clone-source.partier.hide
 
 
-        #scoreboard.outlined
-            #status.outlined
+        #scoreboard
+            #status
 
                 .row
                     .col-xs-4
@@ -42,7 +42,7 @@ block content
                     span  seconds 
 
 
-        #grid.outlined
+        #grid
             each rowIndex in [1,2,3,4,5]
                 .grid-row
                     each colIndex in [1,2,3,4,5]

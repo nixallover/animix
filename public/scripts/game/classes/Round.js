@@ -21,21 +21,23 @@ function Round(){
 			timer 	= {};
 
 		//animation
-    	$( ui.containers.game ).addClass( 'animated bounceInDown' );
+    	animate.gameboard("start");
+
+    	animate.popup( ui.popups.at.roundStart );
 
     	// WIP
     	//modal animation (temp placement)
-    	$( ui.modals.container ).show();
-    	$( ui.modals.roundStart ).addClass( 'animated zoomInUp' );
-    	//$( ui.modals.roundStart ).addClass( 'zoomOut' );
-    	//$( ui.modals.container ).hide();
-    	window.setTimeout( closeModal, seconds(2) )
+    	// $( ui.modals.container ).show();
+    	// $( ui.modals.roundStart ).addClass( 'animated zoomInUp' );
+    	// //$( ui.modals.roundStart ).addClass( 'zoomOut' );
+    	// //$( ui.modals.container ).hide();
+    	// window.setTimeout( closeModal, seconds(2) )
 
-    	function closeModal(){
+    	// function closeModal(){
 
-    		//$( ui.modals.roundStart ).addClass( 'zoomOutDown' );
-    		$( ui.modals.container ).hide();
-    	};
+    	// 	//$( ui.modals.roundStart ).addClass( 'zoomOutDown' );
+    	// 	$( ui.modals.container ).hide();
+    	// };
 
 		// keep images from dragging
 		// FIXME doesn't work to reference $ui.part, not sure why
@@ -73,6 +75,20 @@ function Round(){
 	}; // Round.start();
 
 	self.end = function(){
-		alert( "Round over bitches!!" );
+		animate.popup( ui.popups.at.roundEnd );
+		console.log( "Round over bitches!!" );
+
+		//need to figure out how to secure/obscure all of this..
+		//turn off ability to move
+		//hide game grid
+		//move to stats grid
+
+		//FIXME this should actually do more, it's just hiding the container..
+		$( ui.containers.game )
+			.addClass( 'animated bounceOutUp' )
+			.hide();
+
+		//ajax get scoreboard(roundStats);
+
 	}; // Round.end();
 }; // Round()

@@ -3,9 +3,13 @@ var ui = {
 			game	: "#game-container",
 			animal 	: "#clone-source",
 		},
-		modals		: {
-			container 	: "#modal",
-			roundStart	: "#modal-background"
+		popups		: {
+			container 	: "#popup",
+			bg	: "#popup-bg",
+			at			: {
+				roundStart	: "#popup-roundStart",
+				roundEnd	: "#popup-roundEnd"
+			}
 		},
 		grid		: "#grid",
 		tile 		: ".tile",

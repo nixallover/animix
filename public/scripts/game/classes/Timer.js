@@ -10,6 +10,7 @@ function Timer( roundTime ){
 
     // properties
     self.endTime = seconds( roundTime );
+    self.round;
         
     // state
     self.isStarted = false;
@@ -24,6 +25,7 @@ function Timer( roundTime ){
     // methods
     self.start = function( round ){
         self.isStarted = true;
+        self.round = round;
         console.log("round timer started");
         console.log(round);
         self.ticking = window.setInterval( self.update, seconds(1) );
@@ -74,7 +76,7 @@ function Timer( roundTime ){
             self.isStarted = false;
             window.clearInterval( self.ticking );
             window.clearTimeout( self.setEndTime );
-            round.end();
+            self.round.end();
             
         } else {
             // there's nothing to end
