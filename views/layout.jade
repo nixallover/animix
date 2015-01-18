@@ -18,13 +18,13 @@ html(lang='en')
 
 
     body
-        include ./popup.jade
-        
+            
         .container
             h1= pageTitle
             p= description
 
             block content
+
 
     block js
         //- libs
@@ -32,26 +32,3 @@ html(lang='en')
         script(src='/components/jquery/dist/jquery.min.js')
         script(src='/components/underscore/underscore-min.js')
         script(src='http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js')
-
-        //- util
-        script(src='/scripts/game/util.js')
-
-        //- classes
-        script(src='/scripts/game/classes/Player.js')
-        script(src='/scripts/game/classes/Round.js')
-        script(src='/scripts/game/classes/Move.js')
-        script(src='/scripts/game/classes/Timer.js')
-
-        //- other
-        script(src='/scripts/game/ui.js')
-        script(src='/scripts/game/variables.js')
-        script(src='/scripts/game/animate.js')
-        script(src='/scripts/game/statsMgr.js')
-        script(src='/scripts/game/menuMgr.js')
-        script(src='/scripts/game/floorMgr.js')
-        script(src='/scripts/game/gridMgr.js')
-        script(src='/scripts/game/tileMgr.js')
-
-        //- init
-
-        script(src='/scripts/game/init.js')

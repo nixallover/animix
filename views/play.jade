@@ -1,9 +1,11 @@
 extends layout
 
 block content
+
     #game-container
-        button#round-pause.btn.btn-info(type='button') Pause
+        button#round-pause(type='button') Pause
         #floor
+            include ./popup.jade
             #clone-source.partier.hide
 
 
@@ -47,3 +49,27 @@ block content
                 .grid-row
                     each colIndex in [1,2,3,4,5]
                         .tile(data-row=rowIndex,data-column=colIndex)
+
+block append js
+    //- util
+    script(src='/scripts/game/util.js')
+
+    //- classes
+    script(src='/scripts/game/classes/Player.js')
+    script(src='/scripts/game/classes/Round.js')
+    script(src='/scripts/game/classes/Move.js')
+    script(src='/scripts/game/classes/Timer.js')
+
+    //- other
+    script(src='/scripts/game/ui.js')
+    script(src='/scripts/game/variables.js')
+    script(src='/scripts/game/animate.js')
+    script(src='/scripts/game/statsMgr.js')
+    script(src='/scripts/game/menuMgr.js')
+    script(src='/scripts/game/floorMgr.js')
+    script(src='/scripts/game/gridMgr.js')
+    script(src='/scripts/game/tileMgr.js')
+
+    //- init
+
+    script(src='/scripts/game/init.js')
