@@ -76,7 +76,7 @@ function Round(){
 
 	self.end = function(){
 		animate.popup( ui.popups.at.roundEnd );
-		console.log( "Round over bitches!!" );
+		console.log( "This round is over!!" );
 
 		//need to figure out how to secure/obscure all of this..
 		//turn off ability to move
@@ -89,6 +89,19 @@ function Round(){
 			.hide();
 
 		//ajax get scoreboard(roundStats);
+		$.ajax({
+            url: "/roundEndStats",
+            type: "POST",
+            data: { stats: 100 },
+            error: function(xhr, textStatus, errMsg) {
+                if ( xhr.status !== 0) {
+                    console.log("ERROR: Failed!" + errMsg);
+                }
+            },
+            success: function(data, textStatus, xhr) {
+                $( ui.containers.roundEndStats ).html( data );
+            }
+        }); //ajax
 
 	}; // Round.end();
 }; // Round()

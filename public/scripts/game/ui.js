@@ -1,7 +1,8 @@
 var ui = {
 		containers 	: {
-			game	: "#game-container",
-			animal 	: "#clone-source",
+			game			: "#game-container",
+			animal 			: "#clone-source",
+			roundEndStats	: "#roundEndStats-container"
 		},
 		popups		: {
 			container 	: "#popup",
