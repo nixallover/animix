@@ -4,7 +4,7 @@ block content
 
     include ./popup.jade
 
-    #game-container
+    #game-container.hide
         button#round-pause(type='button') Pause
         #floor
             #clone-source.partier.hide
@@ -51,7 +51,7 @@ block content
                     each colIndex in [1,2,3,4,5]
                         .tile(data-row=rowIndex,data-column=colIndex)
 
-    #roundEndStats-container
+    #roundEndStats-container.hide
 
 block append js
     //- util

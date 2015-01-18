@@ -88,22 +88,24 @@ function Round(){
 		// 	.addClass( 'animated bounceOutUp' );
 
 		//animation
-    	animate.panel( ui.containers.game, "end" );
+    	animate.panel( ui.containers.game, "end", getRoundEndStats );
 
-		//ajax get scoreboard(roundStats);
-		$.ajax({
-            url: "/roundEndStats",
-            type: "POST",
-            data: { stats: 100 },
-            error: function(xhr, textStatus, errMsg) {
-                if ( xhr.status !== 0) {
-                    console.log("ERROR: Failed!" + errMsg);
-                }
-            },
-            success: function(data, textStatus, xhr) {
-                $( ui.containers.roundEndStats ).html( data );
-            }
-        }); //ajax
+        function getRoundEndStats(){
+			$.ajax({
+	            url: "/roundEndStats",
+	            type: "POST",
+	            data: { stats: 100 },
+	            error: function(xhr, textStatus, errMsg) {
+	                if ( xhr.status !== 0) {
+	                    console.log("ERROR: Failed!" + errMsg);
+	                }
+	            },
+	            success: function(data, textStatus, xhr) {
+	                $( ui.containers.roundEndStats ).html( data );
+	                animate.panel( ui.containers.roundEndStats, "start" );
+	            }
+	        }); //ajax
+        } //getRoundEndStats
 
 	}; // Round.end();
 }; // Round()

@@ -28,15 +28,26 @@ animate.popup = function( message ){
 }; //animate.popup()
 
 
-animate.panel = function( panelId, state ){
+animate.panel = function( panelId, state, callback ){
     if (state == "start"){
         $( panelId )
+            .removeClass( "hide" )
             .addClass( "animated bounceInDown" );
 
     } else if (state == "end"){
         $( panelId )
             .addClass( "animated bounceOutUp" );
+
+        $( panelId ).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(e){
+            $( this ).addClass( "hide" );
+
+            if( callback ){
+                callback();
+            }
+        });
+
     } else {
         console.log("please specify state");
     }
+
 }; //animate.gameboard()

@@ -5,8 +5,8 @@ var ui = {
 			roundEndStats	: "#roundEndStats-container"
 		},
 		popups		: {
-			container 	: "#popup",
-			bg	: "#popup-bg",
+			container 	: "#popup-container",
+			bg	: "#popup",
 			at			: {
 				roundStart	: "#popup-roundStart",
 				roundEnd	: "#popup-roundEnd"

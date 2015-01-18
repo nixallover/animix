@@ -33,16 +33,19 @@ h1 {
       width: 100%; }
 
 #round-pause {
+  background-color: #1d6e5e;
+  border: 0;
   position: absolute;
-  right: 10px;
-  top: 40px; }
+  padding: 5px 15px;
+  right: 0;
+  top: 10px; }
 
 #game-container {
   background-color: #328c5d;
   display: table;
   margin: 0px auto;
   margin-top: -30px;
-  max-width: 600px;
+  max-width: 550px;
   position: relative;
   width: 100%;
   border-radius: 6px; }
@@ -53,7 +56,7 @@ h1 {
   display: block;
   padding: 15px;
   padding-top: 30px;
-  height: 200px;
+  height: 250px;
   overflow: hidden; }
   #floor .partier {
     border: dotted 1px #1d6e5e;
@@ -119,7 +122,7 @@ h1 {
     max-width: 100%;
     opacity: 0.8; }
 
-#popup {
+#popup-container {
   position: fixed;
   top: 0;
   right: 0;
@@ -134,7 +137,7 @@ h1 {
   -khtml-user-select: none;
   -webkit-user-select: none;
   -o-user-select: none; }
-  #popup #popup-bg {
+  #popup-container #popup {
     background-color: #29cbe0;
     display: block;
     font: 50px "Bowlby One SC", sans-serif;
@@ -145,5 +148,5 @@ h1 {
     text-align: center;
     vertical-align: text-center;
     width: 300px; }
-    #popup #popup-bg p {
+    #popup-container #popup p {
       display: none; }
