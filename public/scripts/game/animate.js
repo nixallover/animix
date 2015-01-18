@@ -28,13 +28,13 @@ animate.popup = function( message ){
 }; //animate.popup()
 
 
-animate.gameboard = function( state ){
+animate.panel = function( panelId, state ){
     if (state == "start"){
-        $( ui.containers.game )
+        $( panelId )
             .addClass( "animated bounceInDown" );
 
     } else if (state == "end"){
-        $( ui.containers.game )
+        $( panelId )
             .addClass( "animated bounceOutUp" );
     } else {
         console.log("please specify state");

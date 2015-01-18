@@ -180,12 +180,11 @@ h1 {
 }
 
 #popup {
-    //background-color: $highlight;
     position: fixed;
     top: 0;
     right: 0;
-    bottom: 0;
     left: 0;
+    height: 300px;
     z-index: 1040;
     display: none;
     overflow: hidden;

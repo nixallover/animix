@@ -6,5 +6,5 @@
 
  var variables = {
  	numberOfAnimals	: 2,
-    roundTime		: 5
+    roundTime		: 120
  };

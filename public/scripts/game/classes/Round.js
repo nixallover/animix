@@ -21,7 +21,7 @@ function Round(){
 			timer 	= {};
 
 		//animation
-    	animate.gameboard("start");
+    	animate.panel( ui.containers.game, "start" );
 
     	animate.popup( ui.popups.at.roundStart );
 
@@ -84,9 +84,11 @@ function Round(){
 		//move to stats grid
 
 		//FIXME this should actually do more, it's just hiding the container..
-		$( ui.containers.game )
-			.addClass( 'animated bounceOutUp' )
-			.hide();
+		// $( ui.containers.game )
+		// 	.addClass( 'animated bounceOutUp' );
+
+		//animation
+    	animate.panel( ui.containers.game, "end" );
 
 		//ajax get scoreboard(roundStats);
 		$.ajax({
