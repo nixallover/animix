@@ -16,7 +16,7 @@ statsMgr.updateOnCompleteMove = function( round ){
 	];
 
 	// if the combo has already been made this round
-	if ( statsMgr.check.isDuplicate( ANIMIX.currParts, round.animalsCreated ) ){
+	if (statsMgr.check.isDuplicate( ANIMIX.currParts, round.animalsCreated )){
 		//logger.status("this combo is a duplicate");
 		round.stats.duplicates += 1;
 		round.stats.combos = 0;
@@ -29,9 +29,17 @@ statsMgr.updateOnCompleteMove = function( round ){
 		round.stats.originals += 1;
 		round.stats.combos += 1;
 		round.stats.score += multipliers.original;
-	}; // updateOnCompleteMove()
+	} // if(isDuplicate)
 
-	statsMgr.check.isSolid( ANIMIX.currParts );
+
+	// check if combo is a solid animal
+	if(statsMgr.check.isSolid( ANIMIX.currParts )){
+		round.stats.solids += 1;
+
+	} else {
+		//do nothing
+		
+	} // if(isSolid)
 
 	// combo multipliers
 
@@ -72,8 +80,8 @@ statsMgr.check.longestCombo = function(){
 // WIP
 statsMgr.check.isSolid = function( newAnimal ){
 	if( newAnimal.a == newAnimal.b && newAnimal.b == newAnimal.c ){
-		//round.stats.solids += 1;
+		return true;
 	} else {
-		// not solid
+		return false;
 	}
 }; // statsMgr.check.isSolid()
