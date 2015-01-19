@@ -1,10 +1,8 @@
-// separate into new constructor
-
 var statsMgr = {};
 	statsMgr.check = {};
 
 statsMgr.updateOnCompleteMove = function( round ){
-	var score = {
+	var multipliers = {
 		base		: 1,
 		original 	: 3
 	},
@@ -22,7 +20,7 @@ statsMgr.updateOnCompleteMove = function( round ){
 		//logger.status("this combo is a duplicate");
 		round.stats.duplicates += 1;
 		round.stats.combos = 0;
-		round.stats.score += score.base;
+		round.stats.score += multipliers.base;
 		// add: reset combo counter
 
 	// else it's original
@@ -30,7 +28,7 @@ statsMgr.updateOnCompleteMove = function( round ){
 		//logger.status("this combo is original");
 		round.stats.originals += 1;
 		round.stats.combos += 1;
-		round.stats.score += score.original;
+		round.stats.score += multipliers.original;
 	}; // updateOnCompleteMove()
 
 	statsMgr.check.isSolid( ANIMIX.currParts );

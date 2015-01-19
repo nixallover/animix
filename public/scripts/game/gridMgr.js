@@ -3,12 +3,11 @@
  * generates, adds, REMOVES (need to add this) tiles, and drops new ones down from the top at the end of every turn
  */
 
-var numberOfAnimals = variables.numberOfAnimals;
 var gridMgr = {};
 	gridMgr.getRandom = {};
 	
 gridMgr.getRandom.animal = function() {
-	return (Math.floor(Math.random() * (numberOfAnimals)) + 1).toString();
+	return (Math.floor(Math.random() * (variables.numberOfAnimals)) + 1).toString();
 }; // gridMgr.getRandom.animal()
 
 gridMgr.getRandom.part = function() {
@@ -82,6 +81,7 @@ gridMgr.dropTilesAbove = function( tileObj ){
         $( targetTile ).append( fallingPart );
     } // for
 }; // gridMgr.dropTilesAbove()
+
 
 gridMgr.dropNewTile = function( tileObj ){
     var newTile = ".tile[data-row='1'][data-column='" + tileObj.colNum + "']";

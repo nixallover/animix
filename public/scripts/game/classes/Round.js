@@ -7,6 +7,7 @@ function Round(){
 	// FIXME separate into new constructor
 	//self.stats = new Stats();
 	self.stats = {
+		pineapple		: "pineapple soup",
 		score			: 0,
 		moves			: 0,
 		duplicates		: 0,
@@ -21,7 +22,7 @@ function Round(){
 			timer 	= {};
 
 		//animation
-    	animate.panel( ui.containers.game, "start" );
+    	animate.panel( ui.panels.game, "start" );
 
     	animate.popup( ui.popups.at.roundStart );
 
@@ -77,6 +78,8 @@ function Round(){
 	self.end = function(){
 		animate.popup( ui.popups.at.roundEnd );
 		console.log( "This round is over!!" );
+		console.log( JSON.stringify(self.stats) );
+		var finalStats = JSON.stringify( self.stats );
 
 		//need to figure out how to secure/obscure all of this..
 		//turn off ability to move
@@ -84,25 +87,25 @@ function Round(){
 		//move to stats grid
 
 		//FIXME this should actually do more, it's just hiding the container..
-		// $( ui.containers.game )
+		// $( ui.panels.game )
 		// 	.addClass( 'animated bounceOutUp' );
 
 		//animation
-    	animate.panel( ui.containers.game, "end", getRoundEndStats );
+    	animate.panel( ui.panels.game, "end", getRoundEndStats );
 
         function getRoundEndStats(){
 			$.ajax({
 	            url: "/roundEndStats",
 	            type: "POST",
-	            data: { stats: 100 },
+	            data: { "finalStats": finalStats },
 	            error: function(xhr, textStatus, errMsg) {
 	                if ( xhr.status !== 0) {
 	                    console.log("ERROR: Failed!" + errMsg);
 	                }
 	            },
 	            success: function(data, textStatus, xhr) {
-	                $( ui.containers.roundEndStats ).html( data );
-	                animate.panel( ui.containers.roundEndStats, "start" );
+	                $( ui.panels.roundEndStats ).html( data );
+	                animate.panel( ui.panels.roundEndStats, "start" );
 	            }
 	        }); //ajax
         } //getRoundEndStats

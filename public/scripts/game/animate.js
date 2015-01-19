@@ -6,25 +6,35 @@
 var animate = {};
 
 animate.popup = function( message ){
-    // WIP
-    //modal animation (temp placement)
+    // WIP - this works but it's ugly..
     $( ui.popups.container ).show();
     $( message ).show();
     $( ui.popups.bg ).addClass( "animated zoomInUp" );
-    window.setTimeout( closeModal, seconds(2) );
 
-    function closeModal(){
+    $( ui.popups.bg ).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(e){
+            $( this ).addClass( "zoomOutUp" );
 
-        //not working?
-        $( ui.popups.bg )
-            .addClass("zoomInUp")
-            .addClass( "zoomOutDown" );
-        $( ui.popups.container ).hide();
-        $( message ).hide();
+            $( ui.popups.bg ).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(e){
+                $( this ).attr("class", "");
+                $( message ).hide();
+                $( ui.popups.container ).hide();
+            });
+        });
 
-        //reset classes
-        $( ui.popups.bg ).attr("class", "");
-    };
+    // window.setTimeout( closeModal, seconds(2) );
+
+    // function closeModal(){
+
+    //     //not working?
+    //     $( ui.popups.bg )
+    //         .addClass("zoomInUp")
+    //         .addClass( "zoomOutDown" );
+    //     $( ui.popups.container ).hide();
+    //     $( message ).hide();
+
+    //     //reset classes
+    //     $( ui.popups.bg ).attr("class", "");
+    // };
 }; //animate.popup()
 
 

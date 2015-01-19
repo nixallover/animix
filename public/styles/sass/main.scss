@@ -7,7 +7,6 @@ $body-bg: #1C2B2F; //navy-slate
 
 $height-body-bounce: 30px;
 
-//$font-header: 'Chewy', san-serif;
 $font-header: 'Bowlby One SC', sans-serif;
 
 
@@ -24,6 +23,25 @@ body{
 		-ms-user-select: none;
 		user-select: none;
 	}
+}
+
+.container {
+    //border: dotted 1px crimson;
+    max-width: 550px;
+}
+.major-panel {
+    background-color: $base2;
+    display: table;
+    margin: 0;
+    margin-top: -$height-body-bounce; //for bounce
+    padding: 25px;
+    position: relative;
+    width: 100%;
+    border-radius: 6px;
+}
+
+#game-container {
+    padding: 0;
 }
 
 h1 {
@@ -55,28 +73,36 @@ h1 {
     }
 }
 
-.outlined {
-	//border: dotted 1px crimson;
+#panel-roundPause {
+    background-color: $base2;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1041;
+    display: block;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
 }
-#round-pause {
+#btn-roundPause {
     background-color: $base3;
     border: 0;
 	position: absolute;
     padding: 5px 15px;
 	right: 0;
-	top: 10px; //FIXME magic
+	top: 10px; //FIXME magic #
+}
+#btn-roundUnpause {
+    background-color: $base3;
+    border: 0;
+    display: block;
+    margin: 10px auto;
+    padding: 15px 25px;
+    position: relative;
+}
 
-}
-#game-container {
-	background-color: $base2;
-	display: table;
-	margin: 0px auto;
-    margin-top: -$height-body-bounce; //for bounce
-	max-width: 550px;
-	position: relative;
-	width: 100%;
-    border-radius: 6px;
-}
 #floor {
     //background: url("/img/dance/floor002.png") repeat;
 	background-color: $base;

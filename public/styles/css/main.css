@@ -9,6 +9,22 @@ body {
     -ms-user-select: none;
     user-select: none; }
 
+.container {
+  max-width: 550px; }
+
+.major-panel {
+  background-color: #328c5d;
+  display: table;
+  margin: 0;
+  margin-top: -30px;
+  padding: 25px;
+  position: relative;
+  width: 100%;
+  border-radius: 6px; }
+
+#game-container {
+  padding: 0; }
+
 h1 {
   color: #1d6e5e;
   font-family: "Bowlby One SC", sans-serif;
@@ -32,7 +48,20 @@ h1 {
       height: auto;
       width: 100%; }
 
-#round-pause {
+#panel-roundPause {
+  background-color: #328c5d;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1041;
+  display: block;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  outline: 0; }
+
+#btn-roundPause {
   background-color: #1d6e5e;
   border: 0;
   position: absolute;
@@ -40,15 +69,13 @@ h1 {
   right: 0;
   top: 10px; }
 
-#game-container {
-  background-color: #328c5d;
-  display: table;
-  margin: 0px auto;
-  margin-top: -30px;
-  max-width: 550px;
-  position: relative;
-  width: 100%;
-  border-radius: 6px; }
+#btn-roundUnpause {
+  background-color: #1d6e5e;
+  border: 0;
+  display: block;
+  margin: 10px auto;
+  padding: 15px 25px;
+  position: relative; }
 
 #floor {
   background-color: #4ba658;

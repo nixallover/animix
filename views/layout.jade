@@ -18,8 +18,12 @@ html(lang='en')
 
 
     body
-            
-        .container
+        #panel-roundPause.hide
+            .container
+                h1 Game paused!
+                button#btn-roundUnpause(type='button') Unpause
+
+        #mobile-container.container
             h1= pageTitle
             p= description
 

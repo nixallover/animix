@@ -18,10 +18,10 @@ router.get("/play", function(req, res) {
 
 /* send round stats */
 router.post("/roundEndStats", function(req, res) {
-    console.log("round ended! sending back stats");
-    console.log(req.param("stats"));
-    //res.send("blurb");
-    res.render("roundEndStats");
+    var finalStats = req.param("finalStats");
+    console.log("round ended! sending back stats:");
+    console.log(req.param("finalStats"));
+    res.render("roundEndStats", finalStats );
 });
 
 /* collections */
