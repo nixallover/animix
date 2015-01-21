@@ -116,8 +116,14 @@ h1 {
     overflow: hidden;
 
     .partier {
+        -webkit-animation-name: jump;
+        -webkit-animation-duration: .5s;
+        -webkit-animation-timing-function: ease-out;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-direction: alternate;
+
     	//background-color: $base-h;
-    	border: dotted 1px $base3;
+    	//border: dotted 1px $base3;
     	display: inline-block;
     	height: 150px;
     	margin-top: 30px;
@@ -135,6 +141,12 @@ h1 {
     	}
     	.partier-head {
     		z-index: 5;
+
+            -webkit-animation-name: bob;
+            -webkit-animation-duration: .5s;
+            -webkit-animation-timing-function: ease-in-out;
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-direction: alternate;
     	}
     	.partier-torso {
     		z-index: 4;
@@ -143,6 +155,17 @@ h1 {
             margin-top: -29px;
     		z-index: 3;
     	}
+
+        // .partier-butt {
+        //     -webkit-animation-name: bob;
+        //     -webkit-animation-duration: 1s;
+        //     -webkit-animation-timing-function: ease-out;
+        //     -webkit-animation-iteration-count: infinite;
+        //     -webkit-animation-direction: alternate;
+        // }
+        // .partier-butt {
+        //     -webkit-animation-delay: 1s;
+        // }
     }
 }
 #scoreboard {
@@ -241,5 +264,26 @@ h1 {
         p {
             display: none;
         }
+    }
+}
+
+// animations
+@-webkit-keyframes jump {
+    from {
+        -webkit-transform: translateY(0px);
+    }
+
+    to {
+        -webkit-transform: translateY(10px);
+    }
+}
+
+@-webkit-keyframes bob {
+    from {
+        -webkit-transform: rotate(-10deg);
+    }
+
+    to {
+        -webkit-transform: rotate(10deg);
     }
 }

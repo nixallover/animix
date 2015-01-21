@@ -1,5 +1,5 @@
 body {
-  background-color: #1c2b2f;
+  background-color: #1C2B2F;
   color: #fff; }
   body * {
     -webkit-touch-callout: none;
@@ -78,7 +78,7 @@ h1 {
   position: relative; }
 
 #floor {
-  background-color: #4ba658;
+  background-color: #4BA658;
   box-sizing: border-box;
   display: block;
   padding: 15px;
@@ -86,7 +86,11 @@ h1 {
   height: 250px;
   overflow: hidden; }
   #floor .partier {
-    border: dotted 1px #1d6e5e;
+    -webkit-animation-name: jump;
+    -webkit-animation-duration: .5s;
+    -webkit-animation-timing-function: ease-out;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
     display: inline-block;
     height: 150px;
     margin-top: 30px;
@@ -101,7 +105,12 @@ h1 {
       margin-top: -25px;
       position: relative; }
     #floor .partier .partier-head {
-      z-index: 5; }
+      z-index: 5;
+      -webkit-animation-name: bob;
+      -webkit-animation-duration: .5s;
+      -webkit-animation-timing-function: ease-in-out;
+      -webkit-animation-iteration-count: infinite;
+      -webkit-animation-direction: alternate; }
     #floor .partier .partier-torso {
       z-index: 4; }
     #floor .partier .partier-butt {
@@ -165,7 +174,7 @@ h1 {
   -webkit-user-select: none;
   -o-user-select: none; }
   #popup-container #popup {
-    background-color: #29cbe0;
+    background-color: #29CBE0;
     display: block;
     font: 50px "Bowlby One SC", sans-serif;
     min-height: 130px;
@@ -177,3 +186,16 @@ h1 {
     width: 300px; }
     #popup-container #popup p {
       display: none; }
+
+@-webkit-keyframes jump {
+  from {
+    -webkit-transform: translateY(0px); }
+  to {
+    -webkit-transform: translateY(10px); } }
+@-webkit-keyframes bob {
+  from {
+    -webkit-transform: rotate(-10deg); }
+  to {
+    -webkit-transform: rotate(10deg); } }
+
+/*# sourceMappingURL=main.css.map */
