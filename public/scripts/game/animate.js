@@ -6,35 +6,29 @@
 var animate = {};
 
 animate.popup = function( message ){
-    // WIP - this works but it's ugly..
-    $( ui.popups.container ).show();
-    $( message ).show();
-    $( ui.popups.bg ).addClass( "animated zoomInUp" );
+    var element = ui.popups.bg;
 
-    $( ui.popups.bg ).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(e){
-            $( this ).addClass( "zoomOutUp" );
-
-            $( ui.popups.bg ).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(e){
-                $( this ).attr("class", "");
-                $( message ).hide();
-                $( ui.popups.container ).hide();
+    function openPopup(){
+        $( ui.popups.container ).show();
+        $( message ).show();
+        $( element )
+            .addClass( "animated zoomInLeft" )
+            .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(e){
+                    window.setTimeout( closePopup, seconds(1) );
             });
-        });
+    }; // openPopup()
 
-    // window.setTimeout( closeModal, seconds(2) );
+    function closePopup(){
+        $( element )
+            .addClass( "zoomOutRight" )
+            .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(e){
+                    $( element ).attr("class", "");
+                    $( message ).hide();
+                    $( ui.popups.container ).hide();
+        }); 
+    }; // closePopup()
 
-    // function closeModal(){
-
-    //     //not working?
-    //     $( ui.popups.bg )
-    //         .addClass("zoomInUp")
-    //         .addClass( "zoomOutDown" );
-    //     $( ui.popups.container ).hide();
-    //     $( message ).hide();
-
-    //     //reset classes
-    //     $( ui.popups.bg ).attr("class", "");
-    // };
+    openPopup();
 }; //animate.popup()
 
 
@@ -60,4 +54,5 @@ animate.panel = function( panelId, state, callback ){
         console.log("please specify state");
     }
 
-}; //animate.gameboard()
+}; // animate.gameboard()
+

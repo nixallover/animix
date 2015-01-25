@@ -12,9 +12,9 @@ floorMgr.addPartyAnimal = function(){
 	//console.log( ANIMIX.currParts );
 
 	var newAnimal = {};
-		newAnimal.head 		= "<img class='partier-head' src='img/dance/" + ANIMIX.currParts.a + "a.png'>";
-		newAnimal.torso 	= "<img class='partier-torso' src='img/dance/" + ANIMIX.currParts.b + "b.png'>";
-		newAnimal.butt 		= "<img class='partier-butt' src='img/dance/" + ANIMIX.currParts.c + "c.png'>";
+		newAnimal.head 		= "<div class='partier-head animal-" + ANIMIX.currParts.a + "'></div>";
+		newAnimal.torso 	= "<div class='partier-torso animal-" + ANIMIX.currParts.b + "'></div>";
+		newAnimal.butt 		= "<div class='partier-butt animal-" + ANIMIX.currParts.c + "'></div>";
 
 	var wrapper = $( ui.panels.animal ).clone().removeClass( "hide" ).attr("id","");
 	wrapper

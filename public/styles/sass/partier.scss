@@ -1,0 +1,159 @@
+// play - dance floor
+@import './variables.scss';
+
+// .partier {
+//     -webkit-animation-name: jump;
+//     -webkit-animation-duration: .5s;
+//     -webkit-animation-timing-function: ease-out;
+//     -webkit-animation-iteration-count: infinite;
+//     -webkit-animation-direction: alternate;
+
+//     border: dotted 1px dark($color-body-bg);
+//     display: inline-block;
+//     height: 150px;
+//     margin-top: 30px;
+//     margin-right: 3px;
+//     padding-top: 25px;
+//     width: 70px;
+//     vertical-align: bottom;
+
+//     .partier-head,
+//     .partier-torso,
+//     .partier-butt {
+//         max-width: 100%;
+//         margin-top: -25px;
+//         position:relative;
+//     }
+//     .partier-head {
+//         z-index: 5;
+
+//         -webkit-animation-name: bob;
+//         -webkit-animation-duration: .5s;
+//         -webkit-animation-timing-function: ease-in-out;
+//         -webkit-animation-iteration-count: infinite;
+//         -webkit-animation-direction: alternate;
+//     }
+//     .partier-torso {
+//         z-index: 4;
+//     }
+//     .partier-butt {
+//         margin-top: -29px;
+//         z-index: 3;
+//     }
+
+//     // .partier-butt {
+//     //     -webkit-animation-name: bob;
+//     //     -webkit-animation-duration: 1s;
+//     //     -webkit-animation-timing-function: ease-out;
+//     //     -webkit-animation-iteration-count: infinite;
+//     //     -webkit-animation-direction: alternate;
+//     // }
+//     // .partier-butt {
+//     //     -webkit-animation-delay: 1s;
+//     // }
+// }
+
+@mixin animal-sprites($part) {
+    &.animal-1 {
+        background: url(../../img/dance/1$part.png);
+    }
+    &.animal-2 {
+        background: url(../../img/dance/2$part.png);
+    }
+    &.animal-3 {
+        background: url(../../img/dance/3$part.png);
+    }
+    &.animal-4 {
+        background: url(../../img/dance/4$part.png);
+    }
+}
+
+/* partier for testing */
+
+.partier {
+    -webkit-animation-name: jump;
+    -webkit-animation-duration: .5s;
+    -webkit-animation-timing-function: ease-out;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+
+    border: dotted 1px shadow($color-body-bg);
+    display: inline-block;
+    height: 150px;
+    margin-top: 30px;
+    margin-right: 3px;
+    padding-top: 25px;
+    width: 70px;
+    vertical-align: bottom;
+
+    .partier-head,
+    .partier-torso,
+    .partier-butt {
+        border: dotted 1px shadow($color-body-bg);
+        height: 70px;
+        width: 70px;
+        margin-top: -25px;
+        position: relative;
+        overflow: hidden;
+    }
+    .partier-head {
+        z-index: 5;
+        -webkit-animation-name: bob;
+        -webkit-animation-duration: .5s;
+        -webkit-animation-timing-function: ease-in-out;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-direction: alternate;
+
+        @include animal-sprites(1);
+    }
+    .partier-torso {
+        z-index: 4;
+
+        @include animal-sprites(2);
+    }
+    .partier-butt {
+        margin-top: -29px;
+        z-index: 3;
+
+        @include animal-sprites(3);
+    }
+
+    // .partier-butt {
+    //     -webkit-animation-name: bob;
+    //     -webkit-animation-duration: 1s;
+    //     -webkit-animation-timing-function: ease-out;
+    //     -webkit-animation-iteration-count: infinite;
+    //     -webkit-animation-direction: alternate;
+    // }
+    // .partier-butt {
+    //     -webkit-animation-delay: 1s;
+    // }
+}
+
+
+
+// PARTIER ANIMATIONS
+@-webkit-keyframes spriteLoop {
+   from { background-position:    0px; }
+     to { background-position: -280px; }
+}
+
+@-webkit-keyframes jump {
+    from {
+        -webkit-transform: translateY(0px);
+    }
+
+    to {
+        -webkit-transform: translateY(10px);
+    }
+}
+
+@-webkit-keyframes bob {
+    from {
+        -webkit-transform: rotate(-10deg);
+    }
+
+    to {
+        -webkit-transform: rotate(10deg);
+    }
+}

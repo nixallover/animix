@@ -1,6 +1,78 @@
+/******
+ANIMIX styles
+Author: Nicole Oliver nixallover@gmail.com
+Created: 10/14 or something like that
+
+******/
+/*** VARIABLES ***/
+/*** VARIABLES ***/
+/* partier for testing */
+.partier {
+  -webkit-animation-name: jump;
+  -webkit-animation-duration: .5s;
+  -webkit-animation-timing-function: ease-out;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  border: dotted 1px #253a4e;
+  display: inline-block;
+  height: 150px;
+  margin-top: 30px;
+  margin-right: 3px;
+  padding-top: 25px;
+  width: 70px;
+  vertical-align: bottom; }
+  .partier .partier-head,
+  .partier .partier-torso,
+  .partier .partier-butt {
+    border: dotted 1px #253a4e;
+    height: 70px;
+    width: 70px;
+    margin-top: -25px;
+    position: relative;
+    overflow: hidden; }
+  .partier .partier-head {
+    z-index: 5;
+    -webkit-animation-name: bob;
+    -webkit-animation-duration: .5s;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate; }
+    .partier .partier-head.animal-1 {
+      background: url(../../img/dance/4a.png); }
+  .partier .partier-torso {
+    z-index: 4; }
+    .partier .partier-torso.animal-2 {
+      background: url(../../img/dance/2b.png); }
+  .partier .partier-butt {
+    margin-top: -29px;
+    z-index: 3; }
+    .partier .partier-butt.animal-3 {
+      background: url(../../img/dance/anim1-3c.png);
+      -webkit-animation: spriteLoop 0.7s steps(4) infinite; }
+
+@-webkit-keyframes spriteLoop {
+  from {
+    background-position: 0px; }
+
+  to {
+    background-position: -280px; } }
+@-webkit-keyframes jump {
+  from {
+    -webkit-transform: translateY(0px); }
+
+  to {
+    -webkit-transform: translateY(10px); } }
+@-webkit-keyframes bob {
+  from {
+    -webkit-transform: rotate(-10deg); }
+
+  to {
+    -webkit-transform: rotate(10deg); } }
+/*** BASIC ELEMENTS ***/
 body {
-  background-color: #1C2B2F;
-  color: #fff; }
+  background-color: #294259;
+  color: #c7e0df;
+  font-family: "Droid Sans", sans-serif; }
   body * {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -9,11 +81,36 @@ body {
     -ms-user-select: none;
     user-select: none; }
 
+hr {
+  border-top: solid 3px #2d4f6e; }
+
+a {
+  color: #c7e0df; }
+  a:hover {
+    color: #d6ebea; }
+
+h1 {
+  color: #f96d48;
+  font-family: "Bowlby One SC", sans-serif;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: center; }
+
+h2 {
+  color: #d3462a;
+  font-family: "Bowlby One SC", sans-serif;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: center; }
+
+/*** LAYOUT ***/
 .container {
   max-width: 550px; }
 
 .major-panel {
-  background-color: #328c5d;
+  background-color: #2d4f6e;
   display: table;
   margin: 0;
   margin-top: -30px;
@@ -25,31 +122,26 @@ body {
 #game-container {
   padding: 0; }
 
-h1 {
-  color: #1d6e5e;
-  font-family: "Bowlby One SC", sans-serif;
-  letter-spacing: .3em;
-  text-transform: uppercase;
-  font-weight: 700;
-  text-align: center; }
+/*** COMPONENTS ***/
+.btn {
+  border-radius: 6px;
+  color: white; }
 
+/*** MAIN MENU ***/
 #main-menu {
   list-style: none;
   width: 100%;
   padding: 0;
   margin: 0; }
   #main-menu li {
-    display: inline-block;
+    display: block;
+    font-size: 2em;
     margin: 0;
-    padding: 0;
-    width: 50%; }
-    #main-menu li img {
-      display: block;
-      height: auto;
-      width: 100%; }
+    padding: 7px;
+    text-align: center; }
 
 #panel-roundPause {
-  background-color: #328c5d;
+  background-color: #2d4f6e;
   position: fixed;
   top: 0;
   right: 0;
@@ -62,64 +154,28 @@ h1 {
   outline: 0; }
 
 #btn-roundPause {
-  background-color: #1d6e5e;
+  background-color: #f96d48;
   border: 0;
+  border-radius: 0;
+  border-bottom-left-radius: 6px;
   position: absolute;
   padding: 5px 15px;
   right: 0;
   top: 10px; }
 
 #btn-roundUnpause {
-  background-color: #1d6e5e;
+  background-color: #f96d48;
+  border-radius: 6px;
   border: 0;
   display: block;
+  font-size: 125%;
   margin: 10px auto;
   padding: 15px 25px;
   position: relative; }
 
-#floor {
-  background-color: #4BA658;
-  box-sizing: border-box;
-  display: block;
-  padding: 15px;
-  padding-top: 30px;
-  height: 250px;
-  overflow: hidden; }
-  #floor .partier {
-    -webkit-animation-name: jump;
-    -webkit-animation-duration: .5s;
-    -webkit-animation-timing-function: ease-out;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-direction: alternate;
-    display: inline-block;
-    height: 150px;
-    margin-top: 30px;
-    margin-right: 3px;
-    padding-top: 25px;
-    width: 70px;
-    vertical-align: bottom; }
-    #floor .partier .partier-head,
-    #floor .partier .partier-torso,
-    #floor .partier .partier-butt {
-      max-width: 100%;
-      margin-top: -25px;
-      position: relative; }
-    #floor .partier .partier-head {
-      z-index: 5;
-      -webkit-animation-name: bob;
-      -webkit-animation-duration: .5s;
-      -webkit-animation-timing-function: ease-in-out;
-      -webkit-animation-iteration-count: infinite;
-      -webkit-animation-direction: alternate; }
-    #floor .partier .partier-torso {
-      z-index: 4; }
-    #floor .partier .partier-butt {
-      margin-top: -29px;
-      z-index: 3; }
-
 #scoreboard {
-  background-color: #1d6e5e;
-  border-top: solid 4px #5ec66d;
+  background-color: #253a4e;
+  border-top: solid 4px #50babc;
   box-sizing: border-box;
   display: block;
   padding: 15px;
@@ -174,7 +230,8 @@ h1 {
   -webkit-user-select: none;
   -o-user-select: none; }
   #popup-container #popup {
-    background-color: #29CBE0;
+    background-color: #50babc;
+    color: white;
     display: block;
     font: 50px "Bowlby One SC", sans-serif;
     min-height: 130px;
@@ -187,15 +244,11 @@ h1 {
     #popup-container #popup p {
       display: none; }
 
-@-webkit-keyframes jump {
-  from {
-    -webkit-transform: translateY(0px); }
-  to {
-    -webkit-transform: translateY(10px); } }
-@-webkit-keyframes bob {
-  from {
-    -webkit-transform: rotate(-10deg); }
-  to {
-    -webkit-transform: rotate(10deg); } }
-
-/*# sourceMappingURL=main.css.map */
+#floor {
+  background-color: #2d4f6e;
+  box-sizing: border-box;
+  display: block;
+  padding: 15px;
+  padding-top: 30px;
+  height: 250px;
+  overflow: hidden; }

@@ -1,0 +1,35 @@
+/*** VARIABLES ***/
+
+// theme colors
+$base: #294259;
+$white: #FFFFFF;
+$light: #C7E0DF;
+$accent1: #50BABC;
+$accent2: #F96D48;
+$accent3: #D3462A;
+$dark: #172835;
+
+$height-body-bounce: 30px;
+$border-radius-std: 6px;
+
+$font-header: 'Bowlby One SC', sans-serif;
+$font-copy  : 'Droid Sans', sans-serif;
+
+// colors by element
+$color-body-bg: $base;
+
+$color-text: $light;
+$color-h1: $accent2;
+$color-h2: $accent3;
+
+$color-popup-bg: $accent1;
+$color-popup-text: $white;
+
+
+// basic color functions
+@function bright($base) {
+  @return saturate(lighten($base, 5), 5);
+}
+@function shadow($base) {
+  @return desaturate(darken($base, 3), 1);
+}

@@ -3,9 +3,9 @@
 
 // variables that need to be globally accessible
 var ANIMIX = {
-	activeMove: false,
-	currDomNodes: [],
-	currParts: {}
+	activeMove: false, // true when mouse is down
+	currDomNodes: [], // dom refs for current move
+	currParts: {} // obj of current move
 }; // ANIMIX
 
 

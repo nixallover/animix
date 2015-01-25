@@ -38,10 +38,11 @@ statsMgr.updateOnCompleteMove = function( round ){
 
 	} else {
 		//do nothing
-		
+
 	} // if(isSolid)
 
-	// combo multipliers
+
+	// combo multipliers (not added yet)
 
 	// add new animal to party
 	round.animalsCreated.push( ANIMIX.currParts );
@@ -72,12 +73,13 @@ statsMgr.check.isDuplicate = function( newAnimal, animalsCreated ){
 	return isDup;
 }; // check.isDuplicate()
 
+
 // WIP
 statsMgr.check.longestCombo = function(){
 
 }; // statsMgr.check.longestCombo()
 
-// WIP
+
 statsMgr.check.isSolid = function( newAnimal ){
 	if( newAnimal.a == newAnimal.b && newAnimal.b == newAnimal.c ){
 		return true;
