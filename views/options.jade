@@ -1,7 +1,13 @@
 extends layout
 
 block content
-    .partier2
-        .partier-head.cat
-        .partier-torso.cham
-        .partier-butt.pig
+    #mobile-container.container
+        h1= pageTitle
+        p= description
+
+        .partier
+            .partier-head.cat
+            .partier-torso.cham
+            .partier-butt.pig
+
+    include ./footer.jade

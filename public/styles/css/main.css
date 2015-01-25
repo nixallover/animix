@@ -5,73 +5,10 @@ Created: 10/14 or something like that
 
 ******/
 /*** VARIABLES ***/
-/*** VARIABLES ***/
-/* partier for testing */
-.partier {
-  -webkit-animation-name: jump;
-  -webkit-animation-duration: .5s;
-  -webkit-animation-timing-function: ease-out;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-direction: alternate;
-  border: dotted 1px #253a4e;
-  display: inline-block;
-  height: 150px;
-  margin-top: 30px;
-  margin-right: 3px;
-  padding-top: 25px;
-  width: 70px;
-  vertical-align: bottom; }
-  .partier .partier-head,
-  .partier .partier-torso,
-  .partier .partier-butt {
-    border: dotted 1px #253a4e;
-    height: 70px;
-    width: 70px;
-    margin-top: -25px;
-    position: relative;
-    overflow: hidden; }
-  .partier .partier-head {
-    z-index: 5;
-    -webkit-animation-name: bob;
-    -webkit-animation-duration: .5s;
-    -webkit-animation-timing-function: ease-in-out;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-direction: alternate; }
-    .partier .partier-head.animal-1 {
-      background: url(../../img/dance/4a.png); }
-  .partier .partier-torso {
-    z-index: 4; }
-    .partier .partier-torso.animal-2 {
-      background: url(../../img/dance/2b.png); }
-  .partier .partier-butt {
-    margin-top: -29px;
-    z-index: 3; }
-    .partier .partier-butt.animal-3 {
-      background: url(../../img/dance/anim1-3c.png);
-      -webkit-animation: spriteLoop 0.7s steps(4) infinite; }
-
-@-webkit-keyframes spriteLoop {
-  from {
-    background-position: 0px; }
-
-  to {
-    background-position: -280px; } }
-@-webkit-keyframes jump {
-  from {
-    -webkit-transform: translateY(0px); }
-
-  to {
-    -webkit-transform: translateY(10px); } }
-@-webkit-keyframes bob {
-  from {
-    -webkit-transform: rotate(-10deg); }
-
-  to {
-    -webkit-transform: rotate(10deg); } }
 /*** BASIC ELEMENTS ***/
 body {
   background-color: #294259;
-  color: #c7e0df;
+  color: #C7E0DF;
   font-family: "Droid Sans", sans-serif; }
   body * {
     -webkit-touch-callout: none;
@@ -85,12 +22,12 @@ hr {
   border-top: solid 3px #2d4f6e; }
 
 a {
-  color: #c7e0df; }
+  color: #C7E0DF; }
   a:hover {
     color: #d6ebea; }
 
 h1 {
-  color: #f96d48;
+  color: #F96D48;
   font-family: "Bowlby One SC", sans-serif;
   letter-spacing: .3em;
   text-transform: uppercase;
@@ -98,7 +35,7 @@ h1 {
   text-align: center; }
 
 h2 {
-  color: #d3462a;
+  color: #D3462A;
   font-family: "Bowlby One SC", sans-serif;
   letter-spacing: .3em;
   text-transform: uppercase;
@@ -113,7 +50,7 @@ h2 {
   background-color: #2d4f6e;
   display: table;
   margin: 0;
-  margin-top: -30px;
+  margin-top: -10px;
   padding: 25px;
   position: relative;
   width: 100%;
@@ -125,7 +62,7 @@ h2 {
 /*** COMPONENTS ***/
 .btn {
   border-radius: 6px;
-  color: white; }
+  color: #FFFFFF; }
 
 /*** MAIN MENU ***/
 #main-menu {
@@ -140,6 +77,7 @@ h2 {
     padding: 7px;
     text-align: center; }
 
+/*** VARIABLES ***/
 #panel-roundPause {
   background-color: #2d4f6e;
   position: fixed;
@@ -154,7 +92,7 @@ h2 {
   outline: 0; }
 
 #btn-roundPause {
-  background-color: #f96d48;
+  background-color: #F96D48;
   border: 0;
   border-radius: 0;
   border-bottom-left-radius: 6px;
@@ -164,7 +102,7 @@ h2 {
   top: 10px; }
 
 #btn-roundUnpause {
-  background-color: #f96d48;
+  background-color: #F96D48;
   border-radius: 6px;
   border: 0;
   display: block;
@@ -175,7 +113,7 @@ h2 {
 
 #scoreboard {
   background-color: #253a4e;
-  border-top: solid 4px #50babc;
+  border-top: solid 4px #50BABC;
   box-sizing: border-box;
   display: block;
   padding: 15px;
@@ -230,8 +168,8 @@ h2 {
   -webkit-user-select: none;
   -o-user-select: none; }
   #popup-container #popup {
-    background-color: #50babc;
-    color: white;
+    background-color: #50BABC;
+    color: #FFFFFF;
     display: block;
     font: 50px "Bowlby One SC", sans-serif;
     min-height: 130px;
@@ -249,6 +187,87 @@ h2 {
   box-sizing: border-box;
   display: block;
   padding: 15px;
-  padding-top: 30px;
+  padding-top: 10px;
   height: 250px;
   overflow: hidden; }
+
+/*** VARIABLES ***/
+/* partier for testing */
+.partier {
+  -webkit-animation-name: jump;
+  -webkit-animation-duration: .5s;
+  -webkit-animation-timing-function: ease-out;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  border: dotted 1px #253a4e;
+  display: inline-block;
+  height: 150px;
+  margin-top: 30px;
+  margin-right: 3px;
+  padding-top: 25px;
+  width: 70px;
+  vertical-align: bottom; }
+  .partier .partier-head,
+  .partier .partier-torso,
+  .partier .partier-butt {
+    border: dotted 1px #253a4e;
+    height: 70px;
+    width: 70px;
+    margin-top: -25px;
+    position: relative;
+    overflow: hidden; }
+  .partier .partier-head {
+    z-index: 5; }
+    .partier .partier-head.animal-1 {
+      background: url("../../img/dance/1a.png"); }
+    .partier .partier-head.animal-2 {
+      background: url("../../img/dance/2a.png"); }
+    .partier .partier-head.animal-3 {
+      background: url("../../img/dance/3a.png"); }
+    .partier .partier-head.animal-4 {
+      background: url("../../img/dance/4a.png"); }
+  .partier .partier-torso {
+    z-index: 4; }
+    .partier .partier-torso.animal-1 {
+      background: url("../../img/dance/1b.png"); }
+    .partier .partier-torso.animal-2 {
+      background: url("../../img/dance/2b.png"); }
+    .partier .partier-torso.animal-3 {
+      background: url("../../img/dance/3b.png"); }
+    .partier .partier-torso.animal-4 {
+      background: url("../../img/dance/4b.png"); }
+  .partier .partier-butt {
+    margin-top: -29px;
+    z-index: 3; }
+    .partier .partier-butt.animal-1 {
+      background: url("../../img/dance/1c.png"); }
+    .partier .partier-butt.animal-2 {
+      background: url("../../img/dance/2c.png"); }
+    .partier .partier-butt.animal-3 {
+      background: url("../../img/dance/3c.png"); }
+    .partier .partier-butt.animal-4 {
+      background: url("../../img/dance/4c.png"); }
+  .partier .bobbing-head {
+    -webkit-animation-name: bob;
+    -webkit-animation-duration: .5s;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate; }
+
+@-webkit-keyframes spriteLoop {
+  from {
+    background-position: 0px; }
+  to {
+    background-position: -280px; } }
+@-webkit-keyframes jump {
+  from {
+    -webkit-transform: translateY(0px); }
+  to {
+    -webkit-transform: translateY(10px); } }
+@-webkit-keyframes bob {
+  from {
+    -webkit-transform: rotate(-10deg); }
+  to {
+    -webkit-transform: rotate(10deg); } }
+
+/*# sourceMappingURL=main.css.map */

@@ -53,18 +53,37 @@
 //     // }
 // }
 
+// original
+// @mixin animal-sprites($part) {
+
+//     &.animal-1 {
+//         background: url('../../img/dance/1' + $part + '.png');
+//     }
+//     &.animal-2 {
+//         background: url('../../img/dance/2' + $part + '.png');
+//     }
+//     &.animal-3 {
+//         background: url('../../img/dance/3' + $part + '.png');
+//     }
+//     &.animal-4 {
+//         background: url('../../img/dance/4' + $part + '.png');
+//     }
+// }
+
+// with anim
 @mixin animal-sprites($part) {
+
     &.animal-1 {
-        background: url(../../img/dance/1$part.png);
+        background: url('../../img/dance/1' + $part + '.png');
     }
     &.animal-2 {
-        background: url(../../img/dance/2$part.png);
+        background: url('../../img/dance/2' + $part + '.png');
     }
     &.animal-3 {
-        background: url(../../img/dance/3$part.png);
+        background: url('../../img/dance/3' + $part + '.png');
     }
     &.animal-4 {
-        background: url(../../img/dance/4$part.png);
+        background: url('../../img/dance/4' + $part + '.png');
     }
 }
 
@@ -89,6 +108,7 @@
     .partier-head,
     .partier-torso,
     .partier-butt {
+        //-webkit-animation: spriteLoop .4s infinite;
         border: dotted 1px shadow($color-body-bg);
         height: 70px;
         width: 70px;
@@ -98,24 +118,16 @@
     }
     .partier-head {
         z-index: 5;
-        -webkit-animation-name: bob;
-        -webkit-animation-duration: .5s;
-        -webkit-animation-timing-function: ease-in-out;
-        -webkit-animation-iteration-count: infinite;
-        -webkit-animation-direction: alternate;
-
-        @include animal-sprites(1);
+        @include animal-sprites(a);
     }
     .partier-torso {
         z-index: 4;
-
-        @include animal-sprites(2);
+        @include animal-sprites(b);
     }
     .partier-butt {
         margin-top: -29px;
         z-index: 3;
-
-        @include animal-sprites(3);
+        @include animal-sprites(c);
     }
 
     // .partier-butt {
@@ -128,6 +140,14 @@
     // .partier-butt {
     //     -webkit-animation-delay: 1s;
     // }
+
+    .bobbing-head {
+        -webkit-animation-name: bob;
+        -webkit-animation-duration: .5s;
+        -webkit-animation-timing-function: ease-in-out;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-direction: alternate;
+    }
 }
 
 

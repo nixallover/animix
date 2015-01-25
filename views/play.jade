@@ -1,57 +1,59 @@
 extends layout
 
 block content
+    .container
 
-    include ./popup.jade
+        include ./pauseScreen.jade
+        include ./popup.jade
 
-    #game-container.major-panel.hide
-        button#btn-roundPause.btn(type='button') Pause
-        #floor
-            #clone-source.partier.hide
-
-
-        #scoreboard
-            #status
-
-                .row
-                    .col-xs-4
-                        p 
-                            strong Score: 
-                            span#log-score
-                        p 
-                            strong Moves: 
-                            span#log-moves
-
-                    .col-xs-4
-                        p 
-                            strong Combos: 
-                            span#log-combos
-                        p 
-                            strong Solids: 
-                            span#log-solids
-
-                    .col-xs-4
-                        p 
-                            strong Originals: 
-                            span#log-originals
-                        p 
-                            strong Duplicates: 
-                            span#log-duplicates
-
-                .timer
-                    span.minutes 0
-                    span  minutes 
-                    span.seconds 0
-                    span  seconds 
+        #game-container.major-panel.hide
+            button#btn-roundPause.btn(type='button') Pause
+            #floor
+                #clone-source.partier.hide
 
 
-        #grid
-            each rowIndex in [1,2,3,4,5]
-                .grid-row
-                    each colIndex in [1,2,3,4,5]
-                        .tile(data-row=rowIndex,data-column=colIndex)
+            #scoreboard
+                #status
 
-    #roundEndStats-container.hide
+                    .row
+                        .col-xs-4
+                            p 
+                                strong Score: 
+                                span#log-score
+                            p 
+                                strong Moves: 
+                                span#log-moves
+
+                        .col-xs-4
+                            p 
+                                strong Combos: 
+                                span#log-combos
+                            p 
+                                strong Solids: 
+                                span#log-solids
+
+                        .col-xs-4
+                            p 
+                                strong Originals: 
+                                span#log-originals
+                            p 
+                                strong Duplicates: 
+                                span#log-duplicates
+
+                    .timer
+                        span.minutes 0
+                        span  minutes 
+                        span.seconds 0
+                        span  seconds 
+
+
+            #grid
+                each rowIndex in [1,2,3,4,5]
+                    .grid-row
+                        each colIndex in [1,2,3,4,5]
+                            .tile(data-row=rowIndex,data-column=colIndex)
+
+        #roundEndStats-container.hide
 
 block append js
     //- util

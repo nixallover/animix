@@ -1,8 +1,14 @@
 extends layout
 
 block content
-    h2 This page will eventually have:
-    ul
-        li party animals hosted
-        li player achievements
-        li venues and animal packs
+    #mobile-container.container
+        h1= pageTitle
+        p= description
+
+        h2 This page will eventually have:
+        ul
+            li party animals hosted
+            li player achievements
+            li venues and animal packs
+
+    include ./footer.jade

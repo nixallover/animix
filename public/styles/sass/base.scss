@@ -1,0 +1,102 @@
+// base and 
+
+@import './variables.scss';
+
+
+/*** BASIC ELEMENTS ***/
+body{
+  background-color: $color-body-bg;
+  color: $color-text;
+  font-family: $font-copy;
+
+  * {
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+}
+
+hr {
+    border-top: solid 3px bright($color-body-bg);
+}
+a {
+    color: $light;
+
+    &:hover {
+        color: bright($light);
+    }
+}
+
+h1 {
+	color: $color-h1;
+	font-family: $font-header;
+	letter-spacing: .3em;
+	text-transform: uppercase;
+    font-weight: 700;
+	text-align: center;
+}
+
+h2 {
+    color: $color-h2;
+    font-family: $font-header;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+}
+
+
+
+/*** LAYOUT ***/
+.container {
+    //border: dotted 1px crimson;
+    max-width: 550px;
+}
+.major-panel {
+    background-color: bright($color-body-bg);
+    display: table;
+    margin: 0;
+    margin-top: -$height-body-bounce; //for bounce
+    padding: 25px;
+    position: relative;
+    width: 100%;
+    border-radius: $border-radius-std;
+}
+#game-container {
+    padding: 0;
+}
+
+/*** COMPONENTS ***/
+.btn {
+    border-radius: $border-radius-std;
+    color: $white;
+}
+
+/*** MAIN MENU ***/
+#main-menu {
+    list-style: none;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+
+    li {
+        display: block;
+        //font-family: $font-header;
+        font-size: 2em;
+        margin: 0;
+        padding: 7px;
+        text-align: center;
+
+        a {
+            //color: $color-h2;
+            //transition: color 1s;
+
+            &:hover {
+                //color: bright($color-h2);
+            }
+        }
+    }
+}

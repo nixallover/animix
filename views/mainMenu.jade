@@ -1,7 +1,9 @@
 extends layout
 
 block content
-    ul#main-menu
-        each item in menu
-            li
-                a(href=item.url,title=item.description)= item.title
+    #mobile-container.container
+        h1= pageTitle
+        ul#main-menu
+            each item in menu
+                li
+                    a(href=item.url,title=item.description)= item.title

@@ -1,0 +1,149 @@
+// play styles
+
+@import './variables.scss';
+
+#panel-roundPause {
+    background-color: bright($color-body-bg);
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1041;
+    display: block;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+}
+#btn-roundPause {
+    background-color: $accent2;
+    border: 0;
+    border-radius: 0;
+    border-bottom-left-radius: $border-radius-std;
+	position: absolute;
+    padding: 5px 15px;
+	right: 0;
+	top: 10px; //FIXME magic #
+}
+#btn-roundUnpause {
+    background-color: $accent2;
+    border-radius: $border-radius-std;
+    border: 0;
+    display: block;
+    font-size: 125%;
+    margin: 10px auto;
+    padding: 15px 25px;
+    position: relative;
+}
+
+#scoreboard {
+	background-color: shadow($color-body-bg);
+	border-top: solid 4px $accent1;
+	box-sizing: border-box;
+	display: block;
+	padding: 15px;
+	//width: 100%;
+    min-height:40px;
+}
+#debug-status {
+	max-width: 600px;
+	overflow: hidden;
+}
+
+#grid {
+	padding: 10px;
+	display: table;
+	width: 100%;
+
+    .grid-row {
+        display: table;
+        width: 100%;
+    }
+}
+
+.tile {
+	//background-color: red;
+	//border: dotted 1px dark($color-body-bg);
+	box-sizing: border-box;
+	display: inline-block;
+	height: 20%;
+	padding:3px;
+	vertical-align: top;
+	width: 20%;
+
+	&:after {
+		content: "";
+		clear: both;
+		display: table;
+	}
+
+    &.selected {
+    	padding:0;
+
+        > .part {
+        	opacity: 1;
+        }
+    }
+    > .part {
+    	//background-color: red;
+        border: solid 2px transparent;
+        height: auto;
+        max-width: 100%;
+        opacity: 0.8;
+    }
+}
+
+@media (max-width: 600px) {
+	#game-container {
+		//margin: 0 auto;
+	}
+}
+
+#popup-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 300px;
+    z-index: 1040;
+    display: none;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+
+    -moz-user-select: none; 
+    -khtml-user-select: none; 
+    -webkit-user-select: none; 
+    -o-user-select: none; 
+
+    #popup {
+        background-color: $color-popup-bg;
+        color: $color-popup-text;
+        display: block;
+        font: 50px $font-header;
+        min-height: 130px;
+        line-height: 50px;
+        margin: 30px auto;
+        padding: 40px 30px;
+        text-align: center;
+        vertical-align: text-center;
+        width: 300px;
+
+        p {
+            display: none;
+        }
+    }
+}
+
+#floor {
+    //background: url("/img/dance/floor002.png") repeat;
+    background-color: bright($color-body-bg);
+    //background-size: cover;
+    box-sizing: border-box;
+    display: block;
+    padding: 15px;
+    padding-top: $height-body-bounce;
+    //width: 100%;
+    height: 250px;
+    overflow: hidden;
+}

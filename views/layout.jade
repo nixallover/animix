@@ -19,21 +19,7 @@ html(lang='en')
 
 
     body
-        #panel-roundPause.hide
-            .container
-                h1 Game paused!
-                button#btn-roundUnpause(type='button') Unpause
-
-        #mobile-container.container
-            h1= pageTitle
-            p= description
-
-            block content
-
-        #footer
-            hr
-            p.text-center 
-                a(href='/') Return home
+        block content
 
 
     block js
