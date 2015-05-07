@@ -20,7 +20,7 @@ router.get("/play", function(req, res) {
 router.post("/roundEndStats", function(req, res) {
     var finalStats = req.param("finalStats");
     console.log("round ended! sending back stats:");
-    console.log(req.param("finalStats"));
+    console.log(finalStats);
     res.render("roundEndStats", finalStats );
 });
 
